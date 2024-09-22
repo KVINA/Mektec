@@ -1,0 +1,6 @@
+D:\MMCV\LibraryHelper\bin\Debug\LibraryHelper.dll
+D:\MMCV\LibraryHelper\bin\Debug\LibraryHelper.pdb
+D:\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.AssemblyReference.cache
+D:\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.CoreCompileInputs.cache
+D:\MMCV\LibraryHelper\obj\Debug\LibraryHelper.dll
+D:\MMCV\LibraryHelper\obj\Debug\LibraryHelper.pdb
