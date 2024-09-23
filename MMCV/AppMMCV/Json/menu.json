@@ -1,0 +1,83 @@
+{
+  "MenuFunction": [
+    {
+      "Object": "Employess managerment",
+      "TypeMenu": [
+        {
+          "Header": "Settings",
+          "TypeMenuItem": [
+            {
+              "Namespace": "SystemMMCV",
+              "NameUsercontrol": "Role_Permission",
+              "Header": "Permission",
+              "Icon": "FileCog"
+            },
+            {
+              "Namespace": "SystemMMCV.UserControl_LAB",
+              "NameUsercontrol": "LAB_MesterItemsUC",
+              "Header": "Master Item",
+              "TypeMenuItem": [],
+              "Icon": "FileCog"
+            },
+            {
+              "Namespace": "SystemMMCV.UserControl_OK2SHIP",
+              "NameUsercontrol": "OK2SHIP_MasterSample",
+              "Header": "Master OK2SHIP",
+              "Icon": "FileCog"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Object": "Cannte",
+      "TypeMenu": [
+        {
+          "Header": "Setting",
+          "TypeMenuItem": [
+            {
+              "Namespace": "SystemMMCV",
+              "NameUsercontrol": "Role_Permission",
+              "Header": "Permission",
+              "Icon": "FileCog"
+            },
+            {
+              "Namespace": "SystemMMCV.UserControl_OK2SHIP",
+              "NameUsercontrol": "OK2SHIP_MasterSample",
+              "Header": "Master sample",
+              "Icon": "FileCog"
+            }
+          ]
+        },
+        {
+          "Header": "Home",
+          "TypeMenuItem": [
+            {
+              "Namespace": "SystemMMCV.UserControl_OK2SHIP",
+              "NameUsercontrol": "OK2SHIP_RequestSample",
+              "Header": "Request",
+              "Icon": "FileDocumentPlus"
+            },
+            {
+              "Namespace": "SystemMMCV.UserControl_OK2SHIP",
+              "NameUsercontrol": "OK2SHIP_Confirm",
+              "Header": "Confirm",
+              "Icon": "TextBoxCheck"
+            }
+          ]
+        },
+        {
+          "Header": "Warning",
+          "TypeMenuItem": [
+            {
+              "Namespace": "SystemMMCV.UserControl_OK2SHIP",
+              "NameUsercontrol": "OK2SHIP_Warning",
+              "Header": "Sampling time warning",
+              "Icon": "FileUploadOutline"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

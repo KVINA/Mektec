@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AppMMCV</RootNamespace>
     <AssemblyName>AppMMCV</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -16,6 +16,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,10 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\AuthenServices.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\SQLService.cs" />
     <Compile Include="ViewModels\GlobalVM.cs" />
+    <Compile Include="ViewModels\HRMVM.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\SystemsVM.cs" />
+    <Compile Include="ViewModels\Systems\LoginVM.cs" />
     <Compile Include="View\HRM\Canteen_DailyTotalUC.xaml.cs">
       <DependentUpon>Canteen_DailyTotalUC.xaml</DependentUpon>
     </Compile>
@@ -82,8 +90,8 @@
     <Compile Include="View\Systems\EmployeesUC.xaml.cs">
       <DependentUpon>EmployeesUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Systems\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\Systems\LoginUC.xaml.cs">
+      <DependentUpon>LoginUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -95,6 +103,10 @@
     <Compile Include="View\Systems\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HRM\Canteen_DailyTotalUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Systems\Login.xaml">
+    <Page Include="View\Systems\LoginUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +155,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Json\json-info.json" />
+    <None Include="Json\menu.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -155,7 +168,9 @@
   <ItemGroup>
     <Resource Include="Image\Mektec.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibraryHelper\LibraryHelper.csproj">
       <Project>{76341279-9025-4a8a-bb4c-78c0b1a1708c}</Project>

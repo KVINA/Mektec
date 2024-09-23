@@ -11,24 +11,33 @@ namespace AppMMCV.Services
     internal class AuthenServices
     {
       
-        public static void Login(string username, string password)
+        public static void Login(out string exception, string username, string password)
         {
-            // Set default
-            DataService.User = null;
-            DataService.IsLogin = false;
-
-            var parameter = new object[] { username, password };
-            string query = "EXEC usp_users_login @username , @password ";
-            var info = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter);
-            if (string.IsNullOrEmpty(exception))
+            try
             {
-                if (info != null && info.Rows.Count == 1)
-                {
-                    int role_id = (int)info.Rows[0]["role_id"];
-                    DataService.User = new Users(username,password,role_id);
-                    DataService.IsLogin = true;
-                }
+				// Set default
+				exception = string.Empty;
+				DataService.User = null;
+				DataService.IsLogin = false;
+
+				var parameter = new object[] { username, password };
+				string query = "EXEC usp_users_login @username , @password ";
+				var info = SQLService.Method.ExcuteQuery(out exception, SQLService.Server.SV68_HRM, query, parameter);
+				if (string.IsNullOrEmpty(exception))
+				{
+					if (info != null && info.Rows.Count == 1)
+					{
+						int role_id = (int)info.Rows[0]["role_id"];
+						DataService.User = new Users(username, password, role_id);
+						DataService.IsLogin = true;
+					}
+				}
+			}
+            catch (Exception ex)
+            {
+				exception = ex.Message;
             }
+			
         }
 
         public static void Logout()

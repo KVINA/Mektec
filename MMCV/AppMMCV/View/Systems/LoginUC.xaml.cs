@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppMMCV.ViewModels.Systems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,26 +18,20 @@ namespace AppMMCV.View.Systems
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class LoginUC : UserControl
     {
-        public Login()
+        public LoginUC()
         {
             InitializeComponent();
-        }
+            this.DataContext = new ViewModels.Systems.LoginVM();
 
-        private void Event_Login(object sender, RoutedEventArgs e)
-        {
+		}
 
-        }
-
-        private void Event_ShowRegister(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Event_ChangeChecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-    }
+		private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			var passwordBox = sender as PasswordBox;
+			var viewModel = DataContext as LoginVM;
+			viewModel.Password = passwordBox.Password;
+		}
+	}
 }
