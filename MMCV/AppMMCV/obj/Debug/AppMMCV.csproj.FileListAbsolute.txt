@@ -56,7 +56,6 @@ E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_MealTimeUC.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\EmployeesSubmitUC.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\EmployeesUC.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\MainMenuUC.g.cs
-E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\MainWindow.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\App.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV_MarkupCompile.cache
@@ -67,7 +66,6 @@ E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_MealTimeUC.baml
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\EmployeesSubmitUC.baml
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\EmployeesUC.baml
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\MainMenuUC.baml
-E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\MainWindow.baml
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.g.resources
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.Properties.Resources.resources
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.csproj.GenerateResource.cache
@@ -79,3 +77,10 @@ E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\LoginUC.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\LoginUC.baml
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\MainWindow.g.cs
 E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\MainWindow.baml
+E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\HomeUC.g.cs
+E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\RegisterUC.g.cs
+E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\HomeUC.baml
+E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Systems\RegisterUC.baml
+E:\Project\Mektec\MMCV\AppMMCV\bin\Debug\Json\Server_KVINA.json
+E:\Project\Mektec\MMCV\AppMMCV\bin\Debug\Json\Server_MMCV.json
+E:\Project\Mektec\MMCV\AppMMCV\bin\Debug\Json\menu.json

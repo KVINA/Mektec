@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppMMCV"
         mc:Ignorable="d"
-        Title="MMCV System Update 20240923" Height="450" Width="800">
+        Title="MMCV System Update 20240923" Height="750" Width="1200">
     <ContentControl x:Name="ContentArea" Content="{Binding SelectUsercontrol, UpdateSourceTrigger=PropertyChanged}">
         <ContentControl.Style>
             <Style TargetType="ContentControl">

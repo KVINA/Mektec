@@ -67,6 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="JsonModel\RootMenu.cs" />
+    <Compile Include="JsonModel\RootServer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -77,6 +79,7 @@
     <Compile Include="ViewModels\HRMVM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SystemsVM.cs" />
+    <Compile Include="ViewModels\Systems\HomeVM.cs" />
     <Compile Include="ViewModels\Systems\LoginVM.cs" />
     <Compile Include="View\HRM\Canteen_DailyTotalUC.xaml.cs">
       <DependentUpon>Canteen_DailyTotalUC.xaml</DependentUpon>
@@ -100,8 +103,11 @@
     <Compile Include="View\Systems\MainMenuUC.xaml.cs">
       <DependentUpon>MainMenuUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Systems\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\Systems\HomeUC.xaml.cs">
+      <DependentUpon>HomeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Systems\RegisterUC.xaml.cs">
+      <DependentUpon>RegisterUC.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -131,7 +137,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Systems\MainWindow.xaml">
+    <Page Include="View\Systems\HomeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Systems\RegisterUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,7 +165,15 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Json\json-info.json" />
-    <None Include="Json\menu.json" />
+    <None Include="Json\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Json\Server_KVINA.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Json\Server_MMCV.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,9 +186,7 @@
   <ItemGroup>
     <Resource Include="Image\Mektec.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\LibraryHelper\LibraryHelper.csproj">
       <Project>{76341279-9025-4a8a-bb4c-78c0b1a1708c}</Project>

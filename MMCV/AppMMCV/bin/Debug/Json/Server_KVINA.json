@@ -1,0 +1,11 @@
+{
+  "Server": [
+    {
+      "ServerName": "SV68_HRM",
+      "DataSource": "DESKTOP-RG9BJ2P",
+      "InitialCatalog": "HRM",
+      "UserId": "sa",
+      "Password": "Fx1y6uytuh@"
+    }
+  ]
+}

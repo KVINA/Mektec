@@ -48,7 +48,7 @@ namespace AppMMCV.ViewModels.Systems
 					if (DataService.IsLogin)
 					{
 						StatusMessage = "Đăng nhập thành công!";
-						DataService.GlobalVM.SelectUsercontrol = new MainMenuUC();
+						DataService.GlobalVM.SelectUsercontrol = new HomeUC();
 					}
 					else
 					{
