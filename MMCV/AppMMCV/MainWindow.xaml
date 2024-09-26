@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppMMCV"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="MMCV System Update 20240923" Height="750" Width="1200">
     <ContentControl x:Name="ContentArea" Content="{Binding SelectUsercontrol, UpdateSourceTrigger=PropertyChanged}">
         <ContentControl.Style>

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Methods\ServiceProvider.cs" />
     <Compile Include="Methods\SQLProvider.cs" />
+    <Compile Include="Models\app_subject.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

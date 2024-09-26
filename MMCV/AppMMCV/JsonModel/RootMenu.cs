@@ -21,7 +21,8 @@ namespace AppMMCV.Json
 	}
 	public class ListMenu
 	{
-		public string ParentMenu { get; set; }
+        public string ParentID { get; set; }
+        public string ParentMenu { get; set; }
 		public string Description { get; set; }
 		public List<ChildrenMenu> ChildrenMenu { get; set; }
 	}

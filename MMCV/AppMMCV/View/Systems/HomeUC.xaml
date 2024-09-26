@@ -120,7 +120,7 @@
                 </Grid>
             </materialDesign:ColorZone>
 
-            <materialDesign:Card Grid.Row="1" Name="scv_body" Margin="2"/>
+            <materialDesign:Card Grid.Row="1"  Margin="2" Content="{Binding MainContent, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
     </materialDesign:DrawerHost>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppMMCV.View.Systems"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d">
     <Grid>
         <Grid.Resources>
@@ -16,10 +17,13 @@
                 <Setter Property="Height" Value="28"/>
             </Style>
 
-
             <Style TargetType="Menu" BasedOn="{x:Null}">
                 <Setter Property="Margin" Value="2"/>
                 <Setter Property="Background" Value="White"/>
+            </Style>           
+
+            <Style TargetType="TabControl" BasedOn="{x:Null}">
+                <Setter Property="TabStripPlacement" Value="Bottom"/>
             </Style>
 
             <Style TargetType="TabItem" BasedOn="{x:Null}">
@@ -29,10 +33,6 @@
                         <Setter Property="Margin" Value="-2 0"/>
                     </Trigger>
                 </Style.Triggers>
-            </Style>
-
-            <Style TargetType="TabControl" BasedOn="{x:Null}">
-                <Setter Property="TabStripPlacement" Value="Bottom"/>
             </Style>
 
         </Grid.Resources>
@@ -47,29 +47,23 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Menu Name="menu_main"/>
+            <Menu Name="menu_main" ItemsSource="{Binding ParentMenu, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Column="1" Name="lbl_hearder" FontWeight="Bold" Margin="2"/>
+            <Label Grid.Column="1" Content="{Binding TitleInfo.Content, UpdateSourceTrigger=PropertyChanged}" 
+                   Background="{Binding TitleInfo.Background, UpdateSourceTrigger=PropertyChanged}"
+                   Foreground="{Binding TitleInfo.Foreground, UpdateSourceTrigger=PropertyChanged}"
+                   FontWeight="Bold" Margin="2"/>
         </Grid>
 
-        <TabControl Grid.Row="1" Name="tct_body" Margin="2" ><!--SelectionChanged="tct_body_SelectionChanged"-->
-
-        </TabControl>
-
-        <Border Grid.Row="1" Background="AliceBlue">
-            <Border.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=tct_body, Path=Items.Count}" Value="0">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Resources>
-
-
-            <TextBlock Text="Please click menu to select function" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-        </Border>
+        <UserControl Grid.Row="1" Content="{Binding TabItemsSource}"/>
+        
+        <!--<TabControl Grid.Row="1" SelectedItem="{Binding TabItemSelected, UpdateSourceTrigger=PropertyChanged}" 
+                    ItemsSource="{Binding TabItemsSource, UpdateSourceTrigger=PropertyChanged}" Margin="2">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectTabitemChangeCommand}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Self}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>            
+        </TabControl>-->
     </Grid>
 </UserControl>

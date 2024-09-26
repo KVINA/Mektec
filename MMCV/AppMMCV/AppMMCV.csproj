@@ -44,6 +44,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.5.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.5.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -75,12 +78,27 @@
     <Compile Include="Services\AuthenServices.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\SQLService.cs" />
+    <Compile Include="ViewModels\Admin\MenuSettingsVM.cs" />
     <Compile Include="ViewModels\GlobalVM.cs" />
     <Compile Include="ViewModels\HRMVM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SystemsVM.cs" />
     <Compile Include="ViewModels\Systems\HomeVM.cs" />
     <Compile Include="ViewModels\Systems\LoginVM.cs" />
+    <Compile Include="ViewModels\Systems\MainMenuVM.cs" />
+    <Compile Include="ViewModels\Systems\PermissionVM.cs" />
+    <Compile Include="View\Admin\MenuItemUC.xaml.cs">
+      <DependentUpon>MenuItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MenuSettings.xaml.cs">
+      <DependentUpon>MenuSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MenuUC.xaml.cs">
+      <DependentUpon>MenuUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SubjectUC.xaml.cs">
+      <DependentUpon>SubjectUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HRM\Canteen_DailyTotalUC.xaml.cs">
       <DependentUpon>Canteen_DailyTotalUC.xaml</DependentUpon>
     </Compile>
@@ -106,10 +124,29 @@
     <Compile Include="View\Systems\HomeUC.xaml.cs">
       <DependentUpon>HomeUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Systems\Permission.xaml.cs">
+      <DependentUpon>Permission.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Systems\RegisterUC.xaml.cs">
       <DependentUpon>RegisterUC.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MenuItemUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MenuSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MenuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\SubjectUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Systems\HomeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Systems\Permission.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

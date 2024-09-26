@@ -10,3 +10,9 @@ E:\Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.AssemblyRefe
 E:\Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.CoreCompileInputs.cache
 E:\Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.dll
 E:\Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.pdb
+D:\07.Project\Mektec\MMCV\LibraryHelper\bin\Debug\LibraryHelper.dll
+D:\07.Project\Mektec\MMCV\LibraryHelper\bin\Debug\LibraryHelper.pdb
+D:\07.Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.AssemblyReference.cache
+D:\07.Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.csproj.CoreCompileInputs.cache
+D:\07.Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.dll
+D:\07.Project\Mektec\MMCV\LibraryHelper\obj\Debug\LibraryHelper.pdb

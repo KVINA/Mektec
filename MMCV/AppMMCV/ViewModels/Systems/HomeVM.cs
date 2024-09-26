@@ -1,4 +1,6 @@
 ﻿using AppMMCV.Json;
+using AppMMCV.Services;
+using AppMMCV.View.Systems;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
 using System;
@@ -18,9 +20,16 @@ namespace AppMMCV.ViewModels.Systems
 	internal class HomeVM : INotifyPropertyChanged
 	{
 		private StackPanel mainMenu;
-		public StackPanel MainMenu { get => mainMenu; set { mainMenu = value; OnPropertyChanged(nameof(MainMenu)); } }
+        private UserControl mainContent;
+		private string controlSource;
+        public StackPanel MainMenu { get => mainMenu; set { mainMenu = value; OnPropertyChanged(nameof(MainMenu)); } }
+        public UserControl MainContent { get => mainContent; set { mainContent = value; OnPropertyChanged(nameof(MainContent)); }  }
+        public string ControlSource { get => controlSource; set { controlSource = value; OnPropertyChanged(nameof(ControlSource)); } }
 
-		void LoadJsonMenu()
+		/// <summary>
+		/// Read menu json
+		/// </summary>
+        void LoadJsonMenu()
 		{
 			string Path_Json = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Json\\menu.json");
 			string json = System.IO.File.ReadAllText(Path_Json);
@@ -28,11 +37,16 @@ namespace AppMMCV.ViewModels.Systems
 			MainMenu = CreateMainMenu(menus);
 		}
 
+		/// <summary>
+		/// Create Main Menu 
+		/// </summary>
+		/// <param name="menus"></param>
+		/// <returns></returns>
 		private StackPanel CreateMainMenu(List<MenuJson> menus)
 		{
 			if (menus != null && menus.Count > 0)
 			{
-				var stackPanel = new System.Windows.Controls.StackPanel();
+				var stackPanel = new StackPanel();
 				foreach (var menu in menus)
 				{
 					var icon = new MaterialDesignThemes.Wpf.PackIcon();
@@ -40,17 +54,17 @@ namespace AppMMCV.ViewModels.Systems
 					icon.VerticalAlignment = System.Windows.VerticalAlignment.Center;
 					icon.Width = 30; icon.Height = 30;
 
-					var textblock = new System.Windows.Controls.TextBlock();
+					var textblock = new TextBlock();
 					textblock.Text = menu.DisplayName;
 					textblock.VerticalAlignment = System.Windows.VerticalAlignment.Center;
 					textblock.FontWeight = FontWeights.Bold;
 					textblock.FontSize = 14;
 
-					var wrapPanel = new System.Windows.Controls.WrapPanel();
+					var wrapPanel = new WrapPanel();
 					wrapPanel.Children.Add(icon);
 					wrapPanel.Children.Add(textblock);
 
-					var listBox = new System.Windows.Controls.ListBox();
+					var listBox = new ListBox();
 					listBox.Style = (Style)Application.Current.FindResource("MaterialDesignCardsListBox");
 					listBox.Margin = new Thickness(40,0,20,0);
 
@@ -59,22 +73,26 @@ namespace AppMMCV.ViewModels.Systems
 
 						foreach (ListMenu item in menu.ListMenu)
 						{
-							var listboxItem = new System.Windows.Controls.ListBoxItem();
+							var listboxItem = new ListBoxItem();
 							listboxItem.Tag = item;
 							listboxItem.Content = item.ParentMenu;
 							listboxItem.ToolTip = item.Description;
 							listboxItem.Cursor = Cursors.Hand;
 							listboxItem.Style = (Style)Application.Current.FindResource("MaterialDesignNavigationListBoxItem");
-							listBox.Items.Add(listboxItem);							
+                            listboxItem.PreviewMouseLeftButtonDown += ListboxItem_PreviewMouseLeftButtonDown;
+
+
+                            listBox.Items.Add(listboxItem);							
 						}
 					}
 					//Expander
-					var expander = new System.Windows.Controls.Expander() { Header = wrapPanel, Content = listBox};
-					expander.ExpandDirection =  System.Windows.Controls.ExpandDirection.Down;
+					var expander = new Expander() { Header = wrapPanel, Content = listBox};
+					expander.ExpandDirection =  ExpandDirection.Down;
 					expander.Margin = new Thickness(1);
+                    expander.Expanded += Expander_Expanded;	
 					//Border
-					var border = new System.Windows.Controls.Border() { Child = expander };
-					border.BorderThickness = new System.Windows.Thickness(0, 0, 0.5, 0.5);
+					var border = new Border() { Child = expander };
+					border.BorderThickness = new Thickness(0, 0, 0.5, 0.5);
 					border.BorderBrush = Brushes.Gray;
 
 					stackPanel.Children.Add(border);
@@ -87,7 +105,44 @@ namespace AppMMCV.ViewModels.Systems
 			}
 		}
 
-		public HomeVM()
+		/// <summary>
+		/// Close menu is not active
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in MainMenu.Children.OfType<Border>())
+            {
+                var myExpender = item.Child as Expander;
+                if (myExpender != (sender as Expander))
+                {
+                    myExpender.IsExpanded = false;
+                }
+            }
+        }
+
+		/// <summary>
+		/// Select MenuItem
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void ListboxItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+			var control = sender as ListBoxItem;
+			var listmenu = control.Tag as ListMenu;
+			var children = listmenu.ChildrenMenu;
+			DataService.GlobalVM.ParentMenuActive.ParentID = listmenu.ParentID;
+
+			var listItem = new List<MenuItems>();
+			foreach (var parent in children) foreach (var item in parent.MenuItems) listItem.Add(item);
+            DataService.GlobalVM.ParentMenuActive.ListItems = listItem;
+
+            var list = children.Select(s => s.MenuItems).ToList();
+            var menuVM = new MainMenuVM(children);
+            MainContent = new MainMenuUC() { DataContext = menuVM};			
+		}
+        public HomeVM()
 		{
 			LoadJsonMenu();
 		}

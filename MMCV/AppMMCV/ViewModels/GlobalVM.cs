@@ -1,4 +1,5 @@
-﻿using AppMMCV.View.Systems;
+﻿using AppMMCV.Json;
+using AppMMCV.View.Systems;
 using LibraryHelper.Models;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,15 @@ namespace AppMMCV.ViewModels
 		public GlobalVM()
 		{
 			CheckStatusLogin();
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected virtual void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+		}		
 
 		private UserControl selectUsercontrol;
 
+		private ParentMenuInfo parentMenuActive;
 		public UserControl SelectUsercontrol { get => selectUsercontrol; set { selectUsercontrol = value; OnPropertyChanged(nameof(SelectUsercontrol));} }
-
-		public void CheckStatusLogin()
+        public ParentMenuInfo ParentMenuActive { get { if (parentMenuActive == null) parentMenuActive = new ParentMenuInfo(); return parentMenuActive; }
+			set { parentMenuActive = value; OnPropertyChanged(nameof(ParentMenuActive)); } }
+        public void CheckStatusLogin()
 		{
 			if (Services.DataService.IsLogin)
 			{
@@ -38,5 +36,17 @@ namespace AppMMCV.ViewModels
 				SelectUsercontrol = new LoginUC();
 			}
 		}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+	public class ParentMenuInfo
+	{
+		public string ParentID { get; set; }
+		public List<MenuItems> ListItems { get; set; }
 	}
 }

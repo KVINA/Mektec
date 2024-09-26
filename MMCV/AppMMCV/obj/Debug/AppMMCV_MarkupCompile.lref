@@ -1,12 +1,17 @@
 ﻿
-FE:\Project\Mektec\MMCV\AppMMCV\App.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\MainWindow.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_DailyTotalUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealTimeUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\EmployeesSubmitUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\EmployeesUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\LoginUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\MainMenuUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\HomeUC.xaml;;
-FE:\Project\Mektec\MMCV\AppMMCV\View\Systems\RegisterUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\App.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\MainWindow.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuItemUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuSettings.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\SubjectUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_DailyTotalUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealTimeUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\EmployeesSubmitUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\EmployeesUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\LoginUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\MainMenuUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\HomeUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\Permission.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\RegisterUC.xaml;;
 
