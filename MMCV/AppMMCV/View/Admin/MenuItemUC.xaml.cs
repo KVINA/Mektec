@@ -24,5 +24,6 @@ namespace AppMMCV.View.Admin
         {
             InitializeComponent();
         }
+        public void LoadMenuItem() { }
     }
 }

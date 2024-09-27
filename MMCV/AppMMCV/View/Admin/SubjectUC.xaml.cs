@@ -1,6 +1,6 @@
 ﻿using AppMMCV.Services;
 using AppMMCV.ViewModels.Admin;
-using LibraryHelper.Models;
+using LibraryHelper.Models.HRM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,80 +23,35 @@ namespace AppMMCV.View.Admin
     /// </summary>
     public partial class SubjectUC : UserControl
     {
-        private int subject_id;
-        private string typeSubmit;
-        public bool IsLoadData = false;
-        public SubjectUC(app_subject item = null)
+        private SubjectVM subjectVM;
+        public SubjectUC()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        public void LoadSubject(app_subject item = null)
+        {
+            subjectVM = this.DataContext as SubjectVM;
             if (item == null)
             {
-                typeSubmit = "Add";
+                subjectVM.TypeSubmit = "Add";
+                subjectVM.Subject_id = 0;
+                subjectVM.Subject_name = "";
+                subjectVM.Subject_description = "";
             }
             else
             {
-                typeSubmit = "Edit";
-                subject_id = item.Subject_id;
-                txt_subjectName.Text = item.Subject_name;
-                txt_subjectDescription.Text = item.Subject_description;
-            }
-        }        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string subject_name = txt_subjectName.Text;
-            string subject_description = txt_subjectDescription.Text;
-            if (string.IsNullOrEmpty(subject_name) || string.IsNullOrEmpty(subject_description))
-            {
-                MessageBox.Show("Please enter value.");
-            }
-            else
-            {
-                string query;
-                var parameter = new List<object>();
-                string username = DataService.User.username;
-                parameter.Add(subject_name);
-                parameter.Add(subject_description);
-                parameter.Add(username);
-                switch (typeSubmit)
-                {
-                    case "Add":
-                        query = "Insert Into app_subject (subject_name,subject_description,create_by) values ( @name , @description , @username );";
-                        break;
-                    case "Edit":
-                        query = "Update app_subject Set subject_name = @name ,subject_description = @description ,create_by = @username ,create_at = GetDate() Where subject_id = @id ;";
-                        
-                        parameter.Add(subject_id);
-                        break;
-                    default:
-                        query = null;
-                        break;
-                }
-                if (!string.IsNullOrEmpty(query))
-                {
-                    var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM,query,parameter.ToArray());
-                    if (string.IsNullOrEmpty(exception))
-                    {
-                        if(res > 0)
-                        {
-                            var dtContext = this.DataContext as MenuSettingsVM;
-                            dtContext.IsSubject = true;
-                            dtContext.Load_Data();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Fail","Error");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(exception);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Error: submit type invalid.");
-                }
+                subjectVM.TypeSubmit = "Edit";
+                subjectVM.Subject_id = item.Subject_id;
+                subjectVM.Subject_name = item.Subject_name;
+                subjectVM.Subject_description = item.Subject_description;                
             }
         }
+
+        private void Button_Click_Submit(object sender, RoutedEventArgs e)
+        {
+            subjectVM.SubmitSubject?.Invoke();
+        }
+
     }
 }

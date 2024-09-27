@@ -24,5 +24,7 @@ namespace AppMMCV.View.Systems
         {
             InitializeComponent();
         }
+
+
     }
 }

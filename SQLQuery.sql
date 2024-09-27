@@ -42,6 +42,7 @@
 		employee_code nvarchar(20),
 		menu_id int,
 		access bit default 0,		
+		list_item_id varchar(200),
 		create_at datetime default getdate(),
 		create_by varchar(10),
 		unique(employee_code,menu_id),
@@ -49,14 +50,3 @@
 		foreign key (menu_id) references app_menu(menu_id)
   )
   Go
-  create table app_roles_detail
-  (
-		id int identity(1,1),
-		role_id int,	
-		item_id int,
-		create_at datetime default getdate(),
-		create_by varchar(10),
-		primary key(role_id,item_id),		
-		foreign key (item_id) references app_menu_item(item_id),
-		foreign key (role_id) references app_roles(role_id)
-  )

@@ -1,4 +1,5 @@
 ﻿using AppMMCV.Json;
+using AppMMCV.View.Admin;
 using AppMMCV.View.Systems;
 using LibraryHelper.Models;
 using System;
@@ -19,6 +20,9 @@ namespace AppMMCV.ViewModels
 			CheckStatusLogin();
 		}		
 
+		private LoginUC loginUC = new LoginUC();
+		private HomeUC homeUC = new HomeUC();
+
 		private UserControl selectUsercontrol;
 
 		private ParentMenuInfo parentMenuActive;
@@ -33,8 +37,8 @@ namespace AppMMCV.ViewModels
 			}
 			else
 			{
-				SelectUsercontrol = new LoginUC();
-			}
+                SelectUsercontrol = loginUC;
+            }
 		}
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -78,7 +78,10 @@
     <Compile Include="Services\AuthenServices.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\SQLService.cs" />
+    <Compile Include="ViewModels\Admin\MenuItemVM.cs" />
     <Compile Include="ViewModels\Admin\MenuSettingsVM.cs" />
+    <Compile Include="ViewModels\Admin\MenuVM.cs" />
+    <Compile Include="ViewModels\Admin\SubjectVM.cs" />
     <Compile Include="ViewModels\GlobalVM.cs" />
     <Compile Include="ViewModels\HRMVM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />

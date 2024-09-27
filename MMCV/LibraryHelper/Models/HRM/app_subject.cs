@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryHelper.Models
+namespace LibraryHelper.Models.HRM
 {
     public class app_subject
     {

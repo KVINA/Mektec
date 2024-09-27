@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppMMCV.ViewModels.Admin;
+using LibraryHelper.Models.HRM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,29 @@ namespace AppMMCV.View.Admin
     /// </summary>
     public partial class MenuUC : UserControl
     {
+        private MenuVM menuVM;
         public MenuUC()
         {
             InitializeComponent();
+        }
+
+        public void LoadMenu(App_menu app_menu = null)
+        {            
+            menuVM = this.DataContext as MenuVM;
+            if (app_menu != null)
+            {
+                menuVM.TypeSubmit = "Add";                
+            }
+            else
+            {
+                menuVM.TypeSubmit = "Edit";
+                menuVM.MenuInfo = app_menu;
+            }
+        }
+
+        private void Button_Click_Submit(object sender, RoutedEventArgs e)
+        {
+            menuVM.SubmitMenu?.Invoke();
         }
     }
 }

@@ -28,7 +28,6 @@ namespace AppMMCV.ViewModels.Systems
 		private string username;
 		private string password;
 		private string statusMessage;
-
 		public string Username { get => username; set { username = value; OnPropertyChanged(nameof(Username)); } }
 		public string Password { get => password; set { password = value; OnPropertyChanged(nameof(Password)); } }
 		public string StatusMessage { get => statusMessage; set { statusMessage = value; OnPropertyChanged(nameof(StatusMessage)); } }

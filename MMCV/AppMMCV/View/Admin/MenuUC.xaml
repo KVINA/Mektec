@@ -7,17 +7,17 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <WrapPanel>
-            <ComboBox  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
-                     materialDesign:HintAssist.Hint="Menu Name" Margin="2" Width="200"/>
-            <Button Content="{materialDesign:PackIcon Kind=Search}" Margin="2"/>
-        </WrapPanel>
-
-        <DataGrid Grid.Row="1" IsReadOnly="True" Margin="2"/>
-    </Grid>
+    <StackPanel>
+        <TextBox Text="{Binding InfoMenu.Menu_name}" materialDesign:HintAssist.Hint="Menu name" 
+                 Margin="5" Width="150" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+        
+        <TextBox Text="{Binding InfoMenu.Menu_description}" materialDesign:HintAssist.Hint="Menu description" 
+                 Margin="5" Width="150" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+        
+        <TextBox Text="{Binding InfoMenu.Menu_index}" materialDesign:HintAssist.Hint="Menu index" 
+                 Margin="5" Width="150" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+        
+        <TextBox Text="{Binding InfoMenu.Menu_index}" materialDesign:HintAssist.Hint="Menu index" 
+                 Margin="5" Width="150" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+    </StackPanel>
 </UserControl>

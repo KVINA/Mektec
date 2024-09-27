@@ -7,12 +7,17 @@
              xmlns:materialDisign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <materialDisign:DrawerHost IsRightDrawerOpen="{Binding IsOpenRightDrawer, Mode=TwoWay}">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="style_btn">
+
+        </Style>
+    </UserControl.Resources>
+
+    <materialDisign:DrawerHost IsRightDrawerOpen="{Binding IsOpenRightDrawer}">
         <materialDisign:DrawerHost.RightDrawerContent>
             <GroupBox Header="{Binding HeaderActive}" Content="{Binding UsercontrolActive}"/>
         </materialDisign:DrawerHost.RightDrawerContent>
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -20,32 +25,89 @@
             </Grid.RowDefinitions>
 
             <WrapPanel>
-                <ComboBox materialDisign:HintAssist.Hint="Subject name" Width="200" 
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="2"/>
+                <ComboBox IsEditable="True" materialDisign:HintAssist.Hint="Subject name" Width="200"
+                     ItemsSource="{Binding Distinct_SubjectName}" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="2"/>
                 <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" Width="200" Margin="2"
                      materialDisign:HintAssist.Hint="Menu name"/>
-                <Button Content="{materialDisign:PackIcon Kind=Search}" Margin="2" ToolTip="Search"/>                
+                <Button Content="{materialDisign:PackIcon Kind=Search}" Margin="2" ToolTip="Search"/>
             </WrapPanel>
+
+
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <DataGrid IsReadOnly="True" ItemsSource="{Binding App_Subjects}" Margin="2"/>
-                <Button Tag="app_subjects" Click="Btn_Click_Add" Content="{materialDisign:PackIcon Kind=Add}" Margin="2" ToolTip="Add" 
-                        VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <GroupBox Margin="2">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Subject" FontWeight="Bold" Foreground="White"/>
+                            <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Subject"
+                                    Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add"/>
 
-                <DataGrid Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding App_menu}" Margin="2"/>
-                <Button Tag="app_menu" Click="Btn_Click_Add" Grid.Column="1" Content="{materialDisign:PackIcon Kind=Add}" Margin="2" ToolTip="Add" 
-                        VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </GroupBox.Header>
+                    <!--Data Subject-->
+                    <DataGrid Name="dtg_subject" IsReadOnly="True" Margin="2" 
+                              AutoGenerateColumns="False" ItemsSource="{Binding DataSubject}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Button Click="Btn_Click_Edit" Tag="Edit Subject"  Margin="0 0 2 0"
+                                                Content="{materialDisign:PackIcon Kind=Edit, Size=11}" Height="18"/>
+                                            <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Menu" Margin="2 0 0 0"
+                                                Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Subject_id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Subject_name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding Subject_description}"/>
+                            <DataGridTextColumn Header="Time" Binding="{Binding Create_at}"/>
+                            <DataGridTextColumn Header="Username" Binding="{Binding Create_by}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
 
+                <GroupBox Margin="2" Grid.Column="1">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Menu" FontWeight="Bold" Foreground="White"/>
+                            
+                        </Grid>
+                    </GroupBox.Header>
+                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding App_menu}" Margin="2"/>
+                </GroupBox>
             </Grid>
 
-            <DataGrid Grid.Row="2" IsReadOnly="True" ItemsSource="{Binding App_menu_item}" Margin="2"/>
-            <Button Tag="app_menu_item" Click="Btn_Click_Add" Grid.Row="2" Content="{materialDisign:PackIcon Kind=Add}" Margin="2" ToolTip="Add" 
-                        VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+            <GroupBox Margin="2" Grid.Row="2">
+                <GroupBox.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Menu item" FontWeight="Bold" Foreground="White"/>
+                        <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Item"
+                                    Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add"/>
+                    </Grid>
+                </GroupBox.Header>
+                <DataGrid Grid.Row="2" IsReadOnly="True" ItemsSource="{Binding App_menu_item}" Margin="2"/>
+            </GroupBox>
         </Grid>
     </materialDisign:DrawerHost>
-    
+
 </UserControl>

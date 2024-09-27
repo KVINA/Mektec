@@ -1,4 +1,5 @@
 ﻿using AppMMCV.Services;
+using AppMMCV.View.Admin;
 using AppMMCV.View.Systems;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace AppMMCV
 		{
 			InitializeComponent();
 			this.DataContext = DataService.GlobalVM;
+
 		}
 	}
 }
