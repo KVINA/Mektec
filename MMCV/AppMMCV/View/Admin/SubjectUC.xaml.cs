@@ -29,7 +29,7 @@ namespace AppMMCV.View.Admin
             InitializeComponent();            
         }
 
-        public void LoadSubject(app_subject item = null)
+        public void LoadSubject(App_subject item = null)
         {
             subjectVM = this.DataContext as SubjectVM;
             if (item == null)

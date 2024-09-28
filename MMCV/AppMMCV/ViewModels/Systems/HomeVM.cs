@@ -19,7 +19,9 @@ namespace AppMMCV.ViewModels.Systems
 {
 	internal class HomeVM : INotifyPropertyChanged
 	{
-		private StackPanel mainMenu;
+        /*
+		private Stac
+        kPanel mainMenu;
         private UserControl mainContent;
 		private string controlSource;
         public StackPanel MainMenu { get => mainMenu; set { mainMenu = value; OnPropertyChanged(nameof(MainMenu)); } }
@@ -142,15 +144,29 @@ namespace AppMMCV.ViewModels.Systems
             var menuVM = new MainMenuVM(children);
             MainContent = new MainMenuUC() { DataContext = menuVM};			
 		}
+        
+
+		*/
         public HomeVM()
+        {
+             
+        }
+
+		void Load_Permision()
 		{
-			LoadJsonMenu();
+			if (DataService.UserInfo != null)
+			{
+				string username = DataService.UserInfo.username;
+				string query = "Select * from ";
+            }
+			
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

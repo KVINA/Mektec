@@ -10,7 +10,7 @@ namespace AppMMCV.Services
 {
 	internal class DataService
 	{
-		public static Users User { get; set; }
+		public static Users UserInfo { get; set; }
 		public static bool IsLogin { get; set; } = false;
 		internal static GlobalVM GlobalVM { get { if (globalVM == null) globalVM = new GlobalVM(); return globalVM; } set => globalVM = value; }
 

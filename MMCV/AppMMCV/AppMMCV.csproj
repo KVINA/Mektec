@@ -78,6 +78,7 @@
     <Compile Include="Services\AuthenServices.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\SQLService.cs" />
+    <Compile Include="ViewModels\Admin\AppRolesVM.cs" />
     <Compile Include="ViewModels\Admin\MenuItemVM.cs" />
     <Compile Include="ViewModels\Admin\MenuSettingsVM.cs" />
     <Compile Include="ViewModels\Admin\MenuVM.cs" />
@@ -90,6 +91,9 @@
     <Compile Include="ViewModels\Systems\LoginVM.cs" />
     <Compile Include="ViewModels\Systems\MainMenuVM.cs" />
     <Compile Include="ViewModels\Systems\PermissionVM.cs" />
+    <Compile Include="View\Admin\AppRolesUC.xaml.cs">
+      <DependentUpon>AppRolesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\MenuItemUC.xaml.cs">
       <DependentUpon>MenuItemUC.xaml</DependentUpon>
     </Compile>
@@ -134,6 +138,10 @@
       <DependentUpon>RegisterUC.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\AppRolesUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

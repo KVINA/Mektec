@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryHelper.Models.HRM
 {
-    public class app_subject
+    public class App_subject
     {
         /*
         subject_id int identity(1,1) primary key,
@@ -16,8 +16,8 @@ namespace LibraryHelper.Models.HRM
 		create_at datetime default getdate(), 
 		create_by varchar(10)
          */
-        public app_subject() { }
-        public app_subject(DataRow row) 
+        public App_subject() { }
+        public App_subject(DataRow row) 
         {
             this.subject_id = (int)row["subject_id"];
             this.subject_name = row["subject_name"].ToString();

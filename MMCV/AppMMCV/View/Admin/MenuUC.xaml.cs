@@ -28,18 +28,11 @@ namespace AppMMCV.View.Admin
             InitializeComponent();
         }
 
-        public void LoadMenu(App_menu app_menu = null)
+        public void LoadMenu(App_menu app_menu,string type)
         {            
             menuVM = this.DataContext as MenuVM;
-            if (app_menu != null)
-            {
-                menuVM.TypeSubmit = "Add";                
-            }
-            else
-            {
-                menuVM.TypeSubmit = "Edit";
-                menuVM.MenuInfo = app_menu;
-            }
+            menuVM.TypeSubmit = type;
+            menuVM.MenuInfo = app_menu;
         }
 
         private void Button_Click_Submit(object sender, RoutedEventArgs e)

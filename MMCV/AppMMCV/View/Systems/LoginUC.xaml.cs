@@ -80,7 +80,7 @@ namespace AppMMCV.View.Systems
                     {
                         StatusMessage = "Đăng nhập thành công!";
                         //DataService.GlobalVM.SelectUsercontrol = new HomeUC();
-                        DataService.GlobalVM.SelectUsercontrol = new MenuSettings();
+                        DataService.GlobalVM.SelectUsercontrol = new AppRolesUC();
                     }
                     else
                     {

@@ -1,5 +1,4 @@
 ﻿using AppMMCV.ViewModels.Admin;
-using LibraryHelper.Models.HRM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,20 +17,20 @@ using System.Windows.Shapes;
 namespace AppMMCV.View.Admin
 {
     /// <summary>
-    /// Interaction logic for MenuItemUC.xaml
+    /// Interaction logic for AppRolesUC.xaml
     /// </summary>
-    public partial class MenuItemUC : UserControl
+    public partial class AppRolesUC : UserControl
     {
-        private MenuItemVM menuItemVM;
-        public MenuItemUC()
+        private AppRolesVM appRolesVM;
+        public AppRolesUC()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
-        public void LoadMenuItem(App_menu_item item,string type) 
-        { 
-            menuItemVM = this.DataContext as MenuItemVM;
-            menuItemVM.MenuItemInfo = item;
-            menuItemVM.TypeSubmit = type;
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            appRolesVM = new AppRolesVM();
+            this.DataContext = appRolesVM;
         }
     }
 }

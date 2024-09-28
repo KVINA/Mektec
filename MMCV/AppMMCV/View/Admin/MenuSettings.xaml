@@ -19,21 +19,10 @@
         </materialDisign:DrawerHost.RightDrawerContent>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <WrapPanel>
-                <ComboBox IsEditable="True" materialDisign:HintAssist.Hint="Subject name" Width="200"
-                     ItemsSource="{Binding Distinct_SubjectName}" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="2"/>
-                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" Width="200" Margin="2"
-                     materialDisign:HintAssist.Hint="Menu name"/>
-                <Button Content="{materialDisign:PackIcon Kind=Search}" Margin="2" ToolTip="Search"/>
-            </WrapPanel>
-
-
-            <Grid Grid.Row="1">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -53,7 +42,7 @@
                         </Grid>
                     </GroupBox.Header>
                     <!--Data Subject-->
-                    <DataGrid Name="dtg_subject" IsReadOnly="True" Margin="2" 
+                    <DataGrid Name="dtg_subject" IsReadOnly="True" Margin="2" SelectedItem="{Binding SelectedSubject}"
                               AutoGenerateColumns="False" ItemsSource="{Binding DataSubject}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>
@@ -63,7 +52,7 @@
                                             <Button Click="Btn_Click_Edit" Tag="Edit Subject"  Margin="0 0 2 0"
                                                 Content="{materialDisign:PackIcon Kind=Edit, Size=11}" Height="18"/>
                                             <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Menu" Margin="2 0 0 0"
-                                                Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add"/>
+                                                Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add menu"/>
                                         </WrapPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -79,33 +68,48 @@
 
                 <GroupBox Margin="2" Grid.Column="1">
                     <GroupBox.Header>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Menu" FontWeight="Bold" Foreground="White"/>
-                            
-                        </Grid>
+                        <TextBlock Text="Menu" FontWeight="Bold" Foreground="White"/>
                     </GroupBox.Header>
-                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding App_menu}" Margin="2"/>
+                    <DataGrid Name="dtg_menu" IsReadOnly="True" 
+                              SelectedItem="{Binding SelectedMenu}"
+                              ItemsSource="{Binding DataMenu}" Margin="2">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Button Click="Btn_Click_Edit" Tag="Edit Menu"  Margin="0 0 2 0"
+                                                Content="{materialDisign:PackIcon Kind=Edit, Size=11}" Height="18"/>
+                                            
+                                            <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Item" Margin="2 0 0 0"
+                                                Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add menu item"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </GroupBox>
             </Grid>
 
-
-            <GroupBox Margin="2" Grid.Row="2">
+            <GroupBox Margin="2" Grid.Row="1">
                 <GroupBox.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Menu item" FontWeight="Bold" Foreground="White"/>
-                        <Button Grid.Column="1" Height="18" Click="Btn_Click_Add" Tag="Add Item"
-                                    Content="{materialDisign:PackIcon Kind=Add, Size=11}" ToolTip="Add"/>
-                    </Grid>
+                    <TextBlock Text="Menu item" FontWeight="Bold" Foreground="White"/>
                 </GroupBox.Header>
-                <DataGrid Grid.Row="2" IsReadOnly="True" ItemsSource="{Binding App_menu_item}" Margin="2"/>
+                <DataGrid Name="dtg_menuItem" ItemsSource="{Binding DataMenuItem}" Grid.Row="2" IsReadOnly="True" Margin="2">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <Button Click="Btn_Click_Edit" Tag="Edit Item"
+                                                Content="{materialDisign:PackIcon Kind=Edit, Size=11}" Height="18"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </GroupBox>
         </Grid>
     </materialDisign:DrawerHost>

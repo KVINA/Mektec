@@ -17,7 +17,7 @@ namespace AppMMCV.Services
             {
 				// Set default
 				exception = string.Empty;
-				DataService.User = null;
+				DataService.UserInfo = null;
 				DataService.IsLogin = false;
 
 				var parameter = new object[] { username, password };
@@ -28,7 +28,7 @@ namespace AppMMCV.Services
 					if (info != null && info.Rows.Count == 1)
 					{
 						int role_id = (int)info.Rows[0]["role_id"];
-						DataService.User = new Users(username, password, role_id);
+						DataService.UserInfo = new Users(username, password, role_id);
 						DataService.IsLogin = true;
 					}
 				}
@@ -42,7 +42,7 @@ namespace AppMMCV.Services
 
         public static void Logout()
         {
-            DataService.User = null;
+            DataService.UserInfo = null;
             DataService.IsLogin = false;
         }        
     }

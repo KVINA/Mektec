@@ -20,8 +20,8 @@ namespace AppMMCV.ViewModels
 			CheckStatusLogin();
 		}		
 
-		private LoginUC loginUC = new LoginUC();
-		private HomeUC homeUC = new HomeUC();
+		private readonly LoginUC loginUC = new LoginUC();
+		private readonly HomeUC homeUC = new HomeUC();
 
 		private UserControl selectUsercontrol;
 

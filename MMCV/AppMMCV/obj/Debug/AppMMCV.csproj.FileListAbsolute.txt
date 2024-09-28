@@ -144,3 +144,5 @@ D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\MenuItemUC.baml
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\MenuSettings.baml
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\MenuUC.baml
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\SubjectUC.baml
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\AppRolesUC.g.cs
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\Admin\AppRolesUC.baml

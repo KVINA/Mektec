@@ -1,4 +1,6 @@
-﻿using AppMMCV.Services;
+﻿using AppMMCV.Json;
+using AppMMCV.Properties;
+using AppMMCV.Services;
 using AppMMCV.ViewModels.Admin;
 using LibraryHelper.Models.HRM;
 using System;
@@ -26,7 +28,7 @@ namespace AppMMCV.View.Admin
     /// </summary>
     public partial class MenuSettings : UserControl
     {
-        private MenuSettingsVM settingsVM;
+        private readonly MenuSettingsVM settingsVM;
         public MenuSettings()
         {
             InitializeComponent();
@@ -48,20 +50,26 @@ namespace AppMMCV.View.Admin
                         break;
                     case "Add Menu":
                         settingsVM.HeaderActive = "Add new menu";
-                        if (dtg_subject.SelectedItem is app_subject item)
+                        if (dtg_subject.SelectedItem is App_subject item)
                         {
                             var menuUC = new MenuUC() { DataContext = settingsVM.MenuContext };
-                            menuUC.LoadMenu();
+                            App_menu app_Menu = new App_menu() { Subject_id = item.Subject_id};
+                            menuUC.LoadMenu(app_Menu,"Add");
                             settingsVM.UsercontrolActive = menuUC;
                             break;
                         }
                         else return;
                     case "Add Item":
                         settingsVM.HeaderActive = "Add new menu item";
-                        var menuItemUC = new MenuItemUC();
-                        menuItemUC.LoadMenuItem();
-                        settingsVM.UsercontrolActive = menuItemUC;
-                        break;
+                        var menuItemUC = new MenuItemUC() { DataContext = settingsVM.MenuItemContext};
+                        if (dtg_menu.SelectedItem is App_menu _menu)
+                        {
+                            var _menuitem = new App_menu_item() { Menu_id = _menu.Menu_id };
+                            menuItemUC.LoadMenuItem(_menuitem, "Add");
+                            settingsVM.UsercontrolActive = menuItemUC;
+                            break;
+                        }
+                        else return;                        
                     default:
                         return;
                 }
@@ -78,22 +86,37 @@ namespace AppMMCV.View.Admin
                 switch (type)
                 {
                     case "Edit Subject":
-                        if (dtg_subject.SelectedItem is app_subject _subject)
+                        if (dtg_subject.SelectedItem is App_subject _subject)
                         {
                             settingsVM.HeaderActive = "Edit subject";
                             var subjectUC = new SubjectUC() { DataContext = settingsVM.SubjectContext };
                             subjectUC.LoadSubject(_subject);
                             settingsVM.UsercontrolActive = subjectUC;
+                            break;
                         }
-                        break;
-                    case "Edd Menu":
-                        settingsVM.HeaderActive = "Edd menu";
-                        settingsVM.UsercontrolActive = new MenuUC();
-                        break;
-                    case "Edd Item":
-                        settingsVM.HeaderActive = "Edd menu item";
-                        settingsVM.UsercontrolActive = new MenuItemUC();
-                        break;
+                        else return;
+                    case "Edit Menu":
+
+                        if (dtg_menu.SelectedItem is App_menu _menu)
+                        {
+                            settingsVM.HeaderActive = "Edd menu";
+                            var menuUC = new MenuUC() { DataContext = settingsVM.MenuContext };
+                            menuUC.LoadMenu(_menu, "Edit");
+                            settingsVM.UsercontrolActive = menuUC;
+                            break;
+                        }
+                        else return;
+                    case "Edit Item":
+                        if (dtg_menuItem.SelectedItem is App_menu_item _menu_item)
+                        {
+                            settingsVM.HeaderActive = "Edd menu item";
+                            var menuItemUC = new MenuItemUC() { DataContext = settingsVM.MenuItemContext };
+                            menuItemUC.LoadMenuItem(_menu_item, "Edit");
+                            settingsVM.UsercontrolActive = menuItemUC;
+                            break;
+                        }
+                        else return;                        
+                        
                     default:
                         return;
                 }
