@@ -40,9 +40,15 @@ namespace AppMMCV.View.Systems
                 int menu_id = (int)item.Tag;
                 if (menu_id == 1)
                 {
-                    card_renderbody.Content = new AppRolesUC(); ;
+                    card_renderbody.Content = new MainMenuUC(menu_id);
                 }
             }
+        }
+
+		private void PackIcon_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+            var wd = new Window() { Content = new AppRolesUC() };
+            wd.ShowDialog();
         }
     }
 

@@ -25,8 +25,8 @@ namespace AppMMCV.Services
 	{
 		private Server readJson()
 		{
-			//string Path_Json = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Json\\Server_KVINA.json");
-			string Path_Json = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Json\\Server_MMCV.json");
+			string Path_Json = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Json\\Server_KVINA.json");
+			//string Path_Json = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Json\\Server_MMCV.json");
 			string json = System.IO.File.ReadAllText(Path_Json);
 			List<Server> servers = JsonConvert.DeserializeObject<RootServer>(json).Server;
 			var svHRM = servers.Where(s => s.ServerName == "SV68_HRM").First();

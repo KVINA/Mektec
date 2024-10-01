@@ -100,8 +100,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <materialDesign:ColorZone Name="clz_header" Mode="PrimaryDark">
-                <Grid Margin="5">
+            <materialDesign:ColorZone Mode="PrimaryDark" >
+                <Grid Margin="5 ">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
@@ -158,15 +158,13 @@
                         </materialDesign:Badged>
 
                         <Button Margin="5">
-                            <materialDesign:PackIcon Kind="Account"/>
+                            <materialDesign:PackIcon Kind="Account" PreviewMouseLeftButtonDown="PackIcon_PreviewMouseLeftButtonDown"/>
                         </Button>
                     </StackPanel>
-
-
                 </Grid>
             </materialDesign:ColorZone>
 
-            <materialDesign:Card Grid.Row="1" Margin="2" Name="card_renderbody"/>
+            <materialDesign:Card Grid.Row="1" Name="card_renderbody"/>
         </Grid>
     </materialDesign:DrawerHost>
 

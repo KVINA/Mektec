@@ -18,39 +18,34 @@ namespace AppMMCV.ViewModels
 		public GlobalVM()
 		{
 			CheckStatusLogin();
-		}		
+		}
 
+		private int activeMenu;
 		private readonly LoginUC loginUC = new LoginUC();
 		private readonly HomeUC homeUC = new HomeUC();
 
 		private UserControl selectUsercontrol;
+		public UserControl SelectUsercontrol { get => selectUsercontrol; set { selectUsercontrol = value; OnPropertyChanged(nameof(SelectUsercontrol)); } }
+	
 
-		private ParentMenuInfo parentMenuActive;
-		public UserControl SelectUsercontrol { get => selectUsercontrol; set { selectUsercontrol = value; OnPropertyChanged(nameof(SelectUsercontrol));} }
-        public ParentMenuInfo ParentMenuActive { get { if (parentMenuActive == null) parentMenuActive = new ParentMenuInfo(); return parentMenuActive; }
-			set { parentMenuActive = value; OnPropertyChanged(nameof(ParentMenuActive)); } }
-        public void CheckStatusLogin()
+		public int ActiveMenu { get => activeMenu; set { activeMenu = value; OnPropertyChanged(nameof(ActiveMenu)); } }
+
+		public void CheckStatusLogin()
 		{
 			if (Services.DataService.IsLogin)
 			{
-				
+
 			}
 			else
 			{
-                SelectUsercontrol = loginUC;
-            }
+				SelectUsercontrol = loginUC;
+			}
 		}
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-	public class ParentMenuInfo
-	{
-		public string ParentID { get; set; }
-		public List<MenuItems> ListItems { get; set; }
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }

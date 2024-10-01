@@ -3,59 +3,32 @@
   "WorkspaceRootPath": "E:\\Project\\Mektec\\MMCV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\json\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\json\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\mainmenuuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\mainmenuuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\homeuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\homeuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\systems\\mainmenuvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\systems\\mainmenuvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\systems\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\systems\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\systemsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\systemsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\systems\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\systems\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\mainmenuuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\mainmenuuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\homeuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\homeuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\loginuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\loginuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\registeruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\registeruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\systems\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\systems\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\globalvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\globalvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|E:\\Project\\Mektec\\MMCV\\AppMMCV\\Services\\DataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:AppMMCV\\Services\\DataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\view\\systems\\loginuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\view\\systems\\loginuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KVINA\\AppData\\Local\\Temp\\.vsdbgsrc\\c6a5a7f5f1f891b96e7ce20decdfb3b83d9ea38a008c3e03a9a2dc211cf459f6\\WpfXamlLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|e:\\project\\mektec\\mmcv\\appmmcv\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416A5375-34F9-4273-8C19-5E03734A18B3}|AppMMCV\\AppMMCV.csproj|solutionrelative:appmmcv\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -65,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -73,115 +46,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "menu.json",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Json\\menu.json",
-              "RelativeDocumentMoniker": "AppMMCV\\Json\\menu.json",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Json\\menu.json",
-              "RelativeToolTip": "AppMMCV\\Json\\menu.json",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAADoAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-23T17:06:25.149Z",
+              "DocumentIndex": 2,
+              "Title": "MainMenuUC.xaml",
+              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\MainMenuUC.xaml",
+              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\MainMenuUC.xaml",
+              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\MainMenuUC.xaml",
+              "RelativeToolTip": "AppMMCV\\View\\Systems\\MainMenuUC.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-01T07:24:47.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HomeUC.xaml",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml",
-              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\HomeUC.xaml",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml",
-              "RelativeToolTip": "AppMMCV\\View\\Systems\\HomeUC.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-23T12:53:58.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeVM.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\Systems\\HomeVM.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\Systems\\HomeVM.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\Systems\\HomeVM.cs",
-              "RelativeToolTip": "AppMMCV\\ViewModels\\Systems\\HomeVM.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB4AAAAJAAAA",
+              "Title": "MainMenuVM.cs",
+              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\Systems\\MainMenuVM.cs",
+              "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\Systems\\MainMenuVM.cs",
+              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\Systems\\MainMenuVM.cs",
+              "RelativeToolTip": "AppMMCV\\ViewModels\\Systems\\MainMenuVM.cs",
+              "ViewState": "AQIAABgBAAAAAAAAAAAAAC0BAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T12:42:09.837Z",
+              "WhenOpened": "2024-10-01T07:21:21.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomeUC.xaml.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
-              "RelativeToolTip": "AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAABoAAAAsAAAA",
+              "DocumentIndex": 0,
+              "Title": "MainMenuUC.xaml.cs",
+              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\MainMenuUC.xaml.cs",
+              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\MainMenuUC.xaml.cs",
+              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\MainMenuUC.xaml.cs",
+              "RelativeToolTip": "AppMMCV\\View\\Systems\\MainMenuUC.xaml.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAqwGEAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T10:24:04.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RegisterUC.xaml",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\RegisterUC.xaml",
-              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\RegisterUC.xaml",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\RegisterUC.xaml",
-              "RelativeToolTip": "AppMMCV\\View\\Systems\\RegisterUC.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-23T09:13:07.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoginUC.xaml",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\LoginUC.xaml",
-              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\LoginUC.xaml",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\LoginUC.xaml",
-              "RelativeToolTip": "AppMMCV\\View\\Systems\\LoginUC.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-23T07:40:14.441Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "AppMMCV\\MainWindow.xaml",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\MainWindow.xaml",
-              "RelativeToolTip": "AppMMCV\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-23T12:23:59.693Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RelayCommand.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\RelayCommand.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\RelayCommand.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\RelayCommand.cs",
-              "RelativeToolTip": "AppMMCV\\ViewModels\\RelayCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T07:59:23.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SystemsVM.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\SystemsVM.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\SystemsVM.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\SystemsVM.cs",
-              "RelativeToolTip": "AppMMCV\\ViewModels\\SystemsVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T05:22:39.041Z",
+              "WhenOpened": "2024-10-01T07:20:55.857Z",
               "EditorCaption": ""
             },
             {
@@ -192,60 +90,49 @@
               "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\Systems\\LoginVM.cs",
               "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\Systems\\LoginVM.cs",
               "RelativeToolTip": "AppMMCV\\ViewModels\\Systems\\LoginVM.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwB8AAABoAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAIA2wDEAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T08:01:28.506Z",
+              "WhenOpened": "2024-10-01T07:13:49.115Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DataService.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Services\\DataService.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\Services\\DataService.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Services\\DataService.cs",
-              "RelativeToolTip": "AppMMCV\\Services\\DataService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T14:51:26.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "GlobalVM.cs",
               "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\GlobalVM.cs",
               "RelativeDocumentMoniker": "AppMMCV\\ViewModels\\GlobalVM.cs",
               "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\ViewModels\\GlobalVM.cs",
               "RelativeToolTip": "AppMMCV\\ViewModels\\GlobalVM.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAACEAAAAEAAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAAIwDEAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T14:51:26.25Z",
+              "WhenOpened": "2024-10-01T07:10:25.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LoginUC.xaml.cs",
-              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\LoginUC.xaml.cs",
-              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\LoginUC.xaml.cs",
-              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\LoginUC.xaml.cs",
-              "RelativeToolTip": "AppMMCV\\View\\Systems\\LoginUC.xaml.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAABgAAAAiAAAA",
+              "DocumentIndex": 6,
+              "Title": "DataService.cs",
+              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Services\\DataService.cs",
+              "RelativeDocumentMoniker": "AppMMCV\\Services\\DataService.cs",
+              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\Services\\DataService.cs",
+              "RelativeToolTip": "AppMMCV\\Services\\DataService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T08:18:02.953Z",
+              "WhenOpened": "2024-10-01T07:10:00.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "WpfXamlLoader.cs",
-              "DocumentMoniker": "C:\\Users\\KVINA\\AppData\\Local\\Temp\\.vsdbgsrc\\c6a5a7f5f1f891b96e7ce20decdfb3b83d9ea38a008c3e03a9a2dc211cf459f6\\WpfXamlLoader.cs",
-              "ToolTip": "C:\\Users\\KVINA\\AppData\\Local\\Temp\\.vsdbgsrc\\c6a5a7f5f1f891b96e7ce20decdfb3b83d9ea38a008c3e03a9a2dc211cf459f6\\WpfXamlLoader.cs [Read Only]",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAkwHcAAAADAAAA",
+              "DocumentIndex": 3,
+              "Title": "HomeUC.xaml.cs",
+              "DocumentMoniker": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
+              "RelativeDocumentMoniker": "AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
+              "ToolTip": "E:\\Project\\Mektec\\MMCV\\AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
+              "RelativeToolTip": "AppMMCV\\View\\Systems\\HomeUC.xaml.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAQwCoAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T07:22:20.605Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2024-10-01T07:08:59.474Z",
+              "EditorCaption": ""
             }
           ]
         }

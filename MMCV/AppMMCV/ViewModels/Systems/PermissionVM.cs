@@ -18,18 +18,18 @@ namespace AppMMCV.ViewModels.Systems
     {
         public PermissionVM()
         {
-            ParentID = DataService.GlobalVM.ParentMenuActive.ParentID;
-            var listitems = DataService.GlobalVM.ParentMenuActive.ListItems;
-            if (listitems.Count > 0)
-            {
-                foreach (var item in listitems)
-                {
-                    var cbk = new CheckBox() { Content = item.Header };
-                    CheckBoxes.Add(cbk);
-                }
-            }
-            CommandGetCheckBox = new RelayCommand(() => GetCheckBox(true));
-            CommandSubmit = new RelayCommand(Submit);
+            //ParentID = DataService.GlobalVM.ParentMenuActive.ParentID;
+            //var listitems = DataService.GlobalVM.ParentMenuActive.ListItems;
+            //if (listitems.Count > 0)
+            //{
+            //    foreach (var item in listitems)
+            //    {
+            //        var cbk = new CheckBox() { Content = item.Header };
+            //        CheckBoxes.Add(cbk);
+            //    }
+            //}
+            //CommandGetCheckBox = new RelayCommand(() => GetCheckBox(true));
+            //CommandSubmit = new RelayCommand(Submit);
         }
 
         void ResetCheckBox()
