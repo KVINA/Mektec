@@ -86,24 +86,24 @@ namespace AppMMCV.ViewModels.Admin
         private void Submit_Subject()
         {
             string subject_name = SubjectContext.Subject_name.Trim();
-            string subject_description = SubjectContext.Subject_description.Trim();
-            if (string.IsNullOrEmpty(subject_name) || string.IsNullOrEmpty(subject_description)) MessageBox.Show("Please enter value.");
+            string subject_icon = SubjectContext.Subject_icon.Trim();
+            if (string.IsNullOrEmpty(subject_name) || string.IsNullOrEmpty(subject_icon)) MessageBox.Show("Please enter value.");
             else
             {
                 string query;
                 var parameter = new List<object>();
                 string username = DataService.UserInfo.username;
                 parameter.Add(subject_name);
-                parameter.Add(subject_description);
+                parameter.Add(subject_icon);
                 parameter.Add(username);
 
                 switch (SubjectContext.TypeSubmit)
                 {
                     case "Add":
-                        query = "Insert Into app_subject (subject_name,subject_description,create_by) values ( @name , @description , @username );";
+                        query = "Insert Into app_subject (subject_name,subject_icon,create_by) values ( @name , @description , @username );";
                         break;
                     case "Edit":
-                        query = "Update app_subject Set subject_name = @name ,subject_description = @description ,create_by = @username ,create_at = GetDate() Where subject_id = @id ;";
+                        query = "Update app_subject Set subject_name = @name ,subject_icon = @description ,create_by = @username ,create_at = GetDate() Where subject_id = @id ;";
                         parameter.Add(SubjectContext.Subject_id);
                         break;
                     default:

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppMMCV.View.Admin;
+using AppMMCV.ViewModels.Systems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,11 @@ namespace AppMMCV.View.Systems
     /// </summary>
     public partial class MainMenuUC : UserControl
     {
-        public MainMenuUC()
+        private MainMenuVM mainMenuVM;
+        public MainMenuUC(int menu_id)
         {
             InitializeComponent();
+            mainMenuVM = new MainMenuVM(menu_id);
         }
-
-
     }
 }

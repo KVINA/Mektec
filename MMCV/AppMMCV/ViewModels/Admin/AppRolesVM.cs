@@ -15,19 +15,21 @@ namespace AppMMCV.ViewModels.Admin
 {
   
     public class AppRolesVM : INotifyPropertyChanged
-    {
-        
+    {        
         public AppRolesVM()
         {
             Load_Subject();
             Commad_LoadFunctionAdd = new RelayCommand(LoadFunctionAdd);
             Commad_LoadFunctionEdit = new RelayCommand(LoadFunctionEdit);
             Commad_ExecuteSubmit = new RelayCommand(ExecuteSubmit);
+            Commad_ExecuteSearch = new RelayCommand(Load_Roles);
         }
-        
+        public ICommand Commad_ExecuteSearch { get; }
         public ICommand Commad_LoadFunctionAdd { get; }
         public ICommand Commad_LoadFunctionEdit { get; }
         public ICommand Commad_ExecuteSubmit { get; }
+
+        string employee_search;
         string typeSubmit;
         App_menu selectedMenu;
         App_roles selectedRoles;
@@ -66,7 +68,7 @@ namespace AppMMCV.ViewModels.Admin
         public ObservableCollection<List_item_id> DataMenuItem
         {
             get { if (dataMenuItem == null) dataMenuItem = new ObservableCollection<List_item_id>(); return dataMenuItem; }
-            set => dataMenuItem = value;
+            set { dataMenuItem = value; OnPropertyChanged(nameof(DataMenuItem)); }
         }
         public App_menu SelectedMenu
         {
@@ -76,12 +78,15 @@ namespace AppMMCV.ViewModels.Admin
 
         public string TypeSubmit { get => typeSubmit; set { typeSubmit = value; OnPropertyChanged(nameof(TypeSubmit)); } }
 
+        public string Employee_search { get => employee_search; set { employee_search = value; OnPropertyChanged(nameof(Employee_search)); } }
+
         void LoadFunctionAdd()
         {
             if (SelectedMenu != null && DataMenuItem.Count > 0)
             {
                 var app_roles = new App_roles();
                 app_roles.Menu_id = SelectedMenu.Menu_id;
+                foreach (var item in DataMenuItem) item.IsChecked = false;
                 TypeSubmit = "Add permission";
                 FormData = app_roles;
                 IsOpenDialog = true;
@@ -93,39 +98,116 @@ namespace AppMMCV.ViewModels.Admin
         }
         void LoadFunctionEdit()
         {
-
+            if (SelectedMenu != null && SelectedRoles != null)
+            {    
+                if (string.IsNullOrEmpty(SelectedRoles.List_item_id))
+                {
+                    foreach (var item in DataMenuItem) item.IsChecked = false;
+                }
+                else
+                {
+                    var list_id = SelectedRoles.List_item_id.Split(',').ToList();
+                    foreach (var item in DataMenuItem)
+                    {
+                        if(list_id.Contains(item.Item_id.ToString())) item.IsChecked = true;
+                        else item.IsChecked = false;
+                    }
+                }
+                IsOpenDialog = true;
+                TypeSubmit = "Edit permission";
+                FormData = SelectedRoles;
+            }
+            else
+            {
+                MessageBox.Show("Please select subject before.", "Informartion", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
         void ExecuteSubmit()
         {
             if (DataMenuItem != null && FormData != null && IsOpenDialog)
             {
                 //Kiểm tra value input
-                if (string.IsNullOrEmpty(FormData.Employee_code))
+                if (string.IsNullOrEmpty(FormData.Employee_code) || FormData.Menu_id == 0)
                 {
-
+                    MessageBox.Show("Please enter value.");
+                    return;
                 }
 
                 string query = "";
+                FormData.List_item_id = string.Join(",",DataMenuItem.Where(i => i.IsChecked == true).Select(i=>i.Item_id).ToList());
+                string username = DataService.UserInfo.username;
                 var parameter = new List<object>() 
                 {
                     FormData.Employee_code,
                     FormData.Menu_id,
-                    FormData.Access                 
+                    FormData.Access,
+                    FormData.List_item_id,
+                    username
                 };
                 switch (TypeSubmit)
                 {
                     case "Add permission":
-                        query = "Insert Into app_roles ([employee_code],[menu_id],[access],[list_item_id],[create_at],[create_by]) "+
+                        if (CheckPermission())
+                        {
+                            query = "Insert Into app_roles ([employee_code],[menu_id],[access],[list_item_id],[create_at],[create_by]) " +
                             "values ( @employee_code , @menu_id , @access , @list_item_id , GetDate() , @create_by );";
-                        break;
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to add this employee, please check again.");
+                            return;
+                        }
+                        
                     case "Edit permission":
+                        query = "Update app_roles Set [employee_code] = @employee_code ,[menu_id] = @menu_id ,[access] = @access ,"+
+                            "[list_item_id] = @list_item_id ,[create_at] = GetDate() ,[create_by] = @create_by Where role_id  = @role_id ";
+                        parameter.Add(FormData.Role_id);
                         break;
                     default:
-                        break;
+                        return;
+                }
+                var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+                if (string.IsNullOrEmpty(exception))
+                {
+                    if (res > 0)
+                    {
+                        Load_Roles();
+                        MessageBox.Show("Conpleted.");
+                        IsOpenDialog = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(exception);
                 }
             }
             
         }
+        /// <summary>
+        /// Check employee code with menu id already exist
+        /// </summary>
+        /// <returns></returns>
+        bool CheckPermission()
+        {
+            string query = $"Select Count(*) from [app_roles] where [employee_code] = '{FormData.Employee_code}' and [menu_id] = {FormData.Menu_id};";
+            var res = SQLService.Method.ExcuteScalar(out string exception,SQLService.Server.SV68_HRM,query);
+            if (string.IsNullOrEmpty(exception))
+            {
+                return (int)res == 0;
+            }
+            else
+            {
+                MessageBox.Show(exception);
+                return false;
+            }
+        }
+
         void Load_MenuItem()
         {
             DataMenuItem.Clear();
@@ -160,6 +242,7 @@ namespace AppMMCV.ViewModels.Admin
             if (SelectedMenu != null)
             {
                 string query = $"Select * from app_roles Where menu_id = {SelectedMenu.Menu_id}";
+                if (!string.IsNullOrEmpty(Employee_search)) { query += $" and employee_code = '{Employee_search}'"; }
                 var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {

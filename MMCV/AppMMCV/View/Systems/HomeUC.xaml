@@ -10,7 +10,7 @@
 
     <materialDesign:DrawerHost Name="mdh_menu">
         <materialDesign:DrawerHost.LeftDrawerContent>
-            <GroupBox Width="300" Content="{Binding MainMenu, UpdateSourceTrigger=PropertyChanged}">
+            <GroupBox Width="300">
                 <GroupBox.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
@@ -47,6 +47,52 @@
                                       Cursor="Hand" IsChecked="{Binding Path=IsLeftDrawerOpen, ElementName=mdh_menu}" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"/>
                     </Grid>
                 </GroupBox.Header>
+                <ItemsControl ItemsSource="{Binding MenuInfos}" Margin="5" Grid.Row="1">
+                    <ItemsControl.Resources>
+                       
+                    </ItemsControl.Resources>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="0 0 0.5 0.5">
+                                <Expander Margin="1" ExpandDirection="Down">
+                                    <Expander.Header>
+                                        <WrapPanel>
+                                            <materialDesign:PackIcon Kind="{Binding Icon}" Width="30" Height="30"/>
+                                            <TextBlock Text="{Binding Subject_name}" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        </WrapPanel>
+                                    </Expander.Header>
+
+                                    <ListBox ItemsSource="{Binding ChildsInfo}"  Margin="40 0 20 0">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignNavigationListBoxItem}">
+                                                <Setter Property="Margin" Value="5" />
+                                                <Setter Property="Padding" Value="10" />
+                                                <Setter Property="Tag" Value="{Binding Menu_id}"/>
+                                                <Setter Property="ToolTip" Value="{Binding Menu_description}"/>                                                
+                                                <Setter Property="Cursor" Value="Hand"/>                                                
+                                                <EventSetter Event="MouseLeftButtonUp" Handler="ListBoxItem_MouseLeftButtonUp"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Menu_name}" Cursor="Hand"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    
+                                </Expander>
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </GroupBox>
         </materialDesign:DrawerHost.LeftDrawerContent>
         <Grid>
@@ -120,8 +166,7 @@
                 </Grid>
             </materialDesign:ColorZone>
 
-            <materialDesign:Card Grid.Row="1"  Margin="2" Content="{Binding MainContent, UpdateSourceTrigger=PropertyChanged}"/>
-
+            <materialDesign:Card Grid.Row="1" Margin="2" Name="card_renderbody"/>
         </Grid>
     </materialDesign:DrawerHost>
 

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppMMCV.View.Systems"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Width="900" Height="650">
     <Grid>
         <Grid.Resources>
             <Style TargetType="MenuItem" BasedOn="{x:Null}">
@@ -55,15 +55,15 @@
                    FontWeight="Bold" Margin="2"/>
         </Grid>
 
-        <UserControl Grid.Row="1" Content="{Binding TabItemsSource}"/>
+        <!--<UserControl Grid.Row="1" Content="{Binding TabItemsSource}"/>-->
         
-        <!--<TabControl Grid.Row="1" SelectedItem="{Binding TabItemSelected, UpdateSourceTrigger=PropertyChanged}" 
+        <TabControl Grid.Row="1" SelectedItem="{Binding TabItemSelected, UpdateSourceTrigger=PropertyChanged}" 
                     ItemsSource="{Binding TabItemsSource, UpdateSourceTrigger=PropertyChanged}" Margin="2">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectTabitemChangeCommand}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Self}}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>            
-        </TabControl>-->
+        </TabControl>
     </Grid>
 </UserControl>

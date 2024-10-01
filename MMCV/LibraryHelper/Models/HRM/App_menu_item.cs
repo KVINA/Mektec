@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -7,18 +8,27 @@ using System.Threading.Tasks;
 
 namespace LibraryHelper.Models.HRM
 {
-    public class List_item_id
+    public class List_item_id : INotifyPropertyChanged
     {
         private int item_id;
         private string item_name;
         private bool isChecked;
-        public int Item_id { get => item_id; set => item_id = value; }
-        public string Item_name { get => item_name; set => item_name = value; }
-        public bool IsChecked { get => isChecked; set => isChecked = value; }
+        public int Item_id { get => item_id; set { item_id = value; OnPropertyChanged(nameof(Item_id)); } }
+        public string Item_name { get => item_name; set { item_name = value; OnPropertyChanged(nameof(Item_name)); } }
+        public bool IsChecked { get => isChecked; set { isChecked = value; OnPropertyChanged(nameof(IsChecked)); } }
         public List_item_id(DataRow row)
         {
             this.item_id = (int)row["item_id"];
             this.item_name = row["item_name"].ToString();
+        }
+
+        /// <summary>
+        /// Khởi tạo INotifyPropertyChanged
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public class App_menu_item

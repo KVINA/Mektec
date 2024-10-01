@@ -23,8 +23,8 @@
                 <StackPanel Width="200">
                     <TextBox Text="{Binding FormData.Employee_code}" materialDesign:HintAssist.Hint="Employee code"/>
                     <TextBox materialDesign:HintAssist.Hint="Menu id" Text="{Binding FormData.Menu_id}" IsReadOnly="True" IsEnabled="False"/>
-                    <CheckBox  Margin="2 5" Style="{StaticResource MaterialDesignActionCheckBox}"/>
-                    <GroupBox IsEnabled="{Binding FormAccess}" Style="{x:Null}" Header="Menu item" Margin="2 5">
+                    <CheckBox IsChecked="{Binding FormData.Access}" Margin="2 5" Style="{StaticResource MaterialDesignActionCheckBox}"/>
+                    <GroupBox IsEnabled="{Binding FormData.Access}" Style="{x:Null}" Header="Access to menu item" Margin="2 5">
                         <ItemsControl Margin="5" ItemsSource="{Binding DataMenuItem}" Grid.Row="1">
                             <ItemsControl.Resources>
                                 <Style TargetType="CheckBox">
@@ -56,7 +56,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Submit" Margin="2 5"/>
+                        <Button Content="Submit" Command="{Binding Commad_ExecuteSubmit}" Margin="2 5"/>
                         <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" Grid.Column="1" Content="Close" Margin="2 5"/>
                     </Grid>
                 </StackPanel>
@@ -72,6 +72,8 @@
                 <ComboBox ItemsSource="{Binding DataSubject}" SelectedItem="{Binding SelectedSubject}"
                           DisplayMemberPath="Subject_name" 
                           Margin="2" Width="200" materialDesign:HintAssist.Hint="Subject name"/>
+                <TextBox materialDesign:HintAssist.Hint="Employee code" Width="200" Margin="2" Text="{Binding Employee_search}"/>
+                <Button Content="Search" Margin="2" Command="{Binding Commad_ExecuteSearch}"/>
             </WrapPanel>
 
             <Grid Grid.Row="1">
@@ -95,13 +97,13 @@
                 </GroupBox>
 
                 <GroupBox Header="Roles info" Grid.Column="1" Margin="2">
-                    <DataGrid IsReadOnly="True" ItemsSource="{Binding DataRoles}" Margin="2">
+                    <DataGrid IsReadOnly="True" ItemsSource="{Binding DataRoles}" SelectedItem="{Binding SelectedRoles}" Margin="2">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Command="{Binding Commad_LoadFunctionEdit}" ToolTip="Edit permission"
-                                                Content="{materialDesign:PackIcon Kind=Add, Size=11}" Height="18" />
+                                        <Button Command="{Binding DataContext.Commad_LoadFunctionEdit, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"  ToolTip="Edit permission"
+                                                Content="{materialDesign:PackIcon Kind=Edit, Size=11}" Height="18" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

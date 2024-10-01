@@ -37,14 +37,14 @@ namespace AppMMCV.View.Admin
                 subjectVM.TypeSubmit = "Add";
                 subjectVM.Subject_id = 0;
                 subjectVM.Subject_name = "";
-                subjectVM.Subject_description = "";
+                subjectVM.Subject_icon = "";
             }
             else
             {
                 subjectVM.TypeSubmit = "Edit";
                 subjectVM.Subject_id = item.Subject_id;
                 subjectVM.Subject_name = item.Subject_name;
-                subjectVM.Subject_description = item.Subject_description;                
+                subjectVM.Subject_icon = item.Subject_icon;                
             }
         }
 
