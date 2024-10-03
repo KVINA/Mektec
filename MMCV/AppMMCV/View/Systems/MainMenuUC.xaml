@@ -17,7 +17,6 @@
                 <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="FontStretch" Value="UltraExpanded" />
                 <Setter Property="Height" Value="28"/>
-
                 <Setter Property="Tag" Value="{Binding Item_controller}"/>
                 <Setter Property="Icon">
                     <Setter.Value>
@@ -28,6 +27,8 @@
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Item_icon}" Value="{x:Null}">
                         <Setter Property="Icon" Value="{x:Null}"/>
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
                     </DataTrigger>
                 </Style.Triggers>                
             </Style>
@@ -68,7 +69,7 @@
                         <TextBlock Text="{Binding Item_group}" />                        
                         <HierarchicalDataTemplate.ItemTemplate>                            
                             <DataTemplate>
-                                <TextBlock Text="{Binding Item_name}"/>
+                                <TextBlock Text="{Binding Item_header}"/>
                             </DataTemplate>
                         </HierarchicalDataTemplate.ItemTemplate>
                     </HierarchicalDataTemplate>

@@ -1,5 +1,6 @@
 ﻿using AppMMCV.Json;
 using AppMMCV.Services;
+using LibraryHelper.Models.HRM;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace AppMMCV.ViewModels.Systems
 	}
 	class ItemInfo : INotifyPropertyChanged
 	{
+		int item_id;
 		string item_name;
 		string item_controller;
 		string item_icon;
@@ -42,6 +44,7 @@ namespace AppMMCV.ViewModels.Systems
 		public string Item_controller { get => item_controller; set => item_controller = value; }
 		public string Item_icon { get => item_icon; set => item_icon = value; }
 		public string Item_header { get => item_header; set => item_header = value; }
+		public int Item_id { get => item_id; set { item_id = value; OnPropertyChanged(nameof(Item_id)); } }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -83,6 +86,7 @@ namespace AppMMCV.ViewModels.Systems
 							}
 							groupInfo.List_item.Add(new ItemInfo()
 							{
+								Item_id = (int)row["item_id"],
 								Item_controller = row["item_controller"].ToString(),
 								Item_header = row["item_header"].ToString(),
 								Item_icon = row["item_icon"].ToString(),
