@@ -59,7 +59,7 @@
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Id" Binding="{Binding Subject_id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Subject_name}"/>
-                            <DataGridTextColumn Header="Description" Binding="{Binding subject_icon}"/>
+                            <DataGridTextColumn Header="Icon" Binding="{Binding Subject_icon}"/>
                             <DataGridTextColumn Header="Time" Binding="{Binding Create_at}"/>
                             <DataGridTextColumn Header="Username" Binding="{Binding Create_by}"/>
                         </DataGrid.Columns>

@@ -42,7 +42,6 @@ namespace LibraryHelper.Models.HRM
             this.item_index = (int)row["item_index"];
             this.item_controller = row["item_controller"].ToString();
             this.item_icon = row["item_icon"].ToString();
-            this.item_header = row["item_header"].ToString();
             this.menu_id = (int)row["menu_id"];
             this.create_at = (DateTime)row["create_at"];
             this.create_by = row["create_by"].ToString();
@@ -55,7 +54,6 @@ namespace LibraryHelper.Models.HRM
         private int item_index;
         private string item_controller;
         private string item_icon;
-        private string item_header;
         private int menu_id;
         private DateTime create_at;
         private string create_by;
@@ -66,7 +64,6 @@ namespace LibraryHelper.Models.HRM
         public int Item_index { get => item_index; set => item_index = value; }
         public string Item_controller { get => item_controller; set => item_controller = value; }
         public string Item_icon { get => item_icon; set => item_icon = value; }
-        public string Item_header { get => item_header; set => item_header = value; }
         public int Menu_id { get => menu_id; set => menu_id = value; }
         public DateTime Create_at { get => create_at; set => create_at = value; }
         public string Create_by { get => create_by; set => create_by = value; }

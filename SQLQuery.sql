@@ -3,7 +3,7 @@
   (
 		subject_id int identity(1,1) primary key,
 		subject_name varchar(50) unique,
-		subject_description nvarchar(200),
+		subject_icon nvarchar(200),
 		create_at datetime default getdate(), 
 		create_by varchar(10)
   )
@@ -29,7 +29,6 @@
 		item_index int,
 		item_controller nvarchar(200),
 		item_icon nvarchar(200),
-		item_header nvarchar(200),
 		menu_id int,		
 		create_at datetime default getdate(),
 		create_by varchar(10),

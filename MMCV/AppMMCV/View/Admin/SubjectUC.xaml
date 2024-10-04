@@ -11,8 +11,8 @@
         <TextBox Text="{Binding Subject_name}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
                      materialDesign:HintAssist.Hint="Subject Name" Margin="5"/>
 
-        <TextBox Text="{Binding subject_icon}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                     materialDesign:HintAssist.Hint="Subject Description" Margin="5"/>
+        <TextBox Text="{Binding Subject_icon}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Subject Icon" Margin="5"/>
 
         <Grid>
             <Grid.ColumnDefinitions>

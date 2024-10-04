@@ -58,7 +58,7 @@
                                 <Expander Margin="1" ExpandDirection="Down">
                                     <Expander.Header>
                                         <WrapPanel>
-                                            <materialDesign:PackIcon Kind="{Binding Icon}" Width="30" Height="30"/>
+                                            <materialDesign:PackIcon Kind="{Binding Subject_icon}" Width="30" Height="30"/>
                                             <TextBlock Text="{Binding Subject_name}" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
                                         </WrapPanel>
                                     </Expander.Header>

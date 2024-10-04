@@ -89,7 +89,6 @@
     <Compile Include="ViewModels\SystemsVM.cs" />
     <Compile Include="ViewModels\Systems\HomeVM.cs" />
     <Compile Include="ViewModels\Systems\LoginVM.cs" />
-    <Compile Include="ViewModels\Systems\MainMenuVM.cs" />
     <Compile Include="ViewModels\Systems\PermissionVM.cs" />
     <Compile Include="View\Admin\AppRolesUC.xaml.cs">
       <DependentUpon>AppRolesUC.xaml</DependentUpon>

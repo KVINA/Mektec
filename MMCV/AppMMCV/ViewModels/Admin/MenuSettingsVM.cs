@@ -251,30 +251,29 @@ namespace AppMMCV.ViewModels.Admin
             string item_name = MenuItemContext.MenuItemInfo.Item_name;
             int item_index = MenuItemContext.MenuItemInfo.Item_index;
             string item_controller = MenuItemContext.MenuItemInfo.Item_controller;
-            string item_icon = MenuItemContext.MenuItemInfo.Item_icon;
-            string item_header = MenuItemContext.MenuItemInfo.Item_header;
+            string item_icon = MenuItemContext.MenuItemInfo.Item_icon;            
             int menu_id = MenuItemContext.MenuItemInfo.Menu_id;
 
             if (menu_id > 0)
             {
                 if (string.IsNullOrEmpty(item_group) || string.IsNullOrEmpty(item_name) || string.IsNullOrEmpty(item_controller)
-                    || string.IsNullOrEmpty(item_icon) || string.IsNullOrEmpty(item_header)) MessageBox.Show("Please enter value.", "WARNING");
+                    || string.IsNullOrEmpty(item_icon)) MessageBox.Show("Please enter value.", "WARNING");
                 else
                 {
                     string query = string.Empty;
                     var parameter = new List<object>() { item_group.Trim(), item_name.Trim(), item_index , item_controller.Trim(),
-                        item_icon.Trim(), item_header.Trim(), menu_id ,DataService.UserInfo.username};
+                        item_icon.Trim(), menu_id ,DataService.UserInfo.username};
 
                     switch (MenuItemContext.TypeSubmit)
                     {
                         case "Add":
-                            query = "Insert Into [app_menu_item] ([item_group],[item_name],[item_index],[item_controller],[item_icon],[item_header],[menu_id],[create_at],[create_by]) " +
-                                "Values ( @item_group , @item_name , @item_index , @item_controller , @item_icon , @item_header , @menu_id , GetDate() , @create_by );";
+                            query = "Insert Into [app_menu_item] ([item_group],[item_name],[item_index],[item_controller],[item_icon],[menu_id],[create_at],[create_by]) " +
+                                "Values ( @item_group , @item_name , @item_index , @item_controller , @item_icon , @menu_id , GetDate() , @create_by );";
 
                             break;
                         case "Edit":
                             query = "Update [app_menu_item] set [item_group] = @item_group ,[item_name] = @item_name ,[item_index] = @item_index ,[item_controller] = @item_controller ," +
-                                "[item_icon] = @item_icon ,[item_header] = @item_header ,[menu_id] = @menu_id ,[create_at] = GetDate() ,[create_by] = @create_by Where [item_id] = @item_id ;";
+                                "[item_icon] = @item_icon ,[menu_id] = @menu_id ,[create_at] = GetDate() ,[create_by] = @create_by Where [item_id] = @item_id ;";
                             parameter.Add(MenuItemContext.MenuItemInfo.Item_id);
                             break;
                         default:

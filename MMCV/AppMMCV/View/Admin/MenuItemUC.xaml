@@ -20,10 +20,7 @@
                      materialDesign:HintAssist.Hint="Item controller" Margin="2"/>
 
         <TextBox Text="{Binding MenuItemInfo.Item_icon}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                     materialDesign:HintAssist.Hint="Item icon" Margin="2"/>
-
-        <TextBox Text="{Binding MenuItemInfo.Item_header}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
-                     materialDesign:HintAssist.Hint="Item header" Margin="2"/>
+                     materialDesign:HintAssist.Hint="Item icon" Margin="2"/>        
 
         <TextBox Text="{Binding MenuItemInfo.Menu_id}" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
                      materialDesign:HintAssist.Hint="Menu id" Margin="2" IsEnabled="False" IsReadOnly="True"/>

@@ -7,6 +7,11 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
+    <UserControl.Resources>
+       
+        
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.Resources>
             <Style TargetType="MenuItem" BasedOn="{x:Null}">
@@ -17,26 +22,18 @@
                 <Setter Property="FontWeight" Value="Bold" />
                 <Setter Property="FontStretch" Value="UltraExpanded" />
                 <Setter Property="Height" Value="28"/>
-                <Setter Property="Tag" Value="{Binding Item_controller}"/>
-                <Setter Property="Icon">
-                    <Setter.Value>
-                        <materialDesign:PackIcon Kind="{Binding Item_icon}"/>
-                    </Setter.Value>
-                </Setter>
-                
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding Item_icon}" Value="{x:Null}">
-                        <Setter Property="Icon" Value="{x:Null}"/>
+                    <Trigger Property="Icon" Value="{x:Null}">
+                        <Setter Property="BorderThickness" Value="0.5 0 0 0"/>
                         <Setter Property="BorderBrush" Value="Gray"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                    </DataTrigger>
-                </Style.Triggers>                
+                    </Trigger>
+                </Style.Triggers>
             </Style>
 
             <Style TargetType="Menu" BasedOn="{x:Null}">
                 <Setter Property="Margin" Value="2"/>
-                <Setter Property="Background" Value="White"/>
-            </Style>           
+                <Setter Property="Background" Value="AliceBlue"/>
+            </Style>
 
             <Style TargetType="TabControl" BasedOn="{x:Null}">
                 <Setter Property="TabStripPlacement" Value="Bottom"/>
@@ -60,22 +57,10 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Menu Name="menu_main" ItemsSource="{Binding GroupMenuItem}">
-                <Menu.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding List_item}">
-                        <TextBlock Text="{Binding Item_group}" />                        
-                        <HierarchicalDataTemplate.ItemTemplate>                            
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Item_header}"/>
-                            </DataTemplate>
-                        </HierarchicalDataTemplate.ItemTemplate>
-                    </HierarchicalDataTemplate>
-                </Menu.ItemTemplate>
-            </Menu>
-
+            <Menu Name="menu_main"/>
+            
             <Label Grid.Column="1" Content="{Binding TitleInfo.Content, UpdateSourceTrigger=PropertyChanged}" 
                    Background="{Binding TitleInfo.Background, UpdateSourceTrigger=PropertyChanged}"
                    Foreground="{Binding TitleInfo.Foreground, UpdateSourceTrigger=PropertyChanged}"

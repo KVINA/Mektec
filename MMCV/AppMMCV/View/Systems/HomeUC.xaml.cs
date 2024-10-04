@@ -38,10 +38,7 @@ namespace AppMMCV.View.Systems
             if (sender is ListBoxItem item)
             {
                 int menu_id = (int)item.Tag;
-                if (menu_id == 1)
-                {
-                    card_renderbody.Content = new MainMenuUC(menu_id);
-                }
+                card_renderbody.Content = new MainMenuUC(menu_id);
             }
         }
 

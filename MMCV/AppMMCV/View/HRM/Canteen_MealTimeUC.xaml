@@ -4,9 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppMMCV.View.HRM"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <Button Content="Add" Margin="2"/>
+        </WrapPanel>
+        
+        <DataGrid Grid.Row="1" IsReadOnly="True" Margin="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ca ăn"/>
+                <DataGridTextColumn Header="Bắt đầu"/>
+                <DataGridTextColumn Header="TG giới hạn(h)"/>
+                <DataGridTextColumn Header="Theo ngày"/>
+                <DataGridTextColumn Header="Update at"/>
+                <DataGridTextColumn Header="Update by"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
