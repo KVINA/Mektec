@@ -17,7 +17,7 @@ namespace AppMMCV.ViewModels
 	{
 		public GlobalVM()
 		{
-			CheckStatusLogin();
+			CheckstatusLogin();
 		}
 
 		private int activeMenu;
@@ -30,7 +30,7 @@ namespace AppMMCV.ViewModels
 
 		public int ActiveMenu { get => activeMenu; set { activeMenu = value; OnPropertyChanged(nameof(ActiveMenu)); } }
 
-		public void CheckStatusLogin()
+		public void CheckstatusLogin()
 		{
 			if (Services.DataService.IsLogin)
 			{

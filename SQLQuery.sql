@@ -1,4 +1,12 @@
 ﻿  USE HRM
+  Create table meal_category(
+	category_id int identity(1,1) primary key,
+	category_name nvarchar(100),
+	category_description nvarchar(200),
+	update_at datetime default getdate(),
+	update_by varchar(10)
+  )
+  GO
   Create table app_subject
   (
 		subject_id int identity(1,1) primary key,

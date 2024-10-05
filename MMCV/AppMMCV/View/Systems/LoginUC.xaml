@@ -74,7 +74,7 @@
                         <TextBlock Grid.Row="2" HorizontalAlignment="Right" FontStyle="Italic" Foreground="Blue" Cursor="Hand"> <!--MouseLeftButtonDown="Event_ShowRegister"-->
             <Underline>Register an account</Underline>
                         </TextBlock>
-                        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="{Binding StatusMessage}" HorizontalAlignment="Right" Foreground="Red">
+                        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="{Binding statusMessage}" HorizontalAlignment="Right" Foreground="Red">
                         </TextBlock>
                     </Grid>
                 </Grid>

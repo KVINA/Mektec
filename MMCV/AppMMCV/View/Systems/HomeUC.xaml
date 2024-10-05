@@ -47,15 +47,11 @@
                                       Cursor="Hand" IsChecked="{Binding Path=IsLeftDrawerOpen, ElementName=mdh_menu}" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"/>
                     </Grid>
                 </GroupBox.Header>
-                <ItemsControl ItemsSource="{Binding MenuInfos}" Margin="5" Grid.Row="1">
-                    <ItemsControl.Resources>
-                       
-                    </ItemsControl.Resources>
-
+                <ItemsControl Name="itc_MainMenu" ItemsSource="{Binding MenuInfos}" Margin="5" Grid.Row="1">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Gray" BorderThickness="0 0 0.5 0.5">
-                                <Expander Margin="1" ExpandDirection="Down">
+                                <Expander Margin="1" ExpandDirection="Down" Expanded="Expander_Expanded" Tag="{Binding Subject_id}" IsExpanded="{Binding IsOpen}">
                                     <Expander.Header>
                                         <WrapPanel>
                                             <materialDesign:PackIcon Kind="{Binding Subject_icon}" Width="30" Height="30"/>

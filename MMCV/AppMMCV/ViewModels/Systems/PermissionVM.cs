@@ -1,8 +1,11 @@
 ﻿using AppMMCV.Services;
+using LibraryHelper.Models.HRM;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -18,76 +21,188 @@ namespace AppMMCV.ViewModels.Systems
     {
         public PermissionVM()
         {
-            //ParentID = DataService.GlobalVM.ParentMenuActive.ParentID;
-            //var listitems = DataService.GlobalVM.ParentMenuActive.ListItems;
-            //if (listitems.Count > 0)
-            //{
-            //    foreach (var item in listitems)
-            //    {
-            //        var cbk = new CheckBox() { Content = item.Header };
-            //        CheckBoxes.Add(cbk);
-            //    }
-            //}
-            //CommandGetCheckBox = new RelayCommand(() => GetCheckBox(true));
-            //CommandSubmit = new RelayCommand(Submit);
-        }
+			Menu_id = DataService.GlobalVM.ActiveMenu;
+			Load_MenuItem();
+			Load_Roles();
+			Commad_LoadFunctionAdd = new RelayCommand(LoadFunctionAdd);
+			Commad_LoadFunctionEdit = new RelayCommand(LoadFunctionEdit);
+			Commad_ExecuteSubmit = new RelayCommand(ExecuteSubmit);
+			Commad_ExecuteSearch = new RelayCommand(Load_Roles);
+		}
+		public ICommand Commad_ExecuteSearch { get; }
+		public ICommand Commad_LoadFunctionAdd { get; }
+		public ICommand Commad_LoadFunctionEdit { get; }
+		public ICommand Commad_ExecuteSubmit { get; }
 
-        void ResetCheckBox()
-        {
+		App_roles selectedRoles;
+		bool isOpenDialog;
+		string typeSubmit;
+		App_roles formData;
+		int menu_id;
+		string employee_search;
+		ObservableCollection<App_roles> dataRoles; 
+		ObservableCollection<List_item_id> dataMenuItem;
 
-        }
+		public App_roles SelectedRoles { get => selectedRoles; set { selectedRoles = value; OnPropertyChanged(nameof(SelectedRoles)); } }
+		public bool IsOpenDialog { get => isOpenDialog; set { isOpenDialog = value; OnPropertyChanged(nameof(IsOpenDialog)); } }
 
-        /// <summary>
-        /// Xử lý sự kiện Add, Edit
-        /// </summary>
-        private void Submit()
-        {
-            string query;
-            switch (Status)
-            {
-                case "Add":
-                    query = "Insert Into app_permission values";
-                    break;
-                case "Edit":
-                    query = "Insert Into";
-                    break;
-                default:
-                    return;
-            }
+		public ObservableCollection<App_roles> DataRoles
+		{
+			get { if (dataRoles == null) dataRoles = new ObservableCollection<App_roles>(); return dataRoles; }
+			set => dataRoles = value;
+		}
+		public ObservableCollection<List_item_id> DataMenuItem
+		{
+			get { if (dataMenuItem == null) dataMenuItem = new ObservableCollection<List_item_id>(); return dataMenuItem; }
+			set { dataMenuItem = value; OnPropertyChanged(nameof(DataMenuItem)); }
+		}
+		public string Employee_search { get => employee_search; set { employee_search = value; OnPropertyChanged(nameof(Employee_search)); } }
 
-            var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query);
-            if (string.IsNullOrEmpty(exception))
-            {
-                if (res > 0) MessageBox.Show("Completed!", "Infomation");
-                else MessageBox.Show("Fail!", "Infomation");
-            }
-            else MessageBox.Show(exception, "Error");
-        }
+		public int Menu_id { get => menu_id; set { menu_id = value; OnPropertyChanged(nameof(Menu_id)); } }
+		public App_roles FormData { get => formData; set { formData = value; OnPropertyChanged(nameof(FormData)); } }
+		public string TypeSubmit { get => typeSubmit; set { typeSubmit = value; OnPropertyChanged(nameof(TypeSubmit)); } }
+		void Load_MenuItem()
+		{
+			DataMenuItem.Clear();
+			string query = $"Select * from app_menu_item where menu_id = {Menu_id} order by item_index;";
+			var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+			if (string.IsNullOrEmpty(exception))
+			{
+				if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataMenuItem.Add(new List_item_id(row));
+			}
+			else MessageBox.Show(exception, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+		}
+		void Load_Roles()
+		{
+			DataRoles.Clear();
+			string query = $"Select * from app_roles Where menu_id = {Menu_id}";
+			if (!string.IsNullOrEmpty(Employee_search)) { query += $" and employee_code = '{Employee_search}'"; }
+			var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+			if (string.IsNullOrEmpty(exception))
+			{
+				if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataRoles.Add(new App_roles(row));
+			}
+			else MessageBox.Show(exception, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 
-        /// <summary>
-        /// Lấy danh sách check box được chọn
-        /// </summary>
-        /// <param name="value"></param>
-        string GetCheckBox(bool value)
-        {
-            var list = CheckBoxes.Where(c => c.IsChecked == value).Select(c => c.Content.ToString()).ToList();
-            var str = string.Join(",", list);
-            return str;
-        }
+		void LoadFunctionAdd()
+		{
+			var app_roles = new App_roles();
+			app_roles.Menu_id = Menu_id;
+			foreach (var item in DataMenuItem) item.IsChecked = false;
+			TypeSubmit = "Add permission";
+			FormData = app_roles;
+			IsOpenDialog = true;
+		}
+		void LoadFunctionEdit()
+		{
+			if (SelectedRoles != null)
+			{
+				if (string.IsNullOrEmpty(SelectedRoles.List_item_id))
+				{
+					foreach (var item in DataMenuItem) item.IsChecked = false;
+				}
+				else
+				{
+					var list_id = SelectedRoles.List_item_id.Split(',').ToList();
+					foreach (var item in DataMenuItem)
+					{
+						if (list_id.Contains(item.Item_id.ToString())) item.IsChecked = true;
+						else item.IsChecked = false;
+					}
+				}
+				IsOpenDialog = true;
+				TypeSubmit = "Edit permission";
+				FormData = SelectedRoles;
+			}
+			else
+			{
+				MessageBox.Show("Please select subject before.", "Informartion", MessageBoxButton.OK, MessageBoxImage.Information);
+			}
 
-        private string username;
-        private string status;
-        public ICommand CommandGetCheckBox { get; }
-        public ICommand CommandSubmit { get; }
+		}
+		void ExecuteSubmit()
+		{
+			if (DataMenuItem != null && FormData != null && IsOpenDialog)
+			{
+				//Kiểm tra value input
+				if (string.IsNullOrEmpty(FormData.Employee_code) || FormData.Menu_id == 0)
+				{
+					MessageBox.Show("Please enter value.");
+					return;
+				}
 
-        private string ParentID;
+				string query = "";
+				FormData.List_item_id = string.Join(",", DataMenuItem.Where(i => i.IsChecked == true).Select(i => i.Item_id).ToList());
+				string username = DataService.UserInfo.username;
+				var parameter = new List<object>()
+				{
+					FormData.Employee_code,
+					FormData.Menu_id,
+					FormData.Access,
+					FormData.List_item_id,
+					username
+				};
+				switch (TypeSubmit)
+				{
+					case "Add permission":
+						if (CheckPermission())
+						{
+							query = "Insert Into app_roles ([employee_code],[menu_id],[access],[list_item_id],[create_at],[create_by]) " +
+							"values ( @employee_code , @menu_id , @access , @list_item_id , GetDate() , @create_by );";
+							break;
+						}
+						else
+						{
+							MessageBox.Show("Unable to add this employee, please check again.");
+							return;
+						}
 
-        private ObservableCollection<CheckBox> checkBoxes;
-        public ObservableCollection<CheckBox> CheckBoxes { get => checkBoxes; set { checkBoxes = value; OnPropertyChanged(nameof(CheckBoxes)); } }
-        public string Status { get => status; set { status = value; OnPropertyChanged(nameof(Status)); } }
-        public string Username { get => username; set { username = value; OnPropertyChanged(nameof(Username)); } }
+					case "Edit permission":
+						query = "Update app_roles Set [employee_code] = @employee_code ,[menu_id] = @menu_id ,[access] = @access ," +
+							"[list_item_id] = @list_item_id ,[create_at] = GetDate() ,[create_by] = @create_by Where role_id  = @role_id ";
+						parameter.Add(FormData.Role_id);
+						break;
+					default:
+						return;
+				}
+				var res = SQLService.Method.ExecuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+				if (string.IsNullOrEmpty(exception))
+				{
+					if (res > 0)
+					{
+						Load_Roles();
+						MessageBox.Show("Conpleted.");
+						IsOpenDialog = false;
+					}
+					else
+					{
+						MessageBox.Show("Fail.");
+					}
+				}
+				else
+				{
+					MessageBox.Show(exception);
+				}
+			}
 
-        public event PropertyChangedEventHandler PropertyChanged;
+		}
+
+		bool CheckPermission()
+		{
+			string query = $"Select Count(*) from [app_roles] where [employee_code] = '{FormData.Employee_code}' and [menu_id] = {FormData.Menu_id};";
+			var res = SQLService.Method.ExecuteScalar(out string exception, SQLService.Server.SV68_HRM, query);
+			if (string.IsNullOrEmpty(exception))
+			{
+				return (int)res == 0;
+			}
+			else
+			{
+				MessageBox.Show(exception);
+				return false;
+			}
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -168,7 +168,7 @@ namespace AppMMCV.ViewModels.Admin
                     default:
                         return;
                 }
-                var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+                var res = SQLService.Method.ExecuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (res > 0)
@@ -196,7 +196,7 @@ namespace AppMMCV.ViewModels.Admin
         bool CheckPermission()
         {
             string query = $"Select Count(*) from [app_roles] where [employee_code] = '{FormData.Employee_code}' and [menu_id] = {FormData.Menu_id};";
-            var res = SQLService.Method.ExcuteScalar(out string exception,SQLService.Server.SV68_HRM,query);
+            var res = SQLService.Method.ExecuteScalar(out string exception,SQLService.Server.SV68_HRM,query);
             if (string.IsNullOrEmpty(exception))
             {
                 return (int)res == 0;
@@ -214,7 +214,7 @@ namespace AppMMCV.ViewModels.Admin
             if (SelectedMenu != null)
             {
                 string query = $"Select * from app_menu_item where menu_id = {SelectedMenu.Menu_id} order by item_index;";
-                var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataMenuItem.Add(new List_item_id(row));
@@ -228,7 +228,7 @@ namespace AppMMCV.ViewModels.Admin
             if (SelectedSubject != null)
             {
                 string query = $"Select * from app_menu Where subject_id = {SelectedSubject.Subject_id} order by menu_index";
-                var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataMenu.Add(new App_menu(row));                    
@@ -243,7 +243,7 @@ namespace AppMMCV.ViewModels.Admin
             {
                 string query = $"Select * from app_roles Where menu_id = {SelectedMenu.Menu_id}";
                 if (!string.IsNullOrEmpty(Employee_search)) { query += $" and employee_code = '{Employee_search}'"; }
-                var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataRoles.Add(new App_roles(row));                    
@@ -255,7 +255,7 @@ namespace AppMMCV.ViewModels.Admin
         {
             DataSubject.Clear();
             string query = "Select * from app_subject order by subject_id";
-            var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+            var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
             if (string.IsNullOrEmpty(exception))
             {
                 if (data != null && data.Rows.Count > 0) foreach (DataRow row in data.Rows) DataSubject.Add(new App_subject(row));

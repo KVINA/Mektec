@@ -44,10 +44,13 @@
   <ItemGroup>
     <Compile Include="Methods\ServiceProvider.cs" />
     <Compile Include="Methods\SQLProvider.cs" />
-    <Compile Include="Models\HRM\app_menu.cs" />
+    <Compile Include="Models\HRM\App_menu.cs" />
     <Compile Include="Models\HRM\App_menu_item.cs" />
     <Compile Include="Models\HRM\App_roles.cs" />
     <Compile Include="Models\HRM\App_subject.cs" />
+    <Compile Include="Models\HRM\Employees.cs" />
+    <Compile Include="Models\HRM\Meal_category.cs" />
+    <Compile Include="Models\HRM\Meal_time.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

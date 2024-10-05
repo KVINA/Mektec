@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\
+E:\Project\Mektec\MMCV\AppMMCV\obj\Debug\
 AppMMCV
 none
 false
 DEBUG;TRACE
-D:\07.Project\Mektec\MMCV\AppMMCV\App.xaml
-15-1741629124
+E:\Project\Mektec\MMCV\AppMMCV\App.xaml
+17531074414
 
-371071682600
-18-1334561706
-MainWindow.xaml;View\Admin\AppRolesUC.xaml;View\Admin\MenuItemUC.xaml;View\Admin\MenuSettings.xaml;View\Admin\MenuUC.xaml;View\Admin\SubjectUC.xaml;View\HRM\Canteen_DailyTotalUC.xaml;View\HRM\Canteen_MealTimeUC.xaml;View\Systems\EmployeesSubmitUC.xaml;View\Systems\EmployeesUC.xaml;View\Systems\LoginUC.xaml;View\Systems\MainMenuUC.xaml;View\Systems\HomeUC.xaml;View\Systems\Permission.xaml;View\Systems\RegisterUC.xaml;
+402062091786
+381283867784
+MainWindow.xaml;View\Admin\AppRolesUC.xaml;View\Admin\MenuItemUC.xaml;View\Admin\MenuSettings.xaml;View\Admin\MenuUC.xaml;View\Admin\SubjectUC.xaml;View\HRM\Canteen_DailyTotalUC.xaml;View\HRM\Canteen_MealCategoryUC.xaml;View\HRM\Canteen_MealTimeUC.xaml;View\HRM\Canteen_RegisterDailyMealUC.xaml;View\HRM\EmployeesSubmitUC.xaml;View\HRM\EmployeesUC.xaml;View\Systems\LoginUC.xaml;View\Systems\MainMenuUC.xaml;View\Systems\HomeUC.xaml;View\Systems\Permission.xaml;View\Systems\RegisterUC.xaml;
 
 True
 

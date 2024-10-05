@@ -27,8 +27,8 @@ namespace AppMMCV.View.Systems
     {
         #region Variable
         //Khai báo đăng ký một DependencyProperty
-        public static readonly DependencyProperty StatusMessageProperty =
-            DependencyProperty.Register("StatusMessage", typeof(string), typeof(UserControl), null);
+        public static readonly DependencyProperty statusMessageProperty =
+            DependencyProperty.Register("statusMessage", typeof(string), typeof(UserControl), null);
         public static readonly DependencyProperty UsernameProperty =
             DependencyProperty.Register("Username", typeof(string), typeof(UserControl), null);
         public static readonly DependencyProperty PasswordProperty =
@@ -44,10 +44,10 @@ namespace AppMMCV.View.Systems
             get { return (string)GetValue(PasswordProperty); }
             set { SetValue(PasswordProperty, value); }
         }
-        public string StatusMessage
+        public string statusMessage
         {
-            get { return (string)GetValue(StatusMessageProperty); }
-            set { SetValue(StatusMessageProperty, value); }
+            get { return (string)GetValue(statusMessageProperty); }
+            set { SetValue(statusMessageProperty, value); }
         }
         #endregion
 
@@ -69,7 +69,7 @@ namespace AppMMCV.View.Systems
             // Logic để xác thực thông tin đăng nhập
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
             {
-                StatusMessage = "Please enter username, password.";
+                statusMessage = "Please enter username, password.";
             }
             else
             {
@@ -78,18 +78,18 @@ namespace AppMMCV.View.Systems
                 {
                     if (DataService.IsLogin)
                     {
-                        StatusMessage = "Đăng nhập thành công!";
+                        statusMessage = "Đăng nhập thành công!";
                         DataService.GlobalVM.SelectUsercontrol = new HomeUC();
                         //DataService.GlobalVM.SelectUsercontrol = new AppRolesUC();
                     }
                     else
                     {
-                        StatusMessage = "Incorrect username or password!";
+                        statusMessage = "Incorrect username or password!";
                     }
                 }
                 else
                 {
-                    StatusMessage = exception;
+                    statusMessage = exception;
                 }
             }
         }

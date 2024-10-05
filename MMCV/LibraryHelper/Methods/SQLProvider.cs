@@ -19,7 +19,7 @@ namespace LibraryHelper.Methord
         /// <param name="query"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public DataTable ExcuteQuery(out string exception, SERVER server, string query, object[] parameter = null)
+        public DataTable ExecuteQuery(out string exception, SERVER server, string query, object[] parameter = null)
         {
             exception = string.Empty;
             try
@@ -70,7 +70,7 @@ namespace LibraryHelper.Methord
         /// <param name="query"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public int ExcuteNonQuery(out string exception, SERVER server, string query, object[] parameter = null)
+        public int ExecuteNonQuery(out string exception, SERVER server, string query, object[] parameter = null)
         {
             exception = string.Empty;
             int data = 0;
@@ -120,7 +120,7 @@ namespace LibraryHelper.Methord
         /// <param name="query"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public int ExcuteNonTrans(out string exception, SERVER server, string query, object[] parameter = null)
+        public int ExecuteNonTrans(out string exception, SERVER server, string query, object[] parameter = null)
         {
             exception = string.Empty;
             int data = 0;
@@ -178,7 +178,7 @@ namespace LibraryHelper.Methord
         /// <param name="query"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public object ExcuteScalar(out string exception, SERVER server, string query, object[] parameter = null)
+        public object ExecuteScalar(out string exception, SERVER server, string query, object[] parameter = null)
         {
             exception = string.Empty;
             object data = null;

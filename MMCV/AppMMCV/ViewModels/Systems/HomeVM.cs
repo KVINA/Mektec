@@ -175,7 +175,7 @@ namespace AppMMCV.ViewModels.Systems
                 "Inner join app_subject C On C.subject_id = B.subject_id " +
                 $"Where employee_code = '{employee_code}' and access = 1 order by subject_id,menu_index";
 
-                var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null && data.Rows.Count > 0)
@@ -216,7 +216,14 @@ namespace AppMMCV.ViewModels.Systems
             }            
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+		/// <summary>
+		/// Close menu is not active
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		
+
+		public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -228,15 +235,15 @@ namespace AppMMCV.ViewModels.Systems
         private int subject_id;
         private string subject_name;
         private string subject_icon;
+        private bool isOpen;
         private ObservableCollection<MenuChildInfo> childsInfo;
         public int Subject_id { get => subject_id; set { subject_id = value; OnPropertyChanged(nameof(Subject_id)); } }
         public string Subject_name { get => subject_name; set { subject_name = value; OnPropertyChanged(nameof(Subject_name)); } }
         public string Subject_icon { get => subject_icon; set { subject_icon = value; OnPropertyChanged(nameof(subject_icon)); } }
         public ObservableCollection<MenuChildInfo> ChildsInfo { get => childsInfo; set { childsInfo = value; OnPropertyChanged(nameof(ChildsInfo)); } }
+		public bool IsOpen { get => isOpen; set { isOpen = value; OnPropertyChanged(nameof(IsOpen)); }  }
 
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

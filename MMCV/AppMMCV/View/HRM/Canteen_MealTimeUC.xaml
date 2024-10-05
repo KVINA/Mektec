@@ -7,25 +7,57 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <GroupBox>
+        <GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Foreground="White" Text="Meal time" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Click="Event_Btn_Click_OpenHost" Grid.Column="1" Content="{materialDesign:PackIcon Kind=Add, Size=12}" Height="22" Margin="2" ToolTip="Add meal time"/>
+            </Grid>
+        </GroupBox.Header>
+        <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsRightDrawerOpen}">
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <GroupBox Header="{Binding SubmitType}">
+                    <StackPanel Width="200">
+                        <TextBox Name="txt_Meal" Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="Ca ăn" Margin="2 5"/>
+                        <materialDesign:TimePicker Name="txt_StartTime" Is24Hours="True" Style="{StaticResource MaterialDesignOutlinedTimePicker}" materialDesign:HintAssist.Hint="Thời gian bắt đầu" Margin="2 5"/>
+                        <TextBox Name="txt_Hour" materialDesign:HintAssist.Hint="Thời gian bữa ăn" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="2 5"/>
+                        <TextBox Name="txt_PlusDate" materialDesign:HintAssist.Hint="Theo ngày" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="2 5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Click="Event_Btn_Click_Submit" Margin="2" Content="Submit"/>
+                            <Button Margin="2" Grid.Column="1" Content="Close" Click="Event_Btn_Click_CloseHost"/>
+                        </Grid>
 
-        <WrapPanel>
-            <Button Content="Add" Margin="2"/>
-        </WrapPanel>
+                    </StackPanel>
+                </GroupBox>
+                
+            </materialDesign:DrawerHost.RightDrawerContent>
+            <DataGrid Name="dtg_MealTime" ItemsSource="{Binding DataMealTime}"
+                      Grid.Row="1" IsReadOnly="True" Margin="2" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Event_Btn_Click_Edit" Content="{materialDesign:PackIcon Kind=Edit, Size=11}" Height="18"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Ca ăn" Binding="{Binding Meal}"/>
+                    <DataGridTextColumn Header="Bắt đầu" Binding="{Binding Start_time}"/>
+                    <DataGridTextColumn Header="TG giới hạn(h)" Binding="{Binding Hour_duration}"/>
+                    <DataGridTextColumn Header="Theo ngày" Binding="{Binding Plus_day}"/>
+                    <DataGridTextColumn Header="Update at" Binding="{Binding Update_at}"/>
+                    <DataGridTextColumn Header="Update by" Binding="{Binding Updator}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:DrawerHost>
         
-        <DataGrid Grid.Row="1" IsReadOnly="True" Margin="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Ca ăn"/>
-                <DataGridTextColumn Header="Bắt đầu"/>
-                <DataGridTextColumn Header="TG giới hạn(h)"/>
-                <DataGridTextColumn Header="Theo ngày"/>
-                <DataGridTextColumn Header="Update at"/>
-                <DataGridTextColumn Header="Update by"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    </GroupBox>
 </UserControl>

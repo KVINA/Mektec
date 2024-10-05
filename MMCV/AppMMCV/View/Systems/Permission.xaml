@@ -11,59 +11,94 @@
         <Style TargetType="TextBlock" x:Key="tbl_datacolumn">
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
     </UserControl.Resources>
 
-    <materialDesign:DrawerHost Name="drh_body">
+    <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsOpenDialog}">
         <materialDesign:DrawerHost.RightDrawerContent>
-            <GroupBox x:Name="grb_form" Header="{Binding Status, Mode=TwoWay}">                
-                <Grid VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+            <GroupBox Header="{Binding TypeSubmit}">
+                <StackPanel Width="220">
+                    <TextBox Text="{Binding FormData.Employee_code}" materialDesign:HintAssist.Hint="Employee code"/>
+                    <TextBox materialDesign:HintAssist.Hint="Menu id" Text="{Binding FormData.Menu_id}" IsReadOnly="True" IsEnabled="False"/>
+                    <CheckBox IsChecked="{Binding FormData.Access}" Margin="2 5" Style="{StaticResource MaterialDesignActionCheckBox}"/>
+                    <GroupBox IsEnabled="{Binding FormData.Access}" Style="{x:Null}" Header="Access to menu item" Margin="2 5">
+                        <ItemsControl Margin="5" ItemsSource="{Binding DataMenuItem}" Grid.Row="1">
+                            <ItemsControl.Resources>
+                                <Style TargetType="CheckBox">
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>   
+                            </ItemsControl.Resources>
 
-                    <TextBox materialDesign:HintAssist.Hint="Username" Margin="5" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Item_name}" IsChecked="{Binding IsChecked}" Margin="5"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
 
-                    <ItemsControl Margin="5" ItemsSource="{Binding CheckBoxes, Mode=TwoWay}" Grid.Row="1">
-                        <ItemsControl.Resources>
-                            <Style TargetType="CheckBox">
-                                <Setter Property="Margin" Value="5"/>
-                            </Style>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </GroupBox>
 
-                            <Style TargetType="TextBox">
-                                <Setter Property="Width" Value="200"/>
-                                <Setter Property="Margin" Value="5"/>
-                            </Style>
-                        </ItemsControl.Resources>
-
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="4"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-
-                    <Button Content="Submit" Command="{Binding CommandGetCheckBox}" Grid.Row="2" Margin="5" HorizontalAlignment="Center"/>
-                </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Submit" Command="{Binding Commad_ExecuteSubmit}" Margin="2 5"/>
+                        <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" Grid.Column="1" Content="Close" Margin="2 5"/>
+                    </Grid>
+                </StackPanel>
             </GroupBox>
-            
         </materialDesign:DrawerHost.RightDrawerContent>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="1" >
-                <TextBox Name="txt_username" materialDesign:HintAssist.Hint="Username" Margin="5" Style="{StaticResource MaterialDesignOutlinedTextBox}" Width="150"/>
-                <Button Content="Search" Name="btn_search"  Margin="5" Width="100"/>
-                <Button Content="Add" Click="Button_Click_Add" Margin="5" Width="100"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Employee_search}" materialDesign:HintAssist.Hint="Username" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedTextBox}" Width="150"/>
+                <Button Content="Search" Name="btn_search" Command="{Binding Commad_ExecuteSearch}"  Margin="2 5" Width="100"/>
+                <Button Command="{Binding DataContext.Commad_LoadFunctionAdd, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                        ToolTip="Add permission" Content="Add" Width="100" Margin="2 5"/>
             </StackPanel>
 
-            <DataGrid IsReadOnly="True" Name="dtg_permission" Grid.Row="3"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Header="Item info" Margin="2">
+                    <DataGrid IsReadOnly="True" ItemsSource="{Binding DataMenuItem}" AutoGenerateColumns="False" Margin="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Item id" Binding="{Binding Item_id}"/>
+                            <DataGridTextColumn Header="Item name" Binding="{Binding Item_name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                
+                <GroupBox Header="Roles info" Grid.Column="1" Margin="2">
+                    <DataGrid IsReadOnly="True" ItemsSource="{Binding DataRoles}" SelectedItem="{Binding SelectedRoles}" Margin="2">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding DataContext.Commad_LoadFunctionEdit, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                         ToolTip="Edit permission" Content="{materialDesign:PackIcon Kind=Edit, Size=11}" Height="18" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
         </Grid>
     </materialDesign:DrawerHost>
 </UserControl>

@@ -47,7 +47,7 @@ namespace AppMMCV.View.Systems
             if (!string.IsNullOrEmpty(employee_code))
             {
                 string query = $"Select * FROM [app_menu_item] where menu_id = {menu_id} order by item_index;";
-                var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null && data.Rows.Count > 0)
@@ -89,7 +89,7 @@ namespace AppMMCV.View.Systems
             {
                 string employee_code = DataService.UserInfo.username;
                 string query = $"SELECT [list_item_id] FROM [HRM].[dbo].[app_roles] Where menu_id = {menu_id} and employee_code = '{employee_code}';";
-                var data = SQLService.Method.ExcuteScalar(out string exception, SQLService.Server.SV68_HRM, query);
+                var data = SQLService.Method.ExecuteScalar(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {
                     if (data != null)
@@ -100,8 +100,8 @@ namespace AppMMCV.View.Systems
                             foreach (MenuItem menuItem in menuParent.Items)
                             {
                                 if (menuItem.Tag is App_menu_item item && list_MenuId.Contains(item.Item_id.ToString()))
-                                {
-                                    menuItem.IsEnabled = true;
+                                {                                    
+									menuItem.IsEnabled = true;                                    
                                 }
                                 else
                                 {

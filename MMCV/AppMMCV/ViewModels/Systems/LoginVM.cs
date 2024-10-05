@@ -30,7 +30,7 @@ namespace AppMMCV.ViewModels.Systems
 		private string statusMessage;
 		public string Username { get => username; set { username = value; OnPropertyChanged(nameof(Username)); } }
 		public string Password { get => password; set { password = value; OnPropertyChanged(nameof(Password)); } }
-		public string StatusMessage { get => statusMessage; set { statusMessage = value; OnPropertyChanged(nameof(StatusMessage)); } }
+		public string StatusMessage { get => statusMessage; set { statusMessage = value; OnPropertyChanged(nameof(statusMessage)); } }
 		private void ExecuteLogin()
 		{
 			// Logic để xác thực thông tin đăng nhập

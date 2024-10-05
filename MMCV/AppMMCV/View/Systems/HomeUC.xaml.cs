@@ -39,6 +39,7 @@ namespace AppMMCV.View.Systems
             {
                 int menu_id = (int)item.Tag;
                 card_renderbody.Content = new MainMenuUC(menu_id);
+                DataService.GlobalVM.ActiveMenu = menu_id;
             }
         }
 
@@ -47,7 +48,23 @@ namespace AppMMCV.View.Systems
             var wd = new Window() { Content = new AppRolesUC() };
             wd.ShowDialog();
         }
-    }
+
+		private void Expander_Expanded(object sender, RoutedEventArgs e)
+		{
+            if (sender is Expander expander)
+            {
+                int subject_id = (int)expander.Tag;
+                foreach (var item in homeVM.MenuInfos)
+                {
+                    if (item.Subject_id != subject_id)
+                    {
+                        item.IsOpen = false;
+                    }
+                }
+            }
+            
+		}
+	}
 
 
 }

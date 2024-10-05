@@ -79,7 +79,7 @@ namespace AppMMCV.ViewModels.Admin
             DataSubject.Clear();
             string query = "Select * from app_subject order by subject_id";
             if (!string.IsNullOrEmpty(subject_name)) query = $"Select * from app_subject Where [subject_name] = N'{subject_name}' order by subject_id";
-            var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+            var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
             if (string.IsNullOrEmpty(exception)) foreach (DataRow row in data.Rows) DataSubject.Add(new App_subject(row));
             Distinct_SubjectName = DataSubject.Select(s => s.Subject_name).Distinct().ToList();
         }
@@ -113,7 +113,7 @@ namespace AppMMCV.ViewModels.Admin
 
                 if (!string.IsNullOrEmpty(query))
                 {
-                    var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+                    var res = SQLService.Method.ExecuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
                     if (string.IsNullOrEmpty(exception))
                     {
                         if (res > 0)
@@ -156,7 +156,7 @@ namespace AppMMCV.ViewModels.Admin
             DataMenu.Clear();
             string query = "Select * from [app_menu] order by [subject_id],[menu_index]";
             if (SelectedSubject != null) query = $"Select * from [app_menu] where [subject_id] = {SelectedSubject.Subject_id} order by [subject_id],[menu_index]";
-            var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+            var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
             if (string.IsNullOrEmpty(exception)) foreach (DataRow row in data.Rows) DataMenu.Add(new App_menu(row));
         }
         void Submit_Menu()
@@ -193,7 +193,7 @@ namespace AppMMCV.ViewModels.Admin
 
                     if (!string.IsNullOrEmpty(query))
                     {
-                        var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+                        var res = SQLService.Method.ExecuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
                         if (string.IsNullOrEmpty(exception))
                         {
                             if (res > 0)
@@ -241,7 +241,7 @@ namespace AppMMCV.ViewModels.Admin
             DataMenuItem.Clear();
             string query = "Select * from [app_menu_item] order by [menu_id]";
             if (SelectedMenu != null) query = $"Select * from [app_menu_item] Where [menu_id] = {SelectedMenu.Menu_id} order by [menu_id]";
-            var data = SQLService.Method.ExcuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
+            var data = SQLService.Method.ExecuteQuery(out string exception, SQLService.Server.SV68_HRM, query);
             if (string.IsNullOrEmpty(exception)) foreach (DataRow row in data.Rows) DataMenuItem.Add(new App_menu_item(row));
         }
 
@@ -282,7 +282,7 @@ namespace AppMMCV.ViewModels.Admin
 
                     if (!string.IsNullOrEmpty(query))
                     {
-                        var res = SQLService.Method.ExcuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
+                        var res = SQLService.Method.ExecuteNonQuery(out string exception, SQLService.Server.SV68_HRM, query, parameter.ToArray());
                         if (string.IsNullOrEmpty(exception))
                         {
                             if (res > 0)

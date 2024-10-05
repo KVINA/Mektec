@@ -22,7 +22,7 @@ namespace AppMMCV.Services
 
 				var parameter = new object[] { username, password };
 				string query = "EXEC usp_users_login @username , @password ";
-				var info = SQLService.Method.ExcuteQuery(out exception, SQLService.Server.SV68_HRM, query, parameter);
+				var info = SQLService.Method.ExecuteQuery(out exception, SQLService.Server.SV68_HRM, query, parameter);
 				if (string.IsNullOrEmpty(exception))
 				{
 					if (info != null && info.Rows.Count == 1)
