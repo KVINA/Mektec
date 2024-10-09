@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 
 namespace AppMMCV.View.HRM
 {
-	/// <summary>
-	/// Interaction logic for Canteen_RegisterDailyMealUC.xaml
-	/// </summary>
-	public partial class Canteen_RegisterDailyMealUC : UserControl
-	{
-		public Canteen_RegisterDailyMealUC()
-		{
-			InitializeComponent();
-			DataContext = new Canteen_RegisterDailyMealVM();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for Canteen_DailyReportsUC.xaml
+    /// </summary>
+    public partial class Canteen_DailyReportsUC : UserControl
+    {
+        public Canteen_DailyReportsUC()
+        {
+            InitializeComponent();
+            
+        }        
+    }
 }

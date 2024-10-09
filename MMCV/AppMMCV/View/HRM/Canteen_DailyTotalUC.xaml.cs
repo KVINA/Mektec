@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppMMCV.ViewModels.HRM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace AppMMCV.View.HRM
     /// </summary>
     public partial class Canteen_DailyTotalUC : UserControl
     {
+        private readonly Canteen_DailyTotalVM dailyTotalVM;
         public Canteen_DailyTotalUC()
         {
             InitializeComponent();
+            dailyTotalVM = new Canteen_DailyTotalVM();
+            DataContext = dailyTotalVM;
         }
     }
 }

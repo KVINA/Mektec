@@ -1,5 +1,4 @@
-﻿using AppMMCV.ViewModels.HRM;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +15,14 @@ using System.Windows.Shapes;
 
 namespace AppMMCV.View.HRM
 {
-	/// <summary>
-	/// Interaction logic for Canteen_RegisterDailyMealUC.xaml
-	/// </summary>
-	public partial class Canteen_RegisterDailyMealUC : UserControl
-	{
-		public Canteen_RegisterDailyMealUC()
-		{
-			InitializeComponent();
-			DataContext = new Canteen_RegisterDailyMealVM();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for Canteen_MealDistributionUC.xaml
+    /// </summary>
+    public partial class Canteen_MealDistributionUC : UserControl
+    {
+        public Canteen_MealDistributionUC()
+        {
+            InitializeComponent();
+        }
+    }
 }

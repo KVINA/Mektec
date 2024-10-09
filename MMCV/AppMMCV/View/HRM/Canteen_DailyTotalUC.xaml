@@ -8,6 +8,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Xin chao cac ban"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DatePicker SelectedDate="{Binding SelectedDate}" materialDesign:HintAssist.Hint="Select date" 
+                    Style="{StaticResource MaterialDesignFilledDatePicker}" Margin="2" Width="150" HorizontalAlignment="Left"/>
+
+        <GroupBox Header="Daily report" Grid.Row="1" Margin="2">
+            <DataGrid ItemsSource="{Binding DataDailyTotal}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Bữa ăn" Binding="{Binding Meal}"/>
+                    <DataGridTextColumn Header="Suất ăn" Binding="{Binding Category_name}"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
     </Grid>
 </UserControl>

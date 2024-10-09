@@ -7,31 +7,42 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Grid.Column="1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <materialDesign:DialogHost IsOpen="{Binding IsLoading}">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel>
+                <TextBlock Text="Processing ..." Margin="5"/>
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="50" IsIndeterminate="True" HorizontalAlignment="Center" Margin="5"/>
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <WrapPanel Grid.Row="0">
-            <DatePicker materialDesign:HintAssist.Hint="Date" Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
-            <ComboBox materialDesign:HintAssist.Hint="Meal time" Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
-            <Button Content="Register" Margin="2"/>
-        </WrapPanel>
+            <WrapPanel Grid.Row="0">
+                <DatePicker SelectedDate="{Binding DateRegister}" materialDesign:HintAssist.Hint="Date" Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+                <ComboBox ItemsSource="{Binding DataMealTime}" DisplayMemberPath="Meal" materialDesign:HintAssist.Hint="Meal time" 
+                      SelectedItem="{Binding SelectedMealTime}" Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                <Button Command="{Binding Command_ExecuteClearAttachmentPath}" Content="Clear attachment" Margin="2"/>
+                <Button Command="{Binding Command_ExecuteRegisterMeals}" Content="Register file attach" Margin="2"/>
+            </WrapPanel>
 
-        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="4" Padding="2" Margin="2" Background="Yellow">
-            <Grid Margin="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Content="{materialDesign:PackIcon Kind=Paperclip}" Style="{StaticResource MaterialDesignFlatButton}"/>
-                <TextBlock Grid.Column="1" VerticalAlignment="Center"/>
-            </Grid>
-        </Border>
-        
-        <DataGrid IsReadOnly="True" Grid.Row="2" Margin="2"/>
-    </Grid>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="4" Padding="2" Margin="2" Background="Yellow">
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding Command_ExecuteGetAttachmentPath}" Content="{materialDesign:PackIcon Kind=Paperclip}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding AttachmentPath}"/>
+                </Grid>
+            </Border>
+
+            <DataGrid ItemsSource="{Binding DataRegisterDaily}" IsReadOnly="True" Grid.Row="2" Margin="2"/>
+        </Grid>
+    </materialDesign:DialogHost>
+
 
 </UserControl>

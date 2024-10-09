@@ -135,7 +135,9 @@
     <Compile Include="ViewModels\Admin\SubjectVM.cs" />
     <Compile Include="ViewModels\GlobalVM.cs" />
     <Compile Include="ViewModels\HRMVM.cs" />
+    <Compile Include="ViewModels\HRM\Canteen_DailyTotalVM.cs" />
     <Compile Include="ViewModels\HRM\Canteen_MasterRegisterMealsVM.cs" />
+    <Compile Include="ViewModels\HRM\Canteen_RegisterDailyMealVM.cs" />
     <Compile Include="ViewModels\HRM\EmployeesVM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SystemsVM.cs" />
@@ -157,6 +159,9 @@
     <Compile Include="View\Admin\SubjectUC.xaml.cs">
       <DependentUpon>SubjectUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HRM\Canteen_DailyReportsUC.xaml.cs">
+      <DependentUpon>Canteen_DailyReportsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HRM\Canteen_DailyTotalUC.xaml.cs">
       <DependentUpon>Canteen_DailyTotalUC.xaml</DependentUpon>
     </Compile>
@@ -165,6 +170,9 @@
     </Compile>
     <Compile Include="View\HRM\Canteen_MealCategoryUC.xaml.cs">
       <DependentUpon>Canteen_MealCategoryUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HRM\Canteen_MealDistributionUC.xaml.cs">
+      <DependentUpon>Canteen_MealDistributionUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HRM\Canteen_MealTimeUC.xaml.cs">
       <DependentUpon>Canteen_MealTimeUC.xaml</DependentUpon>
@@ -221,6 +229,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\HRM\Canteen_DailyReportsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HRM\Canteen_DailyTotalUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HRM\Canteen_MealCategoryUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HRM\Canteen_MealDistributionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

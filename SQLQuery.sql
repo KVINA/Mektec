@@ -1,4 +1,19 @@
 ﻿  USE HRM
+  Create table daily_total
+  (
+	id bigint identity(1,1),
+	meal_date Date,
+	meal_time_id int,
+	category_id int,
+	quantity_before int,
+	confirm_at DateTime default getdate(),
+	confirm_by varchar(10),
+	quantity_after int,
+	update_at DateTime,
+	update_by varchar(10),
+	primary key(meal_date,meal_time_id,category_id)
+  )
+  Go
   Create table meal_category(
 	category_id int identity(1,1) primary key,
 	category_name nvarchar(100),
