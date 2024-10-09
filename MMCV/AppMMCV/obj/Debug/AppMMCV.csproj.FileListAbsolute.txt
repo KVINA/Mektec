@@ -229,3 +229,9 @@ D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_DailyReportsUC.g.cs
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_DailyReportsUC.baml
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_MealDistributionUC.g.cs
 D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\View\HRM\Canteen_MealDistributionUC.baml
+D:\07.Project\Mektec\MMCV\AppMMCV\bin\Debug\AppMMCV.exe.manifest
+D:\07.Project\Mektec\MMCV\AppMMCV\bin\Debug\AppMMCV.application
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.TrustInfo.xml
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.exe.manifest
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV.application
+D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\AppMMCV_Content.g.cs

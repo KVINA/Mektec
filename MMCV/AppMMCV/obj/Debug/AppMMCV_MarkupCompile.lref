@@ -1,4 +1,4 @@
-﻿
+﻿D:\07.Project\Mektec\MMCV\AppMMCV\obj\Debug\GeneratedInternalTypeHelper.g.cs
 FD:\07.Project\Mektec\MMCV\AppMMCV\App.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\MainWindow.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\AppRolesUC.xaml;;
@@ -6,9 +6,11 @@ FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuItemUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuSettings.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\MenuUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Admin\SubjectUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_DailyReportsUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_DailyTotalUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MasterRegisterMealsUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealCategoryUC.xaml;;
+FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealDistributionUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealTimeUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_RegisterDailyMealUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\EmployeesSubmitUC.xaml;;
@@ -18,6 +20,4 @@ FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\MainMenuUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\HomeUC.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\Permission.xaml;;
 FD:\07.Project\Mektec\MMCV\AppMMCV\View\Systems\RegisterUC.xaml;;
-FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_DailyReportsUC.xaml;;
-FD:\07.Project\Mektec\MMCV\AppMMCV\View\HRM\Canteen_MealDistributionUC.xaml;;
 
