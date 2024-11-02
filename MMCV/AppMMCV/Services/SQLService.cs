@@ -39,6 +39,7 @@ namespace AppMMCV.Services
 		private SERVER sV68_PIMV;
 		private SERVER sV68_HRM;
 		private SERVER sV48_PIMV;
+		private SERVER sV91_PIMV;
 		public SERVER SV46_Record { get { if (sV46_Record == null) sV46_Record = new SERVER("10.80.1.46", "Record", "pim", "pimpass"); return sV46_Record; } }
 
 		public SERVER SV69_Record { get { if (sV69_Record == null) sV69_Record = new SERVER("10.80.1.69", "Record", "pim", "pimpass"); return sV69_Record; } }

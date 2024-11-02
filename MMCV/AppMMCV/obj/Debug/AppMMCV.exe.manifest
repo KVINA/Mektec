@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppMMCV.exe" size="3676080">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppMMCV.exe" size="3684784">
       <assemblyIdentity name="AppMMCV" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>t0P7em/wjLi5j95236pgITIWt5PuaUcecY96aTTxplA=</dsig:DigestValue>
+        <dsig:DigestValue>bR5UQMImWKCzYVWHRYq5fO4ar/p3uIUiwqigo2zKQ+g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LibraryHelper.dll" size="22528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LibraryHelper.dll" size="24064">
       <assemblyIdentity name="LibraryHelper" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3WGRm5jj/VaoJ1njJUDHKbHDR/FS4CWf1vCFpMpSbWk=</dsig:DigestValue>
+        <dsig:DigestValue>pvuFe86VaJP92l7pLamwMPhY5dUPIVXDbXQ+xxTQaKI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

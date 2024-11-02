@@ -48,6 +48,7 @@
     <Compile Include="Models\HRM\App_menu_item.cs" />
     <Compile Include="Models\HRM\App_roles.cs" />
     <Compile Include="Models\HRM\App_subject.cs" />
+    <Compile Include="Models\HRM\CompanyStructure.cs" />
     <Compile Include="Models\HRM\Daily_meals.cs" />
     <Compile Include="Models\HRM\Employees.cs" />
     <Compile Include="Models\HRM\Meal_category.cs" />

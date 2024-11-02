@@ -24,8 +24,9 @@ namespace AppMMCV.ViewModels.HRM
     internal class Canteen_MasterRegisterMealsVM : INotifyPropertyChanged
     {
         public Canteen_MasterRegisterMealsVM()
-        {           
+        {
             Get_DataDepartment();
+
             Command_ExecuteDownloadMaster = new RelayCommand(Download_Master);
         }
 
@@ -108,8 +109,7 @@ namespace AppMMCV.ViewModels.HRM
             {
                 IsLoading = false;
             }
-        }       
-
+        }
         async void Get_DataDepartment()
         {
             await Task.Run(() =>
@@ -129,7 +129,7 @@ namespace AppMMCV.ViewModels.HRM
                     MessageBox.Show(exception);
                 }
             });
-            
+
         }
 
         void Get_Section()
@@ -208,16 +208,63 @@ namespace AppMMCV.ViewModels.HRM
                                 {
                                     var workbook = package.Workbook;
                                     var sheet = workbook.Worksheets.Add("Meal Register");
-                                    int start_r = 6;
+                                    sheet.Column(1).Width = 4;
+                                    sheet.Column(2).Width = 8;
+                                    sheet.Column(3).Width = 15;
+                                    sheet.Column(4).Width = 40;
+                                    sheet.Cells[2, 2].Value = "MASTER ĐĂNG KÝ SUẤT ĂN";
+                                    sheet.Cells[2, 2].Style.Font.Bold = true;
+                                    sheet.Cells[3, 2].Value = "Ngày";
+                                    sheet.Cells[3, 3].Value = DateTime.Now;
+                                    sheet.Cells[3, 3].Style.Numberformat.Format = "yyy/MM/dd";
+                                    sheet.Cells[3, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+                                    sheet.Cells[4, 2].Value = "Version";
+                                    sheet.Cells[4, 3].Value = "Ver20241101";
+                                    int start_r = 5;
                                     int write_r = start_r;
+                                    foreach (var option in option_category) // Thực đơn
+                                    {
+                                        write_r++;
+                                        int column = 5 + option_category.Count;
+                                        sheet.Cells[write_r, column].Value = option;
+                                    }
+                                    write_r++;
                                     sheet.Cells[write_r, 2].Value = "STT";
                                     sheet.Cells[write_r, 3].Value = "Mã nhân viên";
                                     sheet.Cells[write_r, 4].Value = "Tên nhân viên";
-                                    sheet.Cells[write_r, 5].Value = "Suất ăn";
-                                    sheet.Cells[write_r, 2, write_r, 5].Style.Font.Bold = true;
-                                    sheet.Cells[write_r, 2, write_r, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                                    sheet.Cells[write_r, 2, write_r, 5].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                    sheet.Cells[write_r, 2, write_r, 5].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.AliceBlue);  // Màu xanh nhạt
+
+                                    int start_c = 4;
+                                    int write_c = start_c;
+                                    foreach (var option in option_meal)
+                                    {
+                                        write_c++;
+                                        sheet.Cells[start_r, write_c].Value = option;
+                                        sheet.Cells[write_r, write_c].Value = option;
+                                        sheet.Column(write_c).Width = 15;
+                                    }
+                                    write_c++;
+                                    sheet.Cells[start_r, write_c].Value = "Suất ăn"; //Suất ăn
+                                    sheet.Cells[write_r, write_c].Value = "Ghi chú"; //Ghi chú
+                                    sheet.Column(write_c).Width = 15;
+
+                                    FillBorderExcel(sheet.Cells[start_r, start_c + 1, write_r - 1, write_c], ExcelBorderStyle.Thin, ColorTranslator.FromHtml("#A52A2A"));
+
+                                    for (int i = start_r + 1; i < write_r; i++)
+                                        for (int j = start_c + 1; j < write_c; j++)
+                                            sheet.Cells[i, j].FormulaR1C1 = $"=COUNTIF(R{write_r + 1}C{j}:R[5000]C,R{i}C{write_c})";
+                                    sheet.Cells[start_r +1,start_c+1,write_r -1,write_c -1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                                    sheet.Cells[start_r, start_c + 1, start_r, write_c].Style.Font.Bold = true;
+                                    sheet.Cells[start_r, start_c + 1, start_r, write_c].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    sheet.Cells[start_r, start_c + 1, start_r, write_c].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                    sheet.Cells[start_r, start_c + 1, start_r, write_c].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.AliceBlue);
+
+                                    sheet.Cells[write_r, 2, write_r, write_c].Style.Font.Bold = true;
+                                    sheet.Cells[write_r, 2, write_r, write_c].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    sheet.Cells[write_r, 2, write_r, write_c].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                    sheet.Cells[write_r, 2, write_r, write_c].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.AliceBlue);  // Màu xanh nhạt
+                                    start_r = write_r;
+
                                     int stt = 0;
                                     foreach (var item in DataEmployees)
                                     {
@@ -227,35 +274,15 @@ namespace AppMMCV.ViewModels.HRM
                                         sheet.Cells[write_r, 3].Value = item.Employee_code;
                                         sheet.Cells[write_r, 4].Value = item.Full_name;
                                     }
-                                    sheet.Column(1).Width = 4;
-                                    sheet.Column(2).Width = 8;
-                                    sheet.Column(3).Width = 15;
-                                    sheet.Column(4).Width = 40;
-                                    sheet.Column(5).Width = 15;
-                                    sheet.Cells[2, 2].Value = "MASTER ĐĂNG KÝ SUẤT ĂN";
-                                    sheet.Cells[2, 2].Style.Font.Bold = true;
-                                    sheet.Cells[3, 2].Value = "Ngày";
-                                    sheet.Cells[3, 3].Value = DateTime.Now;
-                                    sheet.Cells[3, 3].Style.Numberformat.Format = "yyy/MM/dd";
-                                    sheet.Cells[3, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                                    sheet.Cells[4, 2].Value = "Bữa ăn";
-                                    var validation_meal = sheet.DataValidations.AddListValidation(sheet.Cells[4, 3].Address);
-                                    foreach (var option in option_meal) validation_meal.Formula.Values.Add(option);
+
                                     sheet.View.ShowGridLines = false;
-                                    var dataRange = sheet.Cells[start_r, 2, write_r, 5];
-                                    var validation_category = sheet.DataValidations.AddListValidation(sheet.Cells[start_r + 1, 5, write_r, 5].Address);
+
+                                    var validation_category = sheet.DataValidations.AddListValidation(sheet.Cells[start_r + 1, start_c + 1, write_r, write_c - 1].Address);
                                     foreach (var option in option_category) validation_category.Formula.Values.Add(option);
-                                    // Kẻ bảng với màu nâu nhạt cho đường kẻ
-                                    dataRange.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                                    dataRange.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                                    dataRange.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                                    dataRange.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                                    // Chọn màu cho đường kẻ (màu nâu nhạt)
-                                    var lightBrown = ColorTranslator.FromHtml("#A52A2A");  // Màu nâu (brown)
-                                    dataRange.Style.Border.Top.Color.SetColor(lightBrown);
-                                    dataRange.Style.Border.Bottom.Color.SetColor(lightBrown);
-                                    dataRange.Style.Border.Left.Color.SetColor(lightBrown);
-                                    dataRange.Style.Border.Right.Color.SetColor(lightBrown);
+
+                                    var dataRange = sheet.Cells[start_r, 2, write_r, write_c];
+                                    FillBorderExcel(dataRange, ExcelBorderStyle.Thin, ColorTranslator.FromHtml("#A52A2A"));
+
                                     sheet.Cells.Style.Font.Name = "Palatino Linotype";
                                     package.SaveAs(savePath);
                                 }
@@ -284,6 +311,20 @@ namespace AppMMCV.ViewModels.HRM
                 IsLoading = false;
             }
 
+        }
+        void FillBorderExcel(ExcelRange range, ExcelBorderStyle style, System.Drawing.Color color)
+        {
+            // Kẻ bảng với màu nâu nhạt cho đường kẻ
+            range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+            range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+            // Chọn màu cho đường kẻ (màu nâu nhạt)
+            var lightBrown = ColorTranslator.FromHtml("#A52A2A");  // Màu nâu (brown)
+            range.Style.Border.Top.Color.SetColor(lightBrown);
+            range.Style.Border.Bottom.Color.SetColor(lightBrown);
+            range.Style.Border.Left.Color.SetColor(lightBrown);
+            range.Style.Border.Right.Color.SetColor(lightBrown);
         }
 
         List<string> Option_Category()

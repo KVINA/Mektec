@@ -1,4 +1,12 @@
 ﻿  USE HRM
+  create table employee_card
+	(
+	serial_id bigint identity,
+	card_type varchar(10),
+	card_id varchar(50),
+	employee_code varchar(10)
+	)
+  Go
   Create table daily_total
   (
 	id bigint identity(1,1),

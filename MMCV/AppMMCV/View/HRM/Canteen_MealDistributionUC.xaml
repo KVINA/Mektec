@@ -7,41 +7,56 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UniformGrid Rows="2" Columns="2">
-        
-        <GroupBox Header="Số lượng lũy kế" Margin="2">
-            <TextBlock Text="0" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-        </GroupBox>
-        
-        <GroupBox Header="Kết quả quẹt thẻ" Margin="2">
-            <TextBlock Text="OK / NG" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Style.Triggers>
-                            <Trigger Property="Text" Value="OK">
-                                <Setter Property="Foreground" Value="Blue"/>
-                            </Trigger>
+    <materialDesign:DialogHost IsOpen="True" Name="dlh_main">
+        <materialDesign:DialogHost.DialogContent>
+            <UniformGrid Name="ufg_menu" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </materialDesign:DialogHost.DialogContent>
+        <UniformGrid Rows="2" Columns="2">
 
-                            <Trigger Property="Text" Value="NG">
-                                <Setter Property="Foreground" Value="Red"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-        </GroupBox>
-        
-        <GroupBox Header="Thông tin thẻ" Margin="2">
-            <UniformGrid Columns="1" Rows="3">
-                <TextBox IsReadOnly="False" materialDesign:HintAssist.Hint="ID Thẻ" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="Mã nhân viên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="Họ tên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                             
-            </UniformGrid>
-            
-        </GroupBox>
-        <GroupBox Header="Mô tả chi tiết nếu  kết quả thẻ trả về NG" Margin="2">
-            <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="Thông báo" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-        </GroupBox>
-    </UniformGrid>
+            <GroupBox Header="Số lượng lũy kế" Margin="2">
+                <TextBlock Text="0" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+            </GroupBox>
+
+            <GroupBox Header="Kết quả quẹt thẻ" Margin="2">
+                <TextBlock Text="OK / NG" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="OK">
+                                    <Setter Property="Foreground" Value="Blue"/>
+                                </Trigger>
+
+                                <Trigger Property="Text" Value="NG">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </GroupBox>
+
+            <GroupBox Header="Thông tin thẻ" Margin="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <UniformGrid Columns="1" Rows="3">
+                        <TextBox Name="txt_cardID" IsReadOnly="False" KeyDown="txt_cardID_KeyDown"
+                             materialDesign:HintAssist.Hint="ID Thẻ" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
+                        <TextBox Name="txt_employeeCode" IsReadOnly="True" materialDesign:HintAssist.Hint="Mã nhân viên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
+                        <TextBox Name="txt_employeeName" IsReadOnly="True" materialDesign:HintAssist.Hint="Họ tên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
+                    </UniformGrid>
+
+                    <Image Width="200" Grid.Column="1"/>
+                </Grid>
+
+
+            </GroupBox>
+            <GroupBox Header="Mô tả chi tiết nếu  kết quả thẻ trả về NG" Margin="2">
+                <TextBox Name="txt_notification" IsReadOnly="True" materialDesign:HintAssist.Hint="Thông báo" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            </GroupBox>
+        </UniformGrid>
+    </materialDesign:DialogHost>
+   
 </UserControl>

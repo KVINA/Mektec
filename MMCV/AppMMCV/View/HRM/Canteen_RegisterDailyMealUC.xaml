@@ -19,6 +19,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <WrapPanel Grid.Row="0">
@@ -29,18 +30,48 @@
                 <Button Command="{Binding Command_ExecuteRegisterMeals}" Content="Register file attach" Margin="2"/>
             </WrapPanel>
 
-            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="4" Padding="2" Margin="2" Background="Yellow">
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="4" Padding="2" Margin="2" >
                 <Grid Margin="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Command="{Binding Command_ExecuteGetAttachmentPath}" Content="{materialDesign:PackIcon Kind=Paperclip}" Style="{StaticResource MaterialDesignFlatButton}"/>
-                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding AttachmentPath}"/>
+                    <Button FontWeight="Bold" Command="{Binding Command_ExecuteGetAttachmentPath}" Content="Attach file" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Border Grid.Column="1" Background="Gray" Width="1" Margin="5 0" VerticalAlignment="Stretch"/>
+                    <TextBlock Grid.Column="2" Margin="5 0" VerticalAlignment="Center" Text="{Binding AttachmentPath}"/>
                 </Grid>
             </Border>
 
-            <DataGrid ItemsSource="{Binding DataRegisterDaily}" IsReadOnly="True" Grid.Row="2" Margin="2"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid ItemsSource="{Binding DataRegisterDaily}" IsReadOnly="True" Grid.Row="2" Margin="2" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Ngày" Binding="{Binding Meal_date, StringFormat='yyyy-MM-dd'}"/>
+                        <DataGridTextColumn Header="Mã nhân viên" Binding="{Binding Employee_code}"/>
+                        <DataGridTextColumn Header="Tên nhân viên" Binding="{Binding Full_name}"/>
+                        <DataGridTextColumn Header="Ca ăn" Binding="{Binding Meal}"/>
+                        <DataGridTextColumn Header="Suất ăn" Binding="{Binding Category_name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <GroupBox Grid.Column="1" Style="{x:Null}" Header="Total">
+                    <StackPanel Margin="2">
+                        <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="Cơm" Text="{Binding Total_rice}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="2 5" Width="100"/>
+
+                        <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="BMS 1:1" Text="{Binding Total_bms1}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="2 5" Width="100"/>
+
+                        <TextBox IsReadOnly="True" materialDesign:HintAssist.Hint="BMS 2:2" Text="{Binding Total_bms2}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="2 5" Width="100"/>
+                    </StackPanel>
+
+                </GroupBox>
+            </Grid>
+            
+           
         </Grid>
     </materialDesign:DialogHost>
 

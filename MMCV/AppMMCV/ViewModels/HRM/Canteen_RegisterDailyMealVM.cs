@@ -2,6 +2,7 @@
 using LibraryHelper.Models.HRM;
 using Microsoft.Win32;
 using OfficeOpenXml;
+using OfficeOpenXml.FormulaParsing.Ranges;
 using OfficeOpenXml.Table.PivotTable;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,9 @@ namespace AppMMCV.ViewModels.HRM
         Meal_time selectedMealTime;
         string attachmentPath;
         DateTime dateRegister = DateTime.Now;
+        int total_rice = 0;
+        int total_bms1 = 0;
+        int total_bms2 = 0;
 
         public ObservableCollection<Meal_time> DataMealTime
         {
@@ -58,6 +62,10 @@ namespace AppMMCV.ViewModels.HRM
         public Meal_time SelectedMealTime { get => selectedMealTime; set { selectedMealTime = value; Get_DataRegisterDaily(); OnPropertyChanged(nameof(SelectedMealTime)); } }
 
         public bool IsLoading { get => isLoading; set { isLoading = value; OnPropertyChanged(nameof(IsLoading)); } }
+
+        public int Total_rice { get => total_rice; set { total_rice = value; OnPropertyChanged(nameof(Total_rice)); } }
+        public int Total_bms1 { get => total_bms1; set { total_bms1 = value; OnPropertyChanged(nameof(Total_bms1)); } }
+        public int Total_bms2 { get => total_bms2; set { total_bms2 = value; OnPropertyChanged(nameof(Total_bms2)); }  }
 
         async void Get_DataRegisterDaily()
         {
@@ -88,6 +96,7 @@ namespace AppMMCV.ViewModels.HRM
                         MessageBox.Show(exception);
                     }
                 }
+                UploadTotal();
             });
             IsLoading = false;
         }
@@ -142,7 +151,7 @@ namespace AppMMCV.ViewModels.HRM
 
         async void RegisterMeals()
         {
-            if (!string.IsNullOrEmpty(AttachmentPath) && SelectedMealTime != null)
+            if (!string.IsNullOrEmpty(AttachmentPath))
             {
                 try
                 {
@@ -158,71 +167,76 @@ namespace AppMMCV.ViewModels.HRM
                             using (ExcelPackage package = new ExcelPackage(fileInfo, false))
                             {
                                 var workbook = package.Workbook;
-                                IsFileMaster = workbook.Worksheets.Any(s => s.Name == "Meal Register");
+                                IsFileMaster = workbook.Worksheets.Any(s => s.Name == "Meal Register"); // Kiểm tra tên sheet
                                 if (IsFileMaster)
                                 {
                                     var sheet = workbook.Worksheets["Meal Register"];
-                                    int start_r = 7;
-                                    string meal_date = DateRegister.ToString("yyyy-MM-dd");
-                                    string dateInfo = Convert_DateTimeEpplus(sheet.Cells[3, 3].Value).ToString("yyyy-MM-dd");
-                                    string mealInfo = sheet.Cells[4, 3].Text.Trim();
+                                    string meal_date = DateRegister.ToString("yyyy-MM-dd"); //Ngày báo cơm trên phần mềm
+                                    string dateInfo = Convert_DateTimeEpplus(sheet.Cells[3, 3].Value).ToString("yyyy-MM-dd"); //Ngày báo cơm trong file excel
+                                    string versionInfo = sheet.Cells[4, 3].Text.Trim(); //Version file master
 
-                                    if (mealInfo == $"{SelectedMealTime.Id}:{SelectedMealTime.Meal}" && dateInfo == meal_date)
+                                    if (dateInfo == meal_date)
                                     {
-                                        if (string.IsNullOrEmpty(mealInfo))
+                                        int start_r = 10;
+                                        int start_c = 5;
+                                        int write_c = start_c;
+
+                                        while (!string.IsNullOrEmpty(sheet.Cells[start_r, write_c].Text))
                                         {
-                                            MessageBox.Show("Invalid meal time.");
-                                            return;
-                                        }
-                                        int meal_time_id = Convert.ToInt32(mealInfo.Split(':')[0]);                                        
-                                        while (!string.IsNullOrEmpty(sheet.Cells[start_r, 3].Text))
-                                        {
-                                            string category = sheet.Cells[start_r, 5].Text.Trim();
-                                            if (category != "N/A")
+                                            string mealInfo = sheet.Cells[start_r, write_c].Text.Trim();
+                                            var chekMeal = DataMealTime.AsEnumerable().Any(s => $"{s.Id}:{s.Meal}" == mealInfo);
+                                            if (chekMeal)
                                             {
-                                                if (string.IsNullOrEmpty(category))
+                                                int meal_time_id = Convert.ToInt32(mealInfo.Split(':')[0]);
+                                                int write_r = start_r + 1;
+                                                while (!string.IsNullOrEmpty(sheet.Cells[write_r, 3].Text))
                                                 {
-                                                    MessageBox.Show($"Invalid data. Row: {start_r}");
-                                                    return;
-                                                }
-
-                                                int category_id = Convert.ToInt32(category.Split(':')[0]);
-                                                string employee_code = sheet.Cells[start_r, 3].Text;
-                                                string employee_name = sheet.Cells[start_r, 4].Text;
-
-                                                string query_check = $"Select count(*) from [daily_meals] Where meal_date = '{DateRegister.ToString("yyyy-MM-dd")}' and employee_code = '{employee_code}' and meal_time_id = '{meal_time_id}';";
-                                                var res = SQLService.Method.ExecuteScalar(out string exception, SQLService.Server.SV68_HRM, query_check);
-                                                if (string.IsNullOrEmpty(exception))
-                                                {
-                                                    if ((int)res > 0)
+                                                    string category = sheet.Cells[write_r, write_c].Text.Trim();
+                                                    if (category != "N/A")
                                                     {
-                                                        string query = $"Update [daily_meals] Set [category_id] = {category_id},[registration_by] = '{registration_by}',[registration_at] = GETDATE() " +
-                                                            $"Where meal_date = '{meal_date}' and employee_code = '{employee_code}' and meal_time_id = '{meal_time_id}';";
-                                                        buiderQuery.AppendLine(query);
+                                                        if (string.IsNullOrEmpty(category))
+                                                        {
+                                                            MessageBox.Show($"Bạn chưa chọn suất ăn chon công nhân viên dòng: {write_r}");
+                                                            return;
+                                                        }
+
+                                                        int category_id = Convert.ToInt32(category.Split(':')[0]); // Id meal
+                                                        string employee_code = sheet.Cells[write_r, 3].Text; // StaffNo
+                                                        string employee_name = sheet.Cells[write_r, 4].Text; // Tên
+
+                                                        string query_check = $"Select count(*) from [daily_meals] Where meal_date = '{DateRegister.ToString("yyyy-MM-dd")}' and employee_code = '{employee_code}' and meal_time_id = '{meal_time_id}';";
+                                                        var res = SQLService.Method.ExecuteScalar(out string exception, SQLService.Server.SV68_HRM, query_check);
+                                                        if (string.IsNullOrEmpty(exception))
+                                                        {
+                                                            if ((int)res > 0)
+                                                            {
+                                                                string query = $"Update [daily_meals] Set [category_id] = {category_id},[registration_by] = '{registration_by}',[registration_at] = GETDATE() " +
+                                                                    $"Where meal_date = '{meal_date}' and employee_code = '{employee_code}' and meal_time_id = '{meal_time_id}';";
+                                                                buiderQuery.AppendLine(query);
+                                                            }
+                                                            else
+                                                            {
+                                                                string query = "Insert Into [daily_meals] ([meal_date],[employee_code],[meal_time_id],[category_id],[registration_by],[registration_at]) " +
+                                                                    $"Values ( '{meal_date}','{employee_code}',{meal_time_id},{category_id},'{registration_by}',GETDATE());";
+                                                                buiderQuery.AppendLine(query);
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show(exception);
+                                                            return;
+                                                        }
                                                     }
-                                                    else
-                                                    {
-                                                        string query = "Insert Into [daily_meals] ([meal_date],[employee_code],[meal_time_id],[category_id],[registration_by],[registration_at]) " +
-                                                            $"Values ( '{meal_date}','{employee_code}',{meal_time_id},{category_id},'{registration_by}',GETDATE());";
-                                                        buiderQuery.AppendLine(query);
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    MessageBox.Show(exception);
-                                                    return;
+                                                    write_r++;
                                                 }
                                             }
-                                            else
-                                            {
-
-                                            }
-                                            start_r++;
+                                            write_c++;
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Please recheck Date and Meal time, does not match the selected information.");
+                                        IsLoading = false;
+                                        MessageBox.Show("Ngày bạn chọn không giống với ngày trong file đăng ký.");
                                     }
 
                                 }
@@ -235,31 +249,37 @@ namespace AppMMCV.ViewModels.HRM
                                     var res = SQLService.Method.ExecuteNonTrans(out string exception, SQLService.Server.SV68_HRM, buiderQuery.ToString());
                                     if (string.IsNullOrEmpty(exception))
                                     {
-                                        if ((int)res > 0) { 
+                                        if ((int)res > 0)
+                                        {
                                             Get_DataRegisterDaily();
                                         }
                                         else
                                         {
+                                            IsLoading = false;
                                             MessageBox.Show("Fail.");
                                         }
                                     }
                                     else
                                     {
+                                        IsLoading = false;
                                         MessageBox.Show(exception);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("No data to update.");
+                                    IsLoading = false;
+                                    //MessageBox.Show("No data to update.");
                                 }
                             }
                             else
                             {
+                                IsLoading = false;
                                 MessageBox.Show("This is not master. Please recheck.");
                             }
                         }
                         else
                         {
+                            IsLoading = false;
                             MessageBox.Show("Cannot register for this date.");
                         }
 
@@ -306,6 +326,13 @@ namespace AppMMCV.ViewModels.HRM
         void Clear_AttachmentPath()
         {
             AttachmentPath = string.Empty;
+        }
+
+        void UploadTotal()
+        {
+            Total_rice = DataRegisterDaily.AsEnumerable().Count(s => s.Category_id == 1);
+            Total_bms1 = DataRegisterDaily.AsEnumerable().Count(s => s.Category_id == 3);
+            Total_bms2 = DataRegisterDaily.AsEnumerable().Count(s => s.Category_id == 2);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -357,6 +384,6 @@ namespace AppMMCV.ViewModels.HRM
         public string Category_name { get => category_name; set => category_name = value; }
         public string Registration_by { get => registration_by; set => registration_by = value; }
         public DateTime? Registration_at { get => registration_at; set => registration_at = value; }
-        
+
     }
 }

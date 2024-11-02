@@ -19,7 +19,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBox Text="{Binding PART_TextBox}" IsReadOnly="True"/>
-                            <Button Command="{Binding PART_Button}" Grid.Column="1">                                
+                            <Button Content="{Binding PART_Button}" Grid.Column="1">                                
                             </Button>
                         </Grid> 
                     </ControlTemplate>
