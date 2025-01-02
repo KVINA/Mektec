@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,14 +27,21 @@ namespace AppMMCV.View.HRM
     public partial class Canteen_MasterRegisterMealsUC : UserControl
     {
         //Khai báo đăng ký một DependencyProperty
-        
+        private Canteen_MasterRegisterMealsVM dtcontext;
 
         public Canteen_MasterRegisterMealsUC()
         {
             InitializeComponent();
-            DataContext = new Canteen_MasterRegisterMealsVM();
+            dtcontext = new Canteen_MasterRegisterMealsVM();
+            DataContext = dtcontext;
         }
 
-        
+        private void DepartmentTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is ViewModels.HRM.CompanyStructure selectedDepartment)
+            {
+                dtcontext.SelectedCompanyStructure = selectedDepartment;                
+            }
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace AppMMCV.View.Systems
             if (DIC_MenuItem.Count > 0)
             {
                 string employee_code = DataService.UserInfo.username;
-                string query = $"SELECT [list_item_id] FROM [HRM].[dbo].[app_roles] Where menu_id = {menu_id} and employee_code = '{employee_code}';";
+                string query = $"SELECT [list_item_id] FROM [dbo].[app_roles] Where menu_id = {menu_id} and employee_code = '{employee_code}';";
                 var data = SQLService.Method.ExecuteScalar(out string exception, SQLService.Server.SV68_HRM, query);
                 if (string.IsNullOrEmpty(exception))
                 {

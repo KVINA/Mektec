@@ -1,5 +1,4 @@
 ﻿using AppMMCV.Services;
-using LibraryHelper.Methord;
 using LibraryHelper.Models.HRM;
 using System;
 using System.Collections.Generic;
@@ -81,9 +80,20 @@ namespace AppMMCV.ViewModels.HRM
 				return res;
 			}
 		}
+
+		public static int Edit_Employees(out string exception, Employees employees)
+		{
+            string query = $"Update [employees] Set [full_name] = @full_name ,[hire_date] = @hire_date ,[maternity_leave_date] = @maternity_leave_date ,[resignation_date] = @resignation_date ,[department] = @department ,[section] = @section ,[position] = @position ,[cost_center] = @cost_center , [status] = @status Where [employee_code] = @employee_code ;";
+			
+			var parameter = new object[] { employees.Full_name, employees.Hire_date, employees.Maternity_leave_date, employees.Resignation_date, employees.Department, employees.Section, employees.Position, employees.Cost_center, employees.Status, employees.Employee_code };
+           
+            var res = SQLService.Method.ExecuteNonQuery(out exception, SQLService.Server.SV68_HRM, query, parameter);
+            return res;
+        }
 		public static DataTable Get_Employees(out string exception, Employees employees = null)
 		{
-			string query = "Select * from employees";
+			employees.Is_delete = false;
+            string query = "Select * from employees";
 			if (employees != null)
 			{
 				List<string> condition = new List<string>();
@@ -92,9 +102,13 @@ namespace AppMMCV.ViewModels.HRM
 					var value = property.GetValue(employees);
 					if (value != null && !string.IsNullOrEmpty(value.ToString()))
 					{
-						if (property.Name == "status") condition.Add($"status = '{value.ToString().Substring(0, 1)}'");
-						else if (value is DateTime date) condition.Add($"{property.Name} = '{date.ToString("yyyy-MM-dd")}'");
-						else condition.Add($"{property.Name} = N'{value.ToString()}'");
+						if (property.Name != "Picture_id")
+						{
+                            if (property.Name == "status") 
+								condition.Add($"status = '{value.ToString().Substring(0, 1)}'");
+                            else if (value is DateTime date) condition.Add($"{property.Name} = '{date.ToString("yyyy-MM-dd")}'");
+                            else condition.Add($"{property.Name} = N'{value.ToString()}'");
+                        }						
 					}
 				}
 

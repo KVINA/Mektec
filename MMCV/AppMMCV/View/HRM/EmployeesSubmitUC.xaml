@@ -27,6 +27,7 @@
 
 
         <Grid Name="grid_body" VerticalAlignment="Center">
+            
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -37,11 +38,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+        
             <TextBox Tag="full_name" Name="txt_full_name" Grid.ColumnSpan="2" Width="Auto" materialDesign:HintAssist.Hint="Full name"/>
 
             <TextBox Tag="employee_code" Name="txt_code" Grid.Row="1" materialDesign:HintAssist.Hint="ID code"/>

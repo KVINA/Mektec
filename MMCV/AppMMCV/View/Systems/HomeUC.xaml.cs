@@ -43,12 +43,6 @@ namespace AppMMCV.View.Systems
             }
         }
 
-		private void PackIcon_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-            var wd = new Window() { Content = new AppRolesUC() };
-            wd.ShowDialog();
-        }
-
 		private void Expander_Expanded(object sender, RoutedEventArgs e)
 		{
             if (sender is Expander expander)
@@ -64,7 +58,18 @@ namespace AppMMCV.View.Systems
             }
             
 		}
-	}
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            mni_user.IsSubmenuOpen = true;
+        }
+
+        private void Event_ShowChangePassword(object sender, RoutedEventArgs e)
+        {
+            var wd = new ChangePasswordWD();
+            wd.ShowDialog();
+        }
+    }
 
 
 }

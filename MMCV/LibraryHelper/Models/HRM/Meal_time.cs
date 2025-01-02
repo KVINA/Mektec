@@ -10,7 +10,7 @@ namespace LibraryHelper.Models.HRM
 	public class Meal_time
 	{
 		public Meal_time() { }
-		public Meal_time(DataRow row) 
+		public Meal_time(DataRow row, bool exten = false) 
 		{
 			this.id = (int)row["id"];
 			this.meal = row["meal"].ToString();
@@ -19,13 +19,15 @@ namespace LibraryHelper.Models.HRM
 			this.plus_day = (int)row["plus_day"];
 			this.update_at = (DateTime)row["update_at"];
 			this.updator = row["updator"].ToString();
-		}
+			if (exten) this.meal_date = row.Field<DateTime?>("meal_date");
+        }
 		
 		private int id;
 		private string meal;
 		private TimeSpan start_time;
 		private int hour_duration;
 		private int plus_day;
+		private DateTime? meal_date;
 		private DateTime update_at;
 		private string updator;
 
@@ -34,7 +36,10 @@ namespace LibraryHelper.Models.HRM
 		public TimeSpan Start_time { get => start_time; set => start_time = value; }
 		public int Hour_duration { get => hour_duration; set => hour_duration = value; }
 		public int Plus_day { get => plus_day; set => plus_day = value; }
-		public DateTime Update_at { get => update_at; set => update_at = value; }
+        public DateTime? Meal_date { get => meal_date; set => meal_date = value; }
+        public DateTime Update_at { get => update_at; set => update_at = value; }
 		public string Updator { get => updator; set => updator = value; }
 	}
+
+
 }

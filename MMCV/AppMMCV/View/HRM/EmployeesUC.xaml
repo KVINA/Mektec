@@ -47,11 +47,11 @@
                     <Button Click="Event_ExportExcel" Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileExport" FontSize="11" VerticalAlignment="Center"/>
-                            <TextBlock Text="Xuất Excel" Padding="2"/>
+                            <TextBlock Text="Xuất file đăng ký" Padding="2"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Click="Event_AddFromExcel" Margin="5">
+                    <!--<Button Click="Event_AddFromExcel" Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FilePlus" FontSize="11" VerticalAlignment="Center"/>
                             <TextBlock Text="Thêm từ Excel" Padding="2"/>
@@ -63,7 +63,7 @@
                             <materialDesign:PackIcon Kind="MicrosoftExcel" FontSize="11" VerticalAlignment="Center"/>
                             <TextBlock Text="Cập nhật từ Excel" Padding="2"/>
                         </StackPanel>
-                    </Button>
+                    </Button>-->
 
                 </WrapPanel>
             </GroupBox>
@@ -82,9 +82,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
-
-
         </Grid>
     </materialDesign:DrawerHost>
 </UserControl>

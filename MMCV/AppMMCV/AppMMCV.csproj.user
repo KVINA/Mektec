@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>\\mvsfss01\MekkiAppl\fasys\MMCV Software\SoftwareMMCV\MMCV\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>\\10.80.1.48\data\040_IT\MMCV_Software\SoftwareMMCV\Canteen\|\\mvsfss01\MekkiAppl\fasys\MMCV Software\SoftwareMMCV\MMCV\|publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />

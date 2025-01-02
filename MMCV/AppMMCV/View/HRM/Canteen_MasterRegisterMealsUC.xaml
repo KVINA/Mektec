@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <UserControl.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
             <Style.Triggers>
@@ -15,43 +15,75 @@
                     <Setter Property="IsEnabled" Value="False"/>
                 </DataTrigger>
             </Style.Triggers>
-        </Style>
+        </Style>       
     </UserControl.Resources>
-    
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <WrapPanel>
-            <ComboBox materialDesign:HintAssist.Hint="Department" ItemsSource="{Binding DataDepartment}" SelectedItem="{Binding Department}"
-                      Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
-            <ComboBox materialDesign:HintAssist.Hint="Section" ItemsSource="{Binding DataSection}" SelectedItem="{Binding Section}"
-                      Width="150" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
-            <Button Content="Download master" Margin="5" Command="{Binding Command_ExecuteDownloadMaster}"/>
-            <Button Content="Async data" Margin="2 5"/>
-        </WrapPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TreeView SelectedItemChanged="DepartmentTreeView_SelectedItemChanged"
+                      Background="AliceBlue" ItemsSource="{Binding DataCompanyStructure}" Margin="5">                
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FolderAccountOutline" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.Resources>
+                    <Style TargetType="TreeView" BasedOn="{StaticResource MaterialDesignTreeView}">
+                        
+                    </Style>
+                </TreeView.Resources>
+            </TreeView>
+            
+        </ScrollViewer>
 
-        <materialDesign:DialogHost Grid.Row="1" IsOpen="{Binding IsLoading}">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel>
-                    <TextBlock Text="Processing ..." Margin="5 2"/>
-                    <materialDesign:Card Margin="5" UniformCornerRadius="14" Padding="4" HorizontalAlignment="Center">
-                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="50" IsIndeterminate="True"/>
-                    </materialDesign:Card>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
 
-            <DataGrid IsReadOnly="True"  Margin="2" ItemsSource="{Binding DataEmployees}" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employee code" Binding="{Binding Employee_code}"/>
-                    <DataGridTextColumn Header="Employee name" Binding="{Binding Full_name}"/>
-                    <DataGridTextColumn Header="Position" Binding="{Binding Position}"/>
-                    <DataGridTextColumn Header="Department" Binding="{Binding Department}"/>
-                    <DataGridTextColumn Header="Section" Binding="{Binding Section}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </materialDesign:DialogHost>
-    </Grid>   
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
+                <Button Content="Tải danh sách" Margin="5" Command="{Binding Command_ExecuteDownloadMaster}"/>
+            </WrapPanel>
+
+            <materialDesign:DialogHost IsOpen="{Binding IsLoading}">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel>
+                        <TextBlock Text="Processing ..." Margin="5 2"/>
+                        <materialDesign:Card Margin="5" UniformCornerRadius="14" Padding="4" HorizontalAlignment="Center">
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="50" IsIndeterminate="True"/>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+
+                <DataGrid IsReadOnly="True"  Margin="2" ItemsSource="{Binding DataEmployees}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Header="Employee code" Binding="{Binding EmployeeCode}"/>
+                        <DataGridTextColumn Header="Employee name" Binding="{Binding FullName}"/>
+                        <DataGridTextColumn Header="Position" Binding="{Binding Position}"/>
+                        <DataGridTextColumn Header="Location" Binding="{Binding Department}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </materialDesign:DialogHost>
+        </Grid>
+    </Grid>
 </UserControl>

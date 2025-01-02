@@ -7,23 +7,61 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <materialDesign:DialogHost IsOpen="{Binding IsLoading}">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel>
+                <materialDesign:Card UniformCornerRadius="14" Padding="4" Margin="5">
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="50" IsIndeterminate="True"/>
+                </materialDesign:Card>
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
 
-        <DatePicker SelectedDate="{Binding SelectedDate}" materialDesign:HintAssist.Hint="Select date" 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <DatePicker SelectedDate="{Binding SelectedDate}" materialDesign:HintAssist.Hint="Select date" 
                     Style="{StaticResource MaterialDesignFilledDatePicker}" Margin="2" Width="150" HorizontalAlignment="Left"/>
 
-        <GroupBox Header="Daily report" Grid.Row="1" Margin="2">
-            <DataGrid ItemsSource="{Binding DataDailyTotal}" IsReadOnly="True" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Bữa ăn" Binding="{Binding Meal}"/>
-                    <DataGridTextColumn Header="Suất ăn" Binding="{Binding Category_name}"/>
-                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
-    </Grid>
+                <Button Command="{Binding Command_Get_DataDailyTotal}" Content="Cập nhật" Margin="5"/>
+            </WrapPanel>
+
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Header="Tổng nhà máy" Margin="2">
+                    <DataGrid ItemsSource="{Binding DataDailyTotal}" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Bữa ăn" Binding="{Binding Meal}"/>
+                            <DataGridTextColumn Header="Suất ăn" Binding="{Binding Category_name}"/>
+                            <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+
+                <GroupBox Header="Total phòng ban" Grid.Column="1" Margin="2">
+                    <DataGrid ItemsSource="{Binding DataDailyDetail}"
+                              SelectedItem="{Binding SelectedDetail}" IsReadOnly="True"/>
+                </GroupBox>
+
+                <GroupBox Header="Chi tiết theo phòng" Grid.Column="2" Margin="2">
+                    <DataGrid ItemsSource="{Binding ExtentDetail}" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Bữa ăn" Binding="{Binding meal}"/>
+                            <DataGridTextColumn Header="Suất ăn" Binding="{Binding category_name}"/>
+                            <DataGridTextColumn Header="Số lượng" Binding="{Binding quantity}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>

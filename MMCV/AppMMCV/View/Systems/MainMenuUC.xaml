@@ -12,6 +12,7 @@
     </UserControl.Resources>
     
     <Grid>
+        
         <Grid.Resources>
             <Style TargetType="MenuItem" BasedOn="{x:Null}">
                 <EventSetter Event="Click" Handler="MenuItem_Click"/>
@@ -68,10 +69,19 @@
                    FontWeight="Bold" Margin="2"/>
         </Grid>
 
-        <!--<UserControl Grid.Row="1" Content="{Binding TabItemsSource}"/>-->
 
         <TabControl Grid.Row="1" Name="tab_control"/>
-
-
+        <Image Grid.Row="1" Source="/Image/background.png" Stretch="UniformToFill" Margin="2">
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=tab_control, Path=Items.Count}" Value="0">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>        
     </Grid>
 </UserControl>

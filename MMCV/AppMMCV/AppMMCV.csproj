@@ -18,7 +18,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\mvsfss01\MekkiAppl\fasys\MMCV Software\SoftwareMMCV\MMCV\</PublishUrl>
+    <PublishUrl>\\10.80.1.48\data\040_IT\MMCV_Software\SoftwareMMCV\Canteen\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,8 +28,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <MinimumRequiredVersion>1.0.0.4</MinimumRequiredVersion>
-    <ApplicationRevision>5</ApplicationRevision>
+    <MinimumRequiredVersion>1.0.0.64</MinimumRequiredVersion>
+    <ApplicationRevision>65</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -85,6 +85,12 @@
     <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.6.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.6\lib\net452\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -96,6 +102,15 @@
     </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.2903.40, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2903.40\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.2903.40, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2903.40\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.2903.40, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2903.40\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
@@ -165,6 +180,10 @@
     </Compile>
     <Compile Include="Services\AuthenServices.cs" />
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\EZService.cs" />
+    <Compile Include="Services\ImpersonateService.cs" />
+    <Compile Include="Services\MasterRegisterMeals.cs" />
+    <Compile Include="Services\MediaServices.cs" />
     <Compile Include="Services\SQLService.cs" />
     <Compile Include="ViewModels\Admin\AppRolesVM.cs" />
     <Compile Include="ViewModels\Admin\MenuItemVM.cs" />
@@ -173,12 +192,17 @@
     <Compile Include="ViewModels\Admin\SubjectVM.cs" />
     <Compile Include="ViewModels\GlobalVM.cs" />
     <Compile Include="ViewModels\HRMVM.cs" />
+    <Compile Include="ViewModels\HRM\Canteen_ConfirmDailyMealsVM.cs" />
+    <Compile Include="ViewModels\HRM\Canteen_DailyReportsVM.cs" />
     <Compile Include="ViewModels\HRM\Canteen_DailyTotalVM.cs" />
     <Compile Include="ViewModels\HRM\Canteen_MasterRegisterMealsVM.cs" />
+    <Compile Include="ViewModels\HRM\Canteen_MealDistributionVM.cs" />
     <Compile Include="ViewModels\HRM\Canteen_RegisterDailyMealVM.cs" />
+    <Compile Include="ViewModels\HRM\Canten_MilkBreadDistributionVM.cs" />
     <Compile Include="ViewModels\HRM\EmployeesVM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SystemsVM.cs" />
+    <Compile Include="ViewModels\Systems\ChangePasswordVM.cs" />
     <Compile Include="ViewModels\Systems\HomeVM.cs" />
     <Compile Include="ViewModels\Systems\LoginVM.cs" />
     <Compile Include="ViewModels\Systems\PermissionVM.cs" />
@@ -194,14 +218,23 @@
     <Compile Include="View\Admin\MenuUC.xaml.cs">
       <DependentUpon>MenuUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\ResetPasswordUC.xaml.cs">
+      <DependentUpon>ResetPasswordUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\SubjectUC.xaml.cs">
       <DependentUpon>SubjectUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HRM\Canteen_ConfirmDailyMeals.xaml.cs">
+      <DependentUpon>Canteen_ConfirmDailyMeals.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HRM\Canteen_DailyReportsUC.xaml.cs">
       <DependentUpon>Canteen_DailyReportsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HRM\Canteen_DailyTotalUC.xaml.cs">
       <DependentUpon>Canteen_DailyTotalUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HRM\Canteen_HelpUC.xaml.cs">
+      <DependentUpon>Canteen_HelpUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HRM\Canteen_MasterRegisterMealsUC.xaml.cs">
       <DependentUpon>Canteen_MasterRegisterMealsUC.xaml</DependentUpon>
@@ -218,11 +251,17 @@
     <Compile Include="View\HRM\Canteen_RegisterDailyMealUC.xaml.cs">
       <DependentUpon>Canteen_RegisterDailyMealUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HRM\Canten_MilkBreadDistribution.xaml.cs">
+      <DependentUpon>Canten_MilkBreadDistribution.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HRM\EmployeesSubmitUC.xaml.cs">
       <DependentUpon>EmployeesSubmitUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HRM\EmployeesUC.xaml.cs">
       <DependentUpon>EmployeesUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Systems\ChangePasswordWD.xaml.cs">
+      <DependentUpon>ChangePasswordWD.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Systems\LoginUC.xaml.cs">
       <DependentUpon>LoginUC.xaml</DependentUpon>
@@ -263,7 +302,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Admin\ResetPasswordUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\SubjectUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HRM\Canteen_ConfirmDailyMeals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -272,6 +319,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HRM\Canteen_DailyTotalUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HRM\Canteen_HelpUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,11 +346,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\HRM\Canten_MilkBreadDistribution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HRM\EmployeesSubmitUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HRM\EmployeesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Systems\ChangePasswordWD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,12 +397,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Image\AvataDF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\sound-ng.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\sound-ok.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="letter-m.ico" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="AppMMCV_TemporaryKey.pfx" />
+    <Content Include="Documents\Canteen\Help.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Json\json-info.json" />
     <None Include="Json\menu.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -351,6 +422,9 @@
     <None Include="Json\Server_KVINA.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Image\background.png" />
+    <Resource Include="Image\Mektec.JPG" />
+    <Resource Include="Image\BkHome.png" />
     <Content Include="Json\Server_MMCV.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -385,6 +459,7 @@
       <Name>LibraryHelper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -392,5 +467,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.2903.40\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.2903.40\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.2903.40\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.2903.40\build\Microsoft.Web.WebView2.targets')" />
 </Project>

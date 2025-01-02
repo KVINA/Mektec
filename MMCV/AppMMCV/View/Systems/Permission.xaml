@@ -64,9 +64,9 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBox Text="{Binding Employee_search}" materialDesign:HintAssist.Hint="Username" Margin="2 5" Style="{StaticResource MaterialDesignOutlinedTextBox}" Width="150"/>
-                <Button Content="Search" Name="btn_search" Command="{Binding Commad_ExecuteSearch}"  Margin="2 5" Width="100"/>
+                <Button Content="Tìm kiếm" Name="btn_search" Command="{Binding Commad_ExecuteSearch}"  Margin="2 5" Width="100"/>
                 <Button Command="{Binding DataContext.Commad_LoadFunctionAdd, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                        ToolTip="Add permission" Content="Add" Width="100" Margin="2 5"/>
+                        ToolTip="Add permission" Content="Thêm mới" Width="100" Margin="2 5"/>
             </StackPanel>
 
             <Grid Grid.Row="1">
@@ -75,11 +75,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox Header="Item info" Margin="2">
+                <GroupBox Header="Thông tin hạng mục" Margin="2">
                     <DataGrid IsReadOnly="True" ItemsSource="{Binding DataMenuItem}" AutoGenerateColumns="False" Margin="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Item id" Binding="{Binding Item_id}"/>
-                            <DataGridTextColumn Header="Item name" Binding="{Binding Item_name}"/>
+                            <DataGridTextColumn Header="Mã ID" Binding="{Binding Item_id}"/>
+                            <DataGridTextColumn Header="Mục lục" Binding="{Binding Item_name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>

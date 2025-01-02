@@ -20,8 +20,7 @@ namespace AppMMCV.Services
 		private static ServerDF server;
 
 	}
-
-	public class ServerDF
+		public class ServerDF
 	{
 		private Server readJson()
 		{
@@ -39,7 +38,8 @@ namespace AppMMCV.Services
 		private SERVER sV68_PIMV;
 		private SERVER sV68_HRM;
 		private SERVER sV48_PIMV;
-		private SERVER sV91_PIMV;
+		private SERVER sV34_AC;
+		private SERVER sV91_EZ_MEKTEC;
 		public SERVER SV46_Record { get { if (sV46_Record == null) sV46_Record = new SERVER("10.80.1.46", "Record", "pim", "pimpass"); return sV46_Record; } }
 
 		public SERVER SV69_Record { get { if (sV69_Record == null) sV69_Record = new SERVER("10.80.1.69", "Record", "pim", "pimpass"); return sV69_Record; } }
@@ -59,5 +59,8 @@ namespace AppMMCV.Services
 			}
 		}
 		public SERVER SV48_PIMV { get { if (sV48_PIMV == null) sV48_PIMV = new SERVER("10.80.1.48", "PIMV", "pim", "pimpass"); return sV48_PIMV; } }
-	}
+
+        public SERVER SV34_AC { get { if (sV34_AC == null) sV34_AC = new SERVER("10.80.1.34", "AC", "mmcv", "mmcv@1234"); return sV34_AC; } }
+        public SERVER SV91_EZ_MEKTEC { get { if (sV91_EZ_MEKTEC == null) sV91_EZ_MEKTEC = new SERVER("10.80.1.91", "EZ_MEKTEC", "mmcv", "mmcv@2024"); return sV91_EZ_MEKTEC; } }
+    }
 }

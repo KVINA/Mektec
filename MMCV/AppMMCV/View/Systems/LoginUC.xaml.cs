@@ -66,6 +66,19 @@ namespace AppMMCV.View.Systems
 		}
         private void Btn_Click_Login(object sender, RoutedEventArgs e)
         {
+            Excute_Login();
+        }
+
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Excute_Login();
+            }
+        }
+
+        void Excute_Login()
+        {
             // Logic để xác thực thông tin đăng nhập
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
             {

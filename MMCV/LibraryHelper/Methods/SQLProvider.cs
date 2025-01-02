@@ -25,6 +25,7 @@ namespace LibraryHelper.Methord
             try
             {
                 DataTable data = new DataTable();
+                
                 using (SqlConnection conn = new SqlConnection(server.ConnectionString()))
                 {
                     conn.Open();
@@ -46,7 +47,9 @@ namespace LibraryHelper.Methord
                             }
                         }
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        adapter.Fill(data);
+                        DataSet dataSet = new DataSet();
+                        adapter.Fill(dataSet);
+                        data = dataSet.Tables[0];
                     }
                     catch (Exception ex)
                     {

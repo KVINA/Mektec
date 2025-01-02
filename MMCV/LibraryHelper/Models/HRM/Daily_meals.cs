@@ -13,7 +13,7 @@ namespace LibraryHelper.Models.HRM
         {
             this.id = Convert.ToInt64(row["id"]);
             this.meal_date = Convert.ToDateTime(row["meal_date"]);
-            this.employee_code = Convert.ToString(row["employee_code"]);
+            this.employeeCode = Convert.ToString(row["employeeCode"]);
             this.meal_time_id = Convert.ToInt32(row["meal_time_id"]);
             this.category_id = Convert.ToInt32(row["category_id"]);
             this.registration_by =  Convert.ToString(row["registration_by"]);
@@ -29,7 +29,7 @@ namespace LibraryHelper.Models.HRM
 
         private long id;
         private DateTime meal_date;
-        private string employee_code;
+        private string employeeCode;
         private int meal_time_id;
         private int category_id;
         private string registration_by;
@@ -39,7 +39,7 @@ namespace LibraryHelper.Models.HRM
 
         public long Id { get => id; set => id = value; }
         public DateTime Meal_date { get => meal_date; set => meal_date = value; }
-        public string Employee_code { get => employee_code; set => employee_code = value; }
+        public string Employee_code { get => employeeCode; set => employeeCode = value; }
         public int Meal_time_id { get => meal_time_id; set => meal_time_id = value; }
         public int Category_id { get => category_id; set => category_id = value; }
         public string Registration_by { get => registration_by; set => registration_by = value; }

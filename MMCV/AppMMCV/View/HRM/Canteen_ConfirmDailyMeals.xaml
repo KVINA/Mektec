@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="AppMMCV.View.HRM.Canteen_ConfirmDailyMeals"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppMMCV.View.HRM"
+             xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <DatePicker SelectedDate="{Binding SelectedDate}" materialDesign:HintAssist.Hint="Ngày" Width="150" Style="{StaticResource MaterialDesignOutlinedDatePicker}" Margin="2 5"/>
+            <Button Content="Làm mới" Command="{Binding Command_ExecuteDataTable}" Margin="5"/>
+            <Button Content="Download details" Command="{Binding Command_ExportDetailsToExcel}" Margin="5"/>
+            <TextBlock TextWrapping="Wrap" Foreground="{Binding NotifyBrush}" Text="{Binding NotifyContent}" VerticalAlignment="Center" Margin="2"/>
+        </WrapPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Số lượng đăng ký" Margin="2">
+                <DataGrid ItemsSource="{Binding TableRegister}" Grid.Column="1" IsReadOnly="True"/>
+            </GroupBox>
+
+            <GroupBox Header="Số lượng quẹt thẻ thực tế" Margin="2" Grid.Column="1">
+                <DataGrid ItemsSource="{Binding TableActual}" Grid.Column="1" IsReadOnly="True"/>
+            </GroupBox>
+        </Grid>
+    </Grid>
+    
+</UserControl>

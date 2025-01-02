@@ -5,58 +5,106 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppMMCV.View.HRM"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <materialDesign:DialogHost IsOpen="True" Name="dlh_main">
-        <materialDesign:DialogHost.DialogContent>
-            <UniformGrid Name="ufg_menu" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        </materialDesign:DialogHost.DialogContent>
-        <UniformGrid Rows="2" Columns="2">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="Style_Textblock_Result">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="OK">
+                    <Setter Property="Foreground" Value="Blue"/>
+                </Trigger>
 
-            <GroupBox Header="Số lượng lũy kế" Margin="2">
-                <TextBlock Text="0" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-            </GroupBox>
+                <Trigger Property="Text" Value="NG">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Style_Textblock_Notification">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <UniformGrid Rows="2" Columns="2">
+        <GroupBox Header="Số lượng lũy kế" Margin="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding MealCount}" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <GridSplitter Grid.Column="1" Width="3" Margin="0 2" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>                
+                <TextBlock Grid.Column="2" Style="{StaticResource Style_Textblock_Result}" Text="{Binding ResultStatus}" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.ColumnSpan="3" Text="{Binding ClockString}" FontSize="30" FontWeight="Bold" Foreground="DeepPink" HorizontalAlignment="Center"/>
+            </Grid>
 
-            <GroupBox Header="Kết quả quẹt thẻ" Margin="2">
-                <TextBlock Text="OK / NG" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <Trigger Property="Text" Value="OK">
-                                    <Setter Property="Foreground" Value="Blue"/>
-                                </Trigger>
+        </GroupBox>
 
-                                <Trigger Property="Text" Value="NG">
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </GroupBox>
+        <GroupBox Header="Mô tả chi tiết nếu  kết quả thẻ trả về NG" Margin="2">
+            <TextBox Name="txt_notification" Text="{Binding NotifyContent}" Foreground="{Binding NotifyBrush}"
+                     TextWrapping="Wrap" FontSize="50" IsReadOnly="True" Style="{StaticResource MaterialDesignTextBox}"/>
+        </GroupBox>
+        
 
-            <GroupBox Header="Thông tin thẻ" Margin="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <UniformGrid Columns="1" Rows="3">
-                        <TextBox Name="txt_cardID" IsReadOnly="False" KeyDown="txt_cardID_KeyDown"
+        <GroupBox Header="Thông tin thẻ" Margin="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <UniformGrid Columns="1" Rows="3">
+                    <TextBox Name="txt_cardID"  IsReadOnly="False" KeyDown="txt_cardID_KeyDown"
                              materialDesign:HintAssist.Hint="ID Thẻ" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                        <TextBox Name="txt_employeeCode" IsReadOnly="True" materialDesign:HintAssist.Hint="Mã nhân viên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                        <TextBox Name="txt_employeeName" IsReadOnly="True" materialDesign:HintAssist.Hint="Họ tên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
-                    </UniformGrid>
+                    <TextBox Name="txt_employeeCode" Text="{Binding EmployeeCode}" IsReadOnly="True" materialDesign:HintAssist.Hint="Mã nhân viên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
+                    <TextBox Name="txt_employeeName" Text="{Binding EmployeeName}" IsReadOnly="True" materialDesign:HintAssist.Hint="Họ tên" FontSize="25" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="2"/>
+                </UniformGrid>
 
-                    <Image Width="200" Grid.Column="1"/>
-                </Grid>
+                <Border CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Grid.Column="1">
+                    <Border.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Image Source="{Binding Avata}" Stretch="UniformToFill"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.Background>
+                </Border>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Lịch sử quẹt thẻ" Margin="2">
+            <GroupBox.Resources>
+                <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                    <Setter Property="Margin" Value="16 0 0 0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Grid Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GroupBox.Resources>
+            <DataGrid ItemsSource="{Binding EmployeeSwipeCards}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Ảnh">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Avata}" Height="60" Width="60"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-
-            </GroupBox>
-            <GroupBox Header="Mô tả chi tiết nếu  kết quả thẻ trả về NG" Margin="2">
-                <TextBox Name="txt_notification" IsReadOnly="True" materialDesign:HintAssist.Hint="Thông báo" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-            </GroupBox>
-        </UniformGrid>
-    </materialDesign:DialogHost>
-   
+                    <DataGridTextColumn Header="Mã NV" Binding="{Binding EmployeeCode}" ElementStyle="{StaticResource Style_Textblock_Notification}"/>
+                    <DataGridTextColumn Header="Tên NV" Binding="{Binding EmployeeName}" ElementStyle="{StaticResource Style_Textblock_Notification}"/>
+                    <DataGridTextColumn Header="Kết quả" Binding="{Binding Result}" ElementStyle="{StaticResource Style_Textblock_Result}"/>
+                    <DataGridTextColumn Header="Thông báo" Binding="{Binding Notification}" MaxWidth="250" ElementStyle="{StaticResource Style_Textblock_Notification}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </UniformGrid>
 </UserControl>

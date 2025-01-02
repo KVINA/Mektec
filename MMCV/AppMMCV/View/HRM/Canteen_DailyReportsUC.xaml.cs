@@ -1,4 +1,9 @@
-﻿using AppMMCV.ViewModels.HRM;
+﻿using AppMMCV.Services;
+using AppMMCV.ViewModels.HRM;
+using LibraryHelper.Methord;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using LiveCharts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +18,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using LiveCharts.Wpf.Charts.Base;
+using System.Reflection.Emit;
+using System.Runtime.Remoting.Contexts;
 
 namespace AppMMCV.View.HRM
 {
@@ -21,10 +30,16 @@ namespace AppMMCV.View.HRM
     /// </summary>
     public partial class Canteen_DailyReportsUC : UserControl
     {
+        private readonly Canteen_DailyReportsVM context;
         public Canteen_DailyReportsUC()
         {
             InitializeComponent();
-            
-        }        
+            context = new Canteen_DailyReportsVM();
+            DataContext = context;
+        }
+
     }
+
+
+
 }

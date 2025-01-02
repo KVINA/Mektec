@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="AppMMCV.View.HRM.Canten_MilkBreadDistribution"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppMMCV.View.HRM"
+             xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" FontSize="50"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="Style_Textblock_Result">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="OK">
+                    <Setter Property="Foreground" Value="Blue"/>
+                </Trigger>
+
+                <Trigger Property="Text" Value="NG">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <DatePicker Margin="10 20" SelectedDate="{Binding SelectedDate}"
+                        materialDesign:HintAssist.Hint="Date" Name="dpk" Style="{StaticResource MaterialDesignOutlinedDatePicker}"/>
+            <TextBox Grid.Column="1" Text="{Binding CardID}" materialDesign:HintAssist.Hint="ID thẻ tự động" KeyDown="TextBox_KeyDown"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10 20"/>
+
+            <!--<TextBox materialDesign:HintAssist.Hint="NCC nhập mã" KeyDown="TextBox_KeyDown"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10" Width="250"/>-->
+            <CheckBox Grid.Column="2" FontSize="30" Content="Sử dụng máy quẹt thẻ" FontStyle="Italic" Margin="10 20" Foreground="DeepSkyBlue" IsChecked="{Binding IsAuto}" Cursor="Hand"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding BreadInfo.EmployeeCode}" IsReadOnly="True" 
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="Mã nhân viên" Margin="10"/>
+
+            <TextBox Grid.Column="1" Text="{Binding BreadInfo.EmployeeName}" IsReadOnly="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="Họ tên" Margin="10"/>
+            <GroupBox Header="Chưa phát" Margin="10" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Grid.Row="1" Text="{Binding BreadInfo.Quantity1}" IsReadOnly="True" Foreground="Green" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="BMS 2:2" Margin="10 20"/>
+                    <TextBox Grid.Row="2" Text="{Binding BreadInfo.Quantity2}" IsReadOnly="True" Foreground="Green" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="BMS 1:1" Margin="10 20"/>
+                    <TextBox Grid.Row="3" Text="{Binding BreadInfo.Quantity3}" IsReadOnly="True" Foreground="Green" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" materialDesign:HintAssist.Hint="BMS 4:4" Margin="10 20"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Đã phát" Margin="10" Grid.Column="1"  Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="BMS 2:2" Text="{Binding BreadInfo.QuantityAc1}" IsReadOnly="True" Foreground="Blue" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10 20"/>
+
+                    <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="BMS 1:1" Text="{Binding BreadInfo.QuantityAc2}" IsReadOnly="True" Foreground="Blue" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10 20"/>
+
+                    <TextBox Grid.Row="3" materialDesign:HintAssist.Hint="BMS 4:4" Text="{Binding BreadInfo.QuantityAc3}" IsReadOnly="True" Foreground="Blue" FontWeight="Bold"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10 20"/>             
+
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Column="3" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Margin="10" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                    <TextBlock FontSize="200" Text="{Binding Result}"  Style="{StaticResource Style_Textblock_Result}"/>
+                </Border>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="black">
+                        <Border.Background>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Image Source="{Binding Avata}" Stretch="UniformToFill"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <TextBox Grid.Column="1" Margin="10" TextWrapping="Wrap" IsReadOnly="True" Name="txt_notifi" FontSize="30" Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Text="{Binding NotifiContent}" Foreground="{Binding NotifiBrush}"/>
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+
+        
+    </Grid>
+</UserControl>

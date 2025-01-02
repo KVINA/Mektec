@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\07.Project\Mektec\MMCV\AppMMCV\App.xaml
-201169471747
-1-1606181327
-451612237869
-39-1896668516
-MainWindow.xaml;View\Admin\AppRolesUC.xaml;View\Admin\MenuItemUC.xaml;View\Admin\MenuSettings.xaml;View\Admin\MenuUC.xaml;View\Admin\SubjectUC.xaml;View\HRM\Canteen_DailyReportsUC.xaml;View\HRM\Canteen_DailyTotalUC.xaml;View\HRM\Canteen_MasterRegisterMealsUC.xaml;View\HRM\Canteen_MealCategoryUC.xaml;View\HRM\Canteen_MealDistributionUC.xaml;View\HRM\Canteen_MealTimeUC.xaml;View\HRM\Canteen_RegisterDailyMealUC.xaml;View\HRM\EmployeesSubmitUC.xaml;View\HRM\EmployeesUC.xaml;View\Systems\LoginUC.xaml;View\Systems\MainMenuUC.xaml;View\Systems\HomeUC.xaml;View\Systems\Permission.xaml;View\Systems\RegisterUC.xaml;
+251760453283
+8-153836062
+59-100059769
+44-1511001215
+MainWindow.xaml;View\Admin\AppRolesUC.xaml;View\Admin\MenuItemUC.xaml;View\Admin\MenuSettings.xaml;View\Admin\MenuUC.xaml;View\Admin\ResetPasswordUC.xaml;View\Admin\SubjectUC.xaml;View\HRM\Canteen_ConfirmDailyMeals.xaml;View\HRM\Canteen_DailyReportsUC.xaml;View\HRM\Canteen_DailyTotalUC.xaml;View\HRM\Canteen_HelpUC.xaml;View\HRM\Canteen_MasterRegisterMealsUC.xaml;View\HRM\Canteen_MealCategoryUC.xaml;View\HRM\Canteen_MealDistributionUC.xaml;View\HRM\Canteen_MealTimeUC.xaml;View\HRM\Canteen_RegisterDailyMealUC.xaml;View\HRM\Canten_MilkBreadDistribution.xaml;View\HRM\EmployeesSubmitUC.xaml;View\HRM\EmployeesUC.xaml;View\Systems\ChangePasswordWD.xaml;View\Systems\LoginUC.xaml;View\Systems\MainMenuUC.xaml;View\Systems\HomeUC.xaml;View\Systems\Permission.xaml;View\Systems\RegisterUC.xaml;
 
 False
 

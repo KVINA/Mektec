@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppMMCV.View.Systems"
+        xmlns:local="clr-namespace:AppMMCV.Services"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:service ="clr-namespace:AppMMCV.Services"
         mc:Ignorable="d">
@@ -134,9 +134,9 @@
 
                         <Menu Width="0" Height="18" IsMainMenu="False" >
                             <MenuItem Name="mni_user" AutomationProperties.IsOffscreenBehavior="Onscreen">
-                                <MenuItem Name="txt_username" Cursor="Hand" Margin="15 0" Icon="{materialDesign:PackIcon Kind=AccountOutline}" />
+                                <MenuItem Header="{Binding Source={x:Static local:DataService.UserInfo}, Path=username, Mode=TwoWay}" Cursor="Hand" Margin="15 0" Icon="{materialDesign:PackIcon Kind=AccountOutline}" />
                                 <MenuItem Name="IsAdmin" Cursor="Hand" Margin="15 0" Header="Administrator" Icon="{materialDesign:PackIcon Kind=AdministratorOutline}" />
-                                <MenuItem Cursor="Hand" Margin="15 0" Header="Change Password" Icon="{materialDesign:PackIcon Kind=PasswordCheckOutline}" />
+                                <MenuItem Cursor="Hand" Margin="15 0" Header="Change Password" Click="Event_ShowChangePassword" Icon="{materialDesign:PackIcon Kind=PasswordCheckOutline}" />
                                 <MenuItem Cursor="Hand" Margin="15 0" Header="Log Out" Icon="{materialDesign:PackIcon Kind=Logout}"/>
                             </MenuItem>
                         </Menu>
@@ -153,14 +153,34 @@
                             </Button>
                         </materialDesign:Badged>
 
-                        <Button Margin="5">
-                            <materialDesign:PackIcon Kind="Account" PreviewMouseLeftButtonDown="PackIcon_PreviewMouseLeftButtonDown"/>
+                        <Button Margin="5" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Account"/>
                         </Button>
                     </StackPanel>
                 </Grid>
             </materialDesign:ColorZone>
 
-            <materialDesign:Card Grid.Row="1" Name="card_renderbody"/>
+            <materialDesign:Card Grid.Row="1" Name="card_renderbody" />
+            <Grid Grid.Row="1" >
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>                            
+                            <DataTrigger Binding="{Binding ElementName=card_renderbody, Path=Content}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <StackPanel>
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/Image/BkHome.png"/>
+                    </StackPanel.Background>
+                    <TextBlock Text="Hệ Thống Quản Lý" FontSize="80" TextWrapping="Wrap" Foreground="Blue" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Phòng Hành Chính" FontSize="80" TextWrapping="Wrap" Foreground="Blue" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+                
+            </Grid>
         </Grid>
     </materialDesign:DrawerHost>
 

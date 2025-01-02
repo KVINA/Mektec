@@ -49,6 +49,7 @@ namespace AppMMCV.View.HRM
 						Submit_Add();
 						break;
 					case "Edit":
+						Submit_Edit();
 						break;
 					default:
 						MessageBox.Show("Phương thức không hợp lệ", "ERROR", MessageBoxButton.OK, MessageBoxImage.Stop);
@@ -152,16 +153,17 @@ namespace AppMMCV.View.HRM
 		Employees Create_Employees()
 		{
 			var employees = new Employees();
-			employees.Full_name = txt_full_name.Text;
-			employees.Employee_code = txt_code.Text;
-			employees.Hire_date = txt_dateHire.SelectedDate;
-			employees.Maternity_leave_date = txt_dateMaternity.SelectedDate;
-			employees.Resignation_date = txt_dateResign.SelectedDate;
-			employees.Department = cbb_department.Text;
-			employees.Section = cbb_section.Text;
-			employees.Position = cbb_position.Text;
-			employees.Cost_center = cbb_cost_center.Text;
+            employees.Employee_code = txt_code.Text;
+            employees.Full_name = txt_full_name.Text;
+            employees.Hire_date = txt_dateHire.SelectedDate;
+            employees.Maternity_leave_date = txt_dateMaternity.SelectedDate;
+            employees.Resignation_date = txt_dateResign.SelectedDate;
+            employees.Department = cbb_department.Text;
+            employees.Section = cbb_section.Text;
+            employees.Position = cbb_position.Text;
+            employees.Cost_center = cbb_cost_center.Text;
 			if (!string.IsNullOrEmpty(cbb_status.Text)) employees.Status = int.Parse(cbb_status.Text.Substring(0, 1));
+			else employees.Status = null;
 			return employees;
 		}
 		void Submit_Add()
@@ -192,7 +194,36 @@ namespace AppMMCV.View.HRM
 				MessageBox.Show("Chưa nhập đủ thông tin. Hãy kiểm tra lại.", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
 			}
 		}
-		void Submit_Search()
+
+        void Submit_Edit()
+        {
+            var employees = Create_Employees();
+            if (employees.CheckData("Edit"))
+            {
+                var res = EmployeesVM.Edit_Employees(out string exception, employees);
+                if (string.IsNullOrEmpty(exception))
+                {
+                    if (res > 0)
+                    {
+                        Transport = EmployeesVM.Get_Employees(out exception, employees);
+                        MaterialDesignThemes.Wpf.DrawerHost.CloseDrawerCommand.Execute(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xảy ra lỗi trong quá trình xử lý.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(exception, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa nhập đủ thông tin. Hãy kiểm tra lại.", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        void Submit_Search()
 		{
 			var employees = Create_Employees();
 			Transport = EmployeesVM.Get_Employees(out string exception, employees);

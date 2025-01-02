@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:AppMMCV"
         xmlns:admin="clr-namespace:AppMMCV.View.Admin"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="MMCV System Update 20240923" Height="750" Width="1200">
+        WindowState="Maximized"
+        Title="MMCV System Update 20241205" Height="750" Width="1200">
     <UserControl x:Name="ContentArea" Content="{Binding SelectUsercontrol}">
         <ContentControl.Style>
             <Style TargetType="ContentControl">
